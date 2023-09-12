@@ -22,19 +22,19 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context,child)=>MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'ELearning App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'ELearning App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+        initialRoute: Routes.profile,
+        navigatorKey: AppRoutes.navigatorState,
+        navigatorObservers: [AppRoutes.routeObserver],
+        scaffoldMessengerKey: AppRoutes.scaffoldState,
       ),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-       initialRoute: Routes.signUp,
-      navigatorKey: AppRoutes.navigatorState,
-      navigatorObservers: [AppRoutes.routeObserver],
-      scaffoldMessengerKey: AppRoutes.scaffoldState,
-    ),
     );
   }
 }

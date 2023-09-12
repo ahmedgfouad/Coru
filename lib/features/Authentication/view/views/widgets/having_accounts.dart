@@ -22,7 +22,7 @@ class HavingAccount extends StatelessWidget {
       children: [
         Text(
           question,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppColors.primaryColor,
             fontSize: 12,
           ),
@@ -30,7 +30,7 @@ class HavingAccount extends StatelessWidget {
         TextButton(
           child: Text(
             screenName,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.primaryColor,
               fontSize: 14,
             ),
