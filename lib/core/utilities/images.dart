@@ -1,0 +1,30 @@
+class AppImages {
+  static const avatar = 'assets/images/avatar.jpg';
+  static const courseImage = 'assets/images/course.png';
+  static const search = 'assets/svg/search.svg';
+  static const myCourses = 'assets/svg/my_courses.svg';
+  static const profile = 'assets/svg/profile.svg';
+  static const home = 'assets/svg/home.svg';
+  static const google = 'assets/svg/google.svg';
+  static const facebook = 'assets/svg/facebook.svg';
+  static const twitter = 'assets/svg/twitter.svg';
+  static const d3Design = 'assets/svg/3d_design.svg';
+  static const ai = 'assets/svg/ai.svg';
+  static const addToCart = 'assets/svg/add_to_cart.svg';
+  static const bookmark = 'assets/svg/bookmark.svg';
+  static const cart = 'assets/svg/cart.svg';
+  static const chat = 'assets/svg/chat.svg';
+  static const business = 'assets/svg/business.svg';
+  static const localization = 'assets/svg/localization.svg';
+  static const marketing = 'assets/svg/marketing.svg';
+  static const notification = 'assets/svg/notification.svg';
+  static const medical = 'assets/svg/medical.svg';
+  static const programming = 'assets/svg/programming.svg';
+  static const pharmacy = 'assets/svg/pharmacy.svg';
+  static const solidBookmark = 'assets/svg/solid_bookmark.svg';
+  static const logo = 'assets/svg/logo.svg';
+  static const onBoarding1 = 'assets/svg/onboarding1.svg';
+  static const onBoarding2 = 'assets/svg/onboarding2.svg';
+  static const onBoarding3 = 'assets/svg/onboarding3.svg';
+  static const login = 'assets/svg/login.svg';
+}
