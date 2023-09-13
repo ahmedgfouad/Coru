@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:elearning_app/features/home/view/view/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'handlers/localization.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -34,6 +36,29 @@ class MyApp extends StatelessWidget {
       navigatorKey: AppRoutes.navigatorState,
       navigatorObservers: [AppRoutes.routeObserver],
       scaffoldMessengerKey: AppRoutes.scaffoldState,
+      localizationsDelegates: const [
+        AppLocale.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+         GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('ar', ''), // Arabic, no country code
+      ],
+      localeResolutionCallback: (currentLocales, supportedLocales) {
+        if (currentLocales != null) {
+          for (Locale locale in supportedLocales) {
+            /*  if (supportedLocales.contains(locale)) {
+              return locale;
+            } */
+            if (locale.languageCode == currentLocales.languageCode) {
+              return locale;
+            }
+          }
+        }
+        return supportedLocales.first;
+      },
     ),
     );
   }
