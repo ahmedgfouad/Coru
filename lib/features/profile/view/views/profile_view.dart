@@ -1,5 +1,6 @@
+import 'package:elearning_app/core/widgets/profile_app_bar.dart';
 import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
-import 'package:elearning_app/features/profile/view/views/profile_option.dart';
+import 'package:elearning_app/features/profile/view/views/widgets/profile_option.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +14,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          // const ProfileBarWidget(),
+          const ProfileAppBarWidget(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -31,6 +32,7 @@ class ProfileView extends StatelessWidget {
                             FirebaseAuth.instance.signOut();
 
                             AppRoutes.pushNamedNavigator(
+                              replacement: true,
                               routeName: Routes.login,
                             );
                           } else {

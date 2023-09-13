@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        initialRoute: Routes.profile,
+        initialRoute: Routes.splash,
         navigatorKey: AppRoutes.navigatorState,
         navigatorObservers: [AppRoutes.routeObserver],
         scaffoldMessengerKey: AppRoutes.scaffoldState,
