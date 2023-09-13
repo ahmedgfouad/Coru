@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
 class DefaultFormField extends StatelessWidget {
@@ -51,7 +52,11 @@ class DefaultFormField extends StatelessWidget {
       children: [
         Text(
           tittle,
-          style: textStyle ?? const TextStyle(fontWeight: FontWeight.bold),
+          style: textStyle ??
+               TextStyle(
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryColor,
+              ),
         ),
         const SizedBox(
           height: 10,
@@ -80,7 +85,7 @@ class DefaultFormField extends StatelessWidget {
                         child: Icon(
                           suffix,
                           size: 20,
-                          color: Colors.deepPurple,
+                          color: AppColors.primaryColor,
                         ),
                       )
                     : null,
