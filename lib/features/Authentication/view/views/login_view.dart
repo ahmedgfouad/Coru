@@ -101,7 +101,7 @@ class LoginView extends StatelessWidget {
                         log("=========");
                         if (response != null) {
                           AppRoutes.pushNamedNavigator(
-                            routeName: Routes.home,
+                            routeName: Routes.navBar,
                           );
                         } else {
                           log("eroor");

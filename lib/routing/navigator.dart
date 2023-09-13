@@ -1,12 +1,17 @@
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
 import 'package:elearning_app/features/home/view/view/home_view.dart';
-import 'package:elearning_app/features/notification/notefication_view.dart';
+import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
+import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
+import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
 import 'package:elearning_app/features/payment/views/payment_view.dart';
-import 'package:elearning_app/features/profile/view/views/edit_profile.dart';
+import 'package:elearning_app/features/profile/view/views/edit_profile_view.dart';
 import 'package:elearning_app/features/profile/view/views/localization_view.dart';
 import 'package:elearning_app/features/profile/view/views/privacy_view.dart';
-import 'package:elearning_app/features/profile/view/views/profile_screen.dart';
+import 'package:elearning_app/features/profile/view/views/profile_view.dart';
+import 'package:elearning_app/features/search/view/views/search_view.dart';
+import 'package:elearning_app/features/splash_and_onboarding/view/views/onboarding_view.dart';
+import 'package:elearning_app/features/splash_and_onboarding/view/views/splash_view.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +24,11 @@ class AppRoutes {
       GlobalKey<ScaffoldMessengerState>();
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      /*  case Routes.splash:
-        return MaterialPageRoute(builder: (context) => const SplashScreen());
-      case Routes.login:
-        return MaterialPageRoute(builder: (context) => const LoginScreen());
-       */
+        case Routes.splash:
+        return MaterialPageRoute(builder: (context) => const SplashView());
+      case Routes.onboarding:
+        return MaterialPageRoute(builder: (context) => const OnboardingView());
+       
       case Routes.home:
         return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
@@ -32,6 +37,9 @@ class AppRoutes {
 
       case Routes.login:
         return AppRoutes.aniamtedNavigation(screen: const LoginView());
+
+      case Routes.navBar:
+        return AppRoutes.aniamtedNavigation(screen: const NavBarView());
 
       case Routes.profile:
         return AppRoutes.aniamtedNavigation(screen: const ProfileView());
@@ -50,6 +58,14 @@ class AppRoutes {
 
       case Routes.privacyPolicy:
         return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe()); 
+
+        
+      case Routes.search:
+        return AppRoutes.aniamtedNavigation(screen: const SearchView()); 
+
+        
+      case Routes.myCourses:
+        return AppRoutes.aniamtedNavigation(screen: const MyCoursesView()); 
 
         
       default:

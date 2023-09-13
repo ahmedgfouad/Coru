@@ -1,9 +1,4 @@
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/features/notification/notefication_view.dart';
-import 'package:elearning_app/features/payment/views/payment_view.dart';
-import 'package:elearning_app/features/profile/view/views/edit_profile.dart';
-import 'package:elearning_app/features/profile/view/views/localization_view.dart';
-import 'package:elearning_app/features/profile/view/views/privacy_view.dart';
 import 'package:elearning_app/routing/routes.dart';
 
 class ProfileController {
