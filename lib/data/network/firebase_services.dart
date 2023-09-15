@@ -26,7 +26,7 @@ class FirebaseServices {
     log('2');
     // Get docs from collection reference
     QuerySnapshot querySnapshot =
-        await allCourses.where('rating', isGreaterThan: 4).get();
+        await allCourses.where('rating', isGreaterThan: '4').get();
 log('3');
     // Get data from docs and convert map to List
     topCourses = querySnapshot.docs

@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         themeMode:
             Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: Routes.home,
+          initialRoute: Routes.navBar,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],
           scaffoldMessengerKey: AppRoutes.scaffoldState,
