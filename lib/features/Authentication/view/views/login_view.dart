@@ -21,6 +21,10 @@ import 'package:provider/provider.dart';
 /*
 ahmedgamal@gmail.com
 123456789
+
+
+emadmagdy@gmail.com
+123456789hg
 */
 
 class LoginView extends StatelessWidget {

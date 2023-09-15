@@ -1,3 +1,4 @@
+import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
 import 'package:elearning_app/features/home/view/view/home_view.dart';
@@ -24,11 +25,11 @@ class AppRoutes {
       GlobalKey<ScaffoldMessengerState>();
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-        case Routes.splash:
+      case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashView());
       case Routes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
-       
+
       case Routes.home:
         return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
@@ -57,17 +58,14 @@ class AppRoutes {
         return AppRoutes.aniamtedNavigation(screen: const PaymentCardView());
 
       case Routes.privacyPolicy:
-        return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe()); 
+        return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe());
 
-        
       case Routes.search:
-        return AppRoutes.aniamtedNavigation(screen: const SearchView()); 
+        return AppRoutes.aniamtedNavigation(screen: const SearchView());
 
-        
       case Routes.myCourses:
-        return AppRoutes.aniamtedNavigation(screen: const MyCoursesView()); 
+        return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
 
-        
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(

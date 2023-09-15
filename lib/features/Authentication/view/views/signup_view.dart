@@ -6,9 +6,11 @@ import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
 import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/having_accounts.dart';
+import 'package:elearning_app/features/Authentication/view/views/widgets/user_guest_widget.dart';
 import 'package:elearning_app/features/home/view/view/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -37,7 +39,8 @@ class SignupView extends StatelessWidget {
                     "Lets get Started",
                     style: TextStyle(fontSize: 30),
                   ),
-                  SvgPicture.asset(AppImages.login, width: 133, height: 176),
+                  SvgPicture.asset(AppImages.login, width: 133, height: 160),
+                  const SignupAsGuestWidget(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -142,7 +145,7 @@ class SignupView extends StatelessWidget {
                       if (response != null) {
                         print('++++++++++++++++++++++++++++++++++++');
                         await FirebaseFirestore.instance
-                            .collection('user_info')
+                            .collection('users_info')
                             .add({
                           "first_name":
                               SignUpController.firstNameController.text,
