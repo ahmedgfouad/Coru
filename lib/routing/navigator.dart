@@ -1,6 +1,12 @@
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
+import 'package:elearning_app/features/notification/notefication_view.dart';
+import 'package:elearning_app/features/payment/views/payment_view.dart';
+import 'package:elearning_app/features/profile/view/views/edit_profile.dart';
+import 'package:elearning_app/features/profile/view/views/localization_view.dart';
+import 'package:elearning_app/features/profile/view/views/privacy_view.dart';
+import 'package:elearning_app/features/profile/view/views/profile_screen.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -27,23 +33,25 @@ class AppRoutes {
       case Routes.login:
         return AppRoutes.aniamtedNavigation(screen: const LoginView());
 
-      // case Routes.bookmarkedCourses:
-      //   return AppRoutes.aniamtedNavigation(
-      //     screen: const BookmarkedCoursesScreen(),
-      //   );
-      // case Routes.notification:
-      //   return AppRoutes.aniamtedNavigation(screen: const NotificationScreen());
-      // case Routes.cart:
-      //   return AppRoutes.aniamtedNavigation(screen: const CartScreen());
-      // case Routes.navBar:
-      //   return AppRoutes.aniamtedNavigation(screen: const BottomNavBarScreen());
-      // case Routes.courseDetails:
-      //   return AppRoutes.aniamtedNavigation(screen: CourseDetailsScreen());
-      // case Routes.coursesCategories:
-      //   return AppRoutes.aniamtedNavigation(
-      //       screen: CoursesCategoriesScreen(
-      //     category: settings.arguments as Map,
-      //   ));
+      case Routes.profile:
+        return AppRoutes.aniamtedNavigation(screen: const ProfileView());
+
+      case Routes.editProfile:
+        return AppRoutes.aniamtedNavigation(screen: const EditProfileView());
+
+      case Routes.notification:
+        return AppRoutes.aniamtedNavigation(screen: const NotificationView());
+
+      case Routes.localization:
+        return AppRoutes.aniamtedNavigation(screen: const LocalizationView());
+
+      case Routes.payment:
+        return AppRoutes.aniamtedNavigation(screen: const PaymentCardView());
+
+      case Routes.privacyPolicy:
+        return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe()); 
+
+        
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(
