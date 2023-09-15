@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
 import 'package:flutter/material.dart';

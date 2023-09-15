@@ -9,7 +9,7 @@ import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/having_accounts.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';

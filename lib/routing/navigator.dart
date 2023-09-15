@@ -1,9 +1,11 @@
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
+
 import 'package:elearning_app/features/payment/views/payment_view.dart';
 import 'package:elearning_app/features/profile/view/views/edit_profile_view.dart';
 import 'package:elearning_app/features/profile/view/views/localization_view.dart';
