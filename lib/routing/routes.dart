@@ -2,10 +2,8 @@ abstract class Routes {
   static const String navBar = "/nav_bars";
   static const String home = "/home";
   static const String login = "/login";
-  static const String signUp = "/sign_up";
-  /*  static const String resetPassword = "resetPassword";
-  static const String forgetPassword = "forgetPassword";
-  static const String verfication = "verfication"; */
+  static const String signUp = "/sign_up"; 
+  
   static const String splash = "splash";
   static const String bookmarkedCourses = "/bookmarked_courses";
   static const String profile = "/profile";

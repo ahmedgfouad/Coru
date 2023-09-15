@@ -53,7 +53,7 @@ class DefaultFormField extends StatelessWidget {
         Text(
           tittle,
           style: textStyle ??
-              const TextStyle(
+               TextStyle(
                 fontWeight: FontWeight.bold,
                 color: AppColors.primaryColor,
               ),

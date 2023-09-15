@@ -155,7 +155,7 @@ class SignupView extends StatelessWidget {
                         });
                         // defaultNavigator(context, const HomeView());
                         AppRoutes.pushNamedNavigator(
-                          routeName: Routes.home,
+                          routeName: Routes.navBar,
                         );
                       } else {
                         print("is null");

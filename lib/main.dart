@@ -80,6 +80,7 @@ class MyApp extends StatelessWidget {
           locale:
             Provider.of<LocalizationController>(context, listen: true).local,
         ),
+
       ),
     );
   }

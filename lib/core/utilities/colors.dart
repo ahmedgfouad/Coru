@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const primaryColor = Color(0xff377375);
-  static const secondaryColor = Color(0xffABD8CD);
+  static Color primaryColor = const Color(0xff804EEB).withOpacity(.75);
+  static Color secondaryColor = const Color(0xffBBA5FB).withOpacity(.2);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
   static const Color thirdColor = Color(0xFFcdbff4);
@@ -44,4 +44,12 @@ class AppTheme {
 377375
 ABD8CD 
 DDEFE3
+
+
+البنفسجي القديم 
+Color(0xff804EEB).withOpacity(.75)
+Color(0xffBBA5FB).withOpacity(.2)
+
 */
+
+

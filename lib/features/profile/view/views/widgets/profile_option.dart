@@ -3,7 +3,7 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileOptionWidget extends StatelessWidget {
@@ -36,14 +36,18 @@ class ProfileOptionWidget extends StatelessWidget {
                   ),
                   SizedBox(width: 5.w),
                   Text(
-                   optionName,
-                    style: AppStyles.textStyle16,
+                    optionName,
+                    style: AppStyles.textStyle16.copyWith(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
               Icon(
                 Icons.arrow_forward,
                 size: 20.sp,
+                color: AppColors.primaryColor,
               ),
             ],
           ),

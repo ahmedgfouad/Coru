@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print, use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
@@ -39,9 +43,7 @@ class _EditProfileViewState extends State<EditProfileView> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 10.h),
                   // CustomAppBar(title: "Edit Profile"),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -49,10 +51,10 @@ class _EditProfileViewState extends State<EditProfileView> {
                       create: (BuildContext context) => EditProfileController(),
                       child: Column(
                         children: [
-                          const CircleAvatar(
+                           CircleAvatar(
                             backgroundColor: AppColors.primaryColor,
                             radius: 32,
-                            child: CircleAvatar(
+                            child: const CircleAvatar(
                               radius: 30,
                               backgroundImage: AssetImage(AppImages.avatar),
                             ),
@@ -195,7 +197,9 @@ class _EditProfileViewState extends State<EditProfileView> {
           if (snapShot.hasError) {
             print("============has Error===========");
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
