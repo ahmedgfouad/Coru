@@ -1,5 +1,8 @@
- import 'package:elearning_app/features/home/view/widgets/course_categories_grid_view.dart';
+ import 'package:elearning_app/core/widgets/default_app_bar.dart';
+import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/features/home/view/widgets/course_categories_grid_view.dart';
 import 'package:elearning_app/features/home/view/widgets/horizontal_course_list_view.dart';
+import 'package:elearning_app/features/home/view/widgets/vertical_course_card.dart';
 import 'package:flutter/material.dart';
  import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +20,7 @@ import 'package:flutter/material.dart';
            physics: const BouncingScrollPhysics(),
            child: Column(
              children: [
-               //const AlemniAppBar(isHome: true),
+               const DefaultAppBar(isHome: true,/* showBack: false,showBookmarks: false, */),
                Padding(
                  padding: EdgeInsets.all(8.0.r),
                  child: Column(
@@ -47,7 +50,7 @@ import 'package:flutter/material.dart';
                        ),
                        SizedBox(
                            height: MediaQuery.of(context).size.height * 0.01),
-                      // const VerticalCourseCard(course: ,),
+                        VerticalCourseCard(course: CourseDetailsModel()),
                        SizedBox(
                            height: MediaQuery.of(context).size.height * 0.01),
                        Text(
@@ -57,7 +60,7 @@ import 'package:flutter/material.dart';
                        ),
                        SizedBox(
                            height: MediaQuery.of(context).size.height * 0.01),
-                      // const CourseCategoriesGridView()
+                       const CourseCategoriesGridView()
                      ]),
                ),
              ],

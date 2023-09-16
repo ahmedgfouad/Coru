@@ -1,5 +1,6 @@
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
+import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
 
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
@@ -68,6 +69,8 @@ class AppRoutes {
         
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView()); 
+        case Routes.coursesCategories:
+        return AppRoutes.aniamtedNavigation(screen:  CoursesCategoriesView(category: settings.arguments as String));
 
         
       default:
@@ -96,7 +99,7 @@ class AppRoutes {
   static pushNamedNavigator(
       {required String routeName,
       Object? arguments,
-      bool replacement = false}) {
+      bool replacement = false,}) {
     if (replacement) {
       navigatorState.currentState!
           .pushReplacementNamed(routeName, arguments: arguments);
