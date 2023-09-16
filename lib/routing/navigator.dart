@@ -1,12 +1,14 @@
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
+import 'package:elearning_app/features/chat/views/chat_view.dart';
+import 'package:elearning_app/features/chat/views/header_chats_view.dart';
+
 import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
 
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
-
 import 'package:elearning_app/features/payment/views/payment_view.dart';
 import 'package:elearning_app/features/profile/view/views/edit_profile_view.dart';
 import 'package:elearning_app/features/profile/view/views/localization_view.dart';
@@ -27,13 +29,10 @@ class AppRoutes {
       GlobalKey<ScaffoldMessengerState>();
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-        case Routes.splash:
+      case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashView());
       case Routes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
-       
-      case Routes.home:
-        return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
       case Routes.signUp:
         return AppRoutes.aniamtedNavigation(screen: const SignupView());
@@ -43,6 +42,9 @@ class AppRoutes {
 
       case Routes.navBar:
         return AppRoutes.aniamtedNavigation(screen: const NavBarView());
+
+      case Routes.home:
+        return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
       case Routes.profile:
         return AppRoutes.aniamtedNavigation(screen: const ProfileView());
@@ -60,19 +62,24 @@ class AppRoutes {
         return AppRoutes.aniamtedNavigation(screen: const PaymentCardView());
 
       case Routes.privacyPolicy:
-        return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe()); 
+        return AppRoutes.aniamtedNavigation(screen: const PrivacyPolicyViwe());
 
-        
       case Routes.search:
-        return AppRoutes.aniamtedNavigation(screen: const SearchView()); 
+        return AppRoutes.aniamtedNavigation(screen: const SearchView());
 
-        
+      case Routes.headerChat:
+        return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView());
+
+      case Routes.chat:
+        return AppRoutes.aniamtedNavigation(screen: ChatView());
+
       case Routes.myCourses:
-        return AppRoutes.aniamtedNavigation(screen: const MyCoursesView()); 
-        case Routes.coursesCategories:
-        return AppRoutes.aniamtedNavigation(screen:  CoursesCategoriesView(category: settings.arguments as String));
+        return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
+      case Routes.coursesCategories:
+        return AppRoutes.aniamtedNavigation(
+            screen:
+                CoursesCategoriesView(category: settings.arguments as String));
 
-        
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(
@@ -96,10 +103,11 @@ class AppRoutes {
     );
   }
 
-  static pushNamedNavigator(
-      {required String routeName,
-      Object? arguments,
-      bool replacement = false,}) {
+  static pushNamedNavigator({
+    required String routeName,
+    Object? arguments,
+    bool replacement = false,
+  }) {
     if (replacement) {
       navigatorState.currentState!
           .pushReplacementNamed(routeName, arguments: arguments);

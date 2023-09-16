@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/data/model/course_detials_model.dart';
+
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/handlers/localization.dart';
 import 'package:elearning_app/routing/navigator.dart';

@@ -3,8 +3,8 @@ import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/home/view/widgets/course_categories_grid_view.dart';
 import 'package:elearning_app/features/home/view/widgets/horizontal_course_list_view.dart';
 import 'package:elearning_app/features/home/view/widgets/vertical_course_card.dart';
-import 'package:flutter/material.dart';
- import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart'; 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
  
 

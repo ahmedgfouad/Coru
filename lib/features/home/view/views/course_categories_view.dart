@@ -14,7 +14,7 @@ class CoursesCategoriesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
         body: SafeArea(
       child: 
       //To Do : see the overflow error

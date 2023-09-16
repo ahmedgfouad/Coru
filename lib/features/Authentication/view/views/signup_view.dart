@@ -3,12 +3,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/having_accounts.dart';
+import 'package:elearning_app/features/Authentication/view/views/widgets/user_guest_widget.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -37,7 +40,8 @@ class SignupView extends StatelessWidget {
                     "Lets get Started",
                     style: TextStyle(fontSize: 30),
                   ),
-                  SvgPicture.asset(AppImages.login, width: 133, height: 176),
+                  SvgPicture.asset(AppImages.login, width: 133, height: 160),
+                  const SignupAsGuestWidget(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -140,9 +144,8 @@ class SignupView extends StatelessWidget {
                       );
                       print("==========");
                       if (response != null) {
-                        print('++++++++++++++++++++++++++++++++++++');
                         await FirebaseFirestore.instance
-                            .collection('user_info')
+                            .collection(userInfoCollectionName)
                             .add({
                           "first_name":
                               SignUpController.firstNameController.text,
@@ -155,6 +158,7 @@ class SignupView extends StatelessWidget {
                         });
                         // defaultNavigator(context, const HomeView());
                         AppRoutes.pushNamedNavigator(
+                          replacement: true,
                           routeName: Routes.navBar,
                         );
                       } else {
