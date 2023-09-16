@@ -2,8 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
-import 'package:elearning_app/core/widgets/defaul_app_bar.dart';
-import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
+import 'package:elearning_app/core/widgets/default_app_bar.dart';
+import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/chat/data/message_model.dart';
 import 'package:elearning_app/features/chat/views/widgets/frient_message_widget.dart';
 import 'package:elearning_app/features/chat/views/widgets/my_message_widget.dart';

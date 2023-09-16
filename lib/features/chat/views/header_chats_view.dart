@@ -1,6 +1,6 @@
 
-import 'package:elearning_app/core/widgets/defaul_app_bar.dart';
-import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
+import 'package:elearning_app/core/widgets/default_app_bar.dart';
+import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/chat/views/widgets/header_chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

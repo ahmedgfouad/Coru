@@ -3,6 +3,8 @@ import 'package:elearning_app/features/Authentication/view/views/signup_view.dar
 import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/header_chats_view.dart';
 
+import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
+
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
@@ -65,17 +67,18 @@ class AppRoutes {
       case Routes.search:
         return AppRoutes.aniamtedNavigation(screen: const SearchView());
 
+      case Routes.headerChat:
+        return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView());
+
+      case Routes.chat:
+        return AppRoutes.aniamtedNavigation(screen: ChatView());
+
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
-        
-      case Routes.headerChat:
-        return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView()); 
-        
-      case Routes.chat:
-        return AppRoutes.aniamtedNavigation(screen:  ChatView());
-
-
-        
+      case Routes.coursesCategories:
+        return AppRoutes.aniamtedNavigation(
+            screen:
+                CoursesCategoriesView(category: settings.arguments as String));
 
       default:
         return AppRoutes.aniamtedNavigation(
@@ -100,10 +103,11 @@ class AppRoutes {
     );
   }
 
-  static pushNamedNavigator(
-      {required String routeName,
-      Object? arguments,
-      bool replacement = false}) {
+  static pushNamedNavigator({
+    required String routeName,
+    Object? arguments,
+    bool replacement = false,
+  }) {
     if (replacement) {
       navigatorState.currentState!
           .pushReplacementNamed(routeName, arguments: arguments);

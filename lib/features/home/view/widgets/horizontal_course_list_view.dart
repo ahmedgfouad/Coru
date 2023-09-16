@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +20,9 @@ class HorizontalCourseListView extends StatefulWidget {
 class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
   @override
   Widget build(BuildContext context) {
-   // var top = Provider.of<HomeController>(context).getTopCourses;
+    // var top = Provider.of<HomeController>(context).getTopCourses;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.27,
+      height: MediaQueryHelper.height * 0.27,
       child: Consumer<HomeController>(
         builder: (context, provider, child) {
           log('message: ${provider.topCourses.toString()}');

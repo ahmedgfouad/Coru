@@ -2,21 +2,21 @@
 
 import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
-import 'package:elearning_app/features/home/view_model/course_categories_controller.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
 import 'handlers/localization.dart';
 
 bool isLogIn = false;
@@ -45,13 +45,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MultiProvider(
-        providers: [
-          // ChangeNotifierProvider(create: (context) => AddNewCourseController()),
+        providers: [ 
           ChangeNotifierProvider(
-            create: (context) => CourseCategoriesController()
-              ..getAllCourses()
-              ..getCourseCategories(),
-          ),
+              create: (context) => HomeController()..getTopCourses()),
+
           ChangeNotifierProvider(
               create: (context) => HomeController()..getTopCourses()),
           ChangeNotifierProvider(create: (context) => MyCoursesController()),

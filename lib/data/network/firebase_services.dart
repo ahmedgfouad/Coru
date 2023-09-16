@@ -26,7 +26,7 @@ class FirebaseServices {
     log('2');
     // Get docs from collection reference
     QuerySnapshot querySnapshot =
-        await allCourses.where('rating', isGreaterThan: 4).get();
+        await allCourses.where('rating', isGreaterThan: '4').get();
 log('3');
     // Get data from docs and convert map to List
     topCourses = querySnapshot.docs
@@ -37,11 +37,11 @@ log('3');
     return topCourses;
   }
 
-  Future<List<CourseDetailsModel>?>? getCourseCategories() async {
+  Future<List<CourseDetailsModel>?>? getCourseCategories(String category) async {
     List<CourseDetailsModel>? courseCategory = [];
     // Get docs from collection reference
     QuerySnapshot querySnapshot =
-        await allCourses.where('rate', isGreaterThan: 4).get();
+        await allCourses.where('category', isEqualTo:category ).get();
 
     // Get data from docs and convert map to List
     courseCategory = querySnapshot.docs

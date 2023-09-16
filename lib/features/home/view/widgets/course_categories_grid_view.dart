@@ -1,23 +1,25 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/images.dart';
+
+import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/handlers/localization.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-
+import 'package:provider/provider.dart';
 
 class CourseCategoriesGridView extends StatelessWidget {
-
   const CourseCategoriesGridView({
     super.key,
   });
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<HomeController>(context, listen: true);
+
     List<Map<String, dynamic>> category = [
-      {'title': getLang(context, 'all_courses'), 'icon':AppImages.medical},
+      {'title': getLang(context, 'all_courses'), 'icon': AppImages.medical},
       {'title': getLang(context, 'medical'), 'icon': AppImages.medical},
       {'title': getLang(context, 'programming'), 'icon': AppImages.programming},
       {'title': getLang(context, 'marketing'), 'icon': AppImages.marketing},
@@ -34,10 +36,11 @@ class CourseCategoriesGridView extends StatelessWidget {
             crossAxisCount: 2, childAspectRatio: 4 / 5, mainAxisExtent: 190.r),
         itemBuilder: (context, index) => InkWell(
           onTap: () {
+            
+            provider.getCourses(courseFilter: category[index]['title']);
             AppRoutes.pushNamedNavigator(
-                
                 routeName: Routes.coursesCategories,
-                arguments: {'category': category[index]['title']});
+                arguments: category[index]['title']);
           },
           child: Container(
             margin: EdgeInsets.all(8.0.r),
@@ -56,7 +59,6 @@ class CourseCategoriesGridView extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                 
                   SvgPicture.asset(
                     category[index]['icon'],
                     width: MediaQuery.of(context).size.width * 0.1,
@@ -65,7 +67,7 @@ class CourseCategoriesGridView extends StatelessWidget {
                         const ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                   Text(
-                     category[index]['title'],
+                    category[index]['title'],
                     style: AppStyles.textStyle20,
                   )
                 ]),
