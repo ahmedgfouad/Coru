@@ -5,7 +5,7 @@ import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
-import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
+import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/having_accounts.dart';

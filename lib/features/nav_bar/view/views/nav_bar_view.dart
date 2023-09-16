@@ -1,11 +1,14 @@
 import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
+import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
+import 'package:elearning_app/handlers/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart'; 
+import 'package:flutter_svg/svg.dart';
 
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
@@ -19,32 +22,32 @@ class _NavBarViewState extends State<NavBarView> {
   List<String> listOfIcons = [
     AppImages.home,
     AppImages.myCourses,
-    // AppImages.cart,
+    AppImages.cart,
     AppImages.chat,
     AppImages.profile,
   ];
   @override
   Widget build(BuildContext context) {
-    double customWidth = MediaQuery.of(context).size.width;
+    // double MediaQueryHelper.width = MediaQuery.of(context).size.width;
     List<Map<String, dynamic>> screens = [
       {
-        'title': "home",
+        'title': "${getLang(context, 'home')}",
         'screen': const HomeView(),
       },
       {
-        'title': "myCourse",
+        'title': "${getLang(context, 'my_courses')}",
         'screen': const MyCoursesView(),
       },
-      // {
-      //   'title': S.of(context).cart,
-      //   'screen': const CartScreen(),
-      // },
       {
-        'title': "chat",
+        'title': "${getLang(context, 'cart')}",
+        'screen': const CartView(),
+      },
+      {
+        'title': "${getLang(context, 'chat')}",
         'screen': const ChatView(),
       },
       {
-        'title': "profile",
+        'title': "${getLang(context, 'profile')}",
         'screen': const ProfileView(),
       }
     ];
@@ -52,8 +55,8 @@ class _NavBarViewState extends State<NavBarView> {
     return Scaffold(
       body: screens[currentIndex]['screen'],
       bottomNavigationBar: Container(
-        margin: EdgeInsets.fromLTRB(
-            customWidth * .04, 0, customWidth * .04, customWidth * .02),
+        margin: EdgeInsets.fromLTRB(MediaQueryHelper.width * .04, 0,
+            MediaQueryHelper.width * .04, MediaQueryHelper.height * .006),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(18),
@@ -61,16 +64,17 @@ class _NavBarViewState extends State<NavBarView> {
             BoxShadow(blurRadius: 30, color: Colors.black.withOpacity(.15))
           ],
         ),
-        height: customWidth * 0.155,
+        height: MediaQueryHelper.width * 0.155,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: customWidth * 0.006, vertical: customWidth * 0.01),
+              horizontal: MediaQueryHelper.width * 0.006,
+              vertical: MediaQueryHelper.width * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-                4,
+                listOfIcons.length,
                 (index) => Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      //margin: const EdgeInsets.symmetric(horizontal: 4),
                       child: InkWell(
                         onTap: () {
                           setState(() {
@@ -83,10 +87,10 @@ class _NavBarViewState extends State<NavBarView> {
                           duration: const Duration(seconds: 2),
                           curve: Curves.fastLinearToSlowEaseIn,
                           margin: EdgeInsets.symmetric(
-                              horizontal: customWidth * 0.01),
+                              horizontal: MediaQueryHelper.width * 0.01),
                           width: index == currentIndex
-                              ? customWidth * 0.17
-                              : customWidth * 0.159,
+                              ? MediaQueryHelper.width * 0.17
+                              : MediaQueryHelper.width * 0.159,
                           decoration: BoxDecoration(
                             color: index == currentIndex
                                 ? Theme.of(context).colorScheme.secondary
@@ -101,11 +105,8 @@ class _NavBarViewState extends State<NavBarView> {
                               children: [
                                 SvgPicture.asset(
                                   listOfIcons[index],
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.036,
-                                  height: MediaQuery.of(context).size.height *
-                                          0.036 -
-                                      10,
+                                  width: MediaQueryHelper.width * 0.034,
+                                  height: MediaQueryHelper.height * 0.034,
                                   colorFilter: ColorFilter.mode(
                                       /* index == currentIndex
                                           ? Theme.of(context).colorScheme.primary

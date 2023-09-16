@@ -6,9 +6,9 @@ class CourseDetailsModel {
   String? image;
   String? category;
   String? instructor;
-  double? price;
-  double? rating;
-  double? hours;
+  String? price;
+  String? rating;
+  String? hours;
   int? studentNumber;
   List<Lessons>? lessons;
   CourseDetailsModel({
@@ -28,9 +28,9 @@ class CourseDetailsModel {
     image = json['image'] ?? 'empty';
     category = json['category'] ?? 'empty';
     instructor = json['instructor'] ?? 'empty';
-    price = json['price'] ?? 0;
-    rating = json['rating'] ?? 0;
-    hours = json['hours'] ?? 0;
+    price = json['price'] ?? 'empty';
+    rating = json['rating'] ?? 'empty';
+    hours = json['hours'] ?? 'empty';
     studentNumber = json['student_number'] ?? 0;
     if (json['lessons'] != null) {
       lessons = <Lessons>[];
@@ -46,9 +46,9 @@ class CourseDetailsModel {
     data['image'] = image ?? 'empty';
     data['category'] = category ?? 'empty';
     data['instructor'] = instructor ?? 'empty';
-    data['price'] = price ?? 0;
-    data['rating'] = rating ?? 0;
-    data['hours'] = hours ?? 0;
+    data['price'] = price ?? 'empty';
+    data['rating'] = rating ?? 'empty';
+    data['hours'] = hours ?? 'empty';
     data['student_number'] = studentNumber ?? 0;
     if (lessons != null) {
       data['lessons'] = lessons!.map((v) => v.toJson()).toList();
