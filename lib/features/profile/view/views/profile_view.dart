@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/logIn_controller.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';

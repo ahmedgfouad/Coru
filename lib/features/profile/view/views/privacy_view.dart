@@ -19,9 +19,11 @@ class PrivacyPolicyViwe extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
                       const Text(
                         '1. Types data we collect',
                         style: AppStyles.textStyle18,
+
                       ),
                       SizedBox(
                         height: 15.h,

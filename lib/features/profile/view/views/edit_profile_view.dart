@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/defaul_app_bar.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
@@ -24,7 +25,7 @@ class EditProfileView extends StatefulWidget {
 
 class _EditProfileViewState extends State<EditProfileView> {
   CollectionReference userInfoRef =
-      FirebaseFirestore.instance.collection('users_info');
+      FirebaseFirestore.instance.collection(userInfoCollectionName);
   var firstName, lastName, email, password, confirmPassword;
 
   @override
@@ -201,7 +202,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 'email': email,
                                 'password': password,
                                 'confirm_password': confirmPassword,
-                              }); 
+                              });
 
                               showCustomSnackBar(context, "data has changed");
                               await EditProfileController()

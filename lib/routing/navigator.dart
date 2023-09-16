@@ -1,7 +1,9 @@
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/chat/views/chat_view.dart';
+import 'package:elearning_app/features/chat/views/header_chats_view.dart';
+
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
@@ -30,9 +32,6 @@ class AppRoutes {
       case Routes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
 
-      case Routes.home:
-        return AppRoutes.aniamtedNavigation(screen: const HomeView());
-
       case Routes.signUp:
         return AppRoutes.aniamtedNavigation(screen: const SignupView());
 
@@ -41,6 +40,9 @@ class AppRoutes {
 
       case Routes.navBar:
         return AppRoutes.aniamtedNavigation(screen: const NavBarView());
+
+      case Routes.home:
+        return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
       case Routes.profile:
         return AppRoutes.aniamtedNavigation(screen: const ProfileView());
@@ -65,6 +67,15 @@ class AppRoutes {
 
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
+        
+      case Routes.headerChat:
+        return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView()); 
+        
+      case Routes.chat:
+        return AppRoutes.aniamtedNavigation(screen:  ChatView());
+
+
+        
 
       default:
         return AppRoutes.aniamtedNavigation(

@@ -1,9 +1,10 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,7 +16,7 @@ class EditProfileController extends ChangeNotifier {
   static File? file;
 
   CollectionReference profileInfoReference =
-      FirebaseFirestore.instance.collection('users_info');
+      FirebaseFirestore.instance.collection(userInfoCollectionName);
 
   editProfile(
     var docId,

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +15,7 @@ class ProfileAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference userInfoReference =
-        FirebaseFirestore.instance.collection('users_info');
+        FirebaseFirestore.instance.collection(userInfoCollectionName);
 
     return Center(
       child: Consumer<UserGusetController>(

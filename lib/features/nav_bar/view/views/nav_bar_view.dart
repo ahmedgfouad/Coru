@@ -1,15 +1,13 @@
 // ignore_for_file: avoid_print
 
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
-import 'package:elearning_app/features/chat/views/chat_view.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/chat/views/header_chats_view.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
@@ -18,8 +16,7 @@ class NavBarView extends StatefulWidget {
   State<NavBarView> createState() => _NavBarViewState();
 }
 
-class _NavBarViewState extends State<NavBarView> { 
-
+class _NavBarViewState extends State<NavBarView> {
   int currentIndex = 0;
   List<String> listOfIcons = [
     AppImages.home,
@@ -46,7 +43,7 @@ class _NavBarViewState extends State<NavBarView> {
       // },
       {
         'title': "chat",
-        'screen': const ChatView(),
+        'screen': const HeaderChatsView(),
       },
       {
         'title': "profile",

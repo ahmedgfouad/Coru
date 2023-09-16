@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
 import 'package:elearning_app/core/widgets/dfault_text_form_field.dart';
@@ -11,7 +12,7 @@ import 'package:elearning_app/features/Authentication/view/view_model/signup_con
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/having_accounts.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/user_guest_widget.dart';
-import 'package:elearning_app/features/home/view/view/home_view.dart';
+import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -143,9 +144,8 @@ class SignupView extends StatelessWidget {
                       );
                       print("==========");
                       if (response != null) {
-                        print('++++++++++++++++++++++++++++++++++++');
                         await FirebaseFirestore.instance
-                            .collection('users_info')
+                            .collection(userInfoCollectionName)
                             .add({
                           "first_name":
                               SignUpController.firstNameController.text,
@@ -158,6 +158,7 @@ class SignupView extends StatelessWidget {
                         });
                         // defaultNavigator(context, const HomeView());
                         AppRoutes.pushNamedNavigator(
+                          replacement: true,
                           routeName: Routes.navBar,
                         );
                       } else {
