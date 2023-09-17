@@ -1,5 +1,6 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, await_only_futures
 
+import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
@@ -9,17 +10,28 @@ import 'package:elearning_app/features/profile/view/view_model/profile_controlle
 import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'handlers/localization.dart';
 
+bool isLogIn = false;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  var user = await FirebaseAuth.instance.currentUser;
+  // print("======the user in main == ${user!.email}============");
+  if (user == null) {
+    isLogIn = false;
+  } else {
+    isLogIn = true;
+  }
   runApp(const MyApp());
 }
 
@@ -34,15 +46,16 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MultiProvider(
-        providers: [
-          // ChangeNotifierProvider(create: (context) => AddNewCourseController()),
+        providers: [ 
+          ChangeNotifierProvider(
+              create: (context) => HomeController()..getTopCourses()),
 
           ChangeNotifierProvider(
-              create: (context) => HomeController()..getTopCourses()
-                ),
+              create: (context) => HomeController()..getTopCourses()),
           ChangeNotifierProvider(create: (context) => MyCoursesController()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
+          ChangeNotifierProvider(create: (context) => UserGusetController()),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -52,7 +65,7 @@ class MyApp extends StatelessWidget {
           themeMode:
               Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          initialRoute: Routes.navBar,
+          initialRoute: isLogIn ? Routes.navBar : Routes.splash,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],
           scaffoldMessengerKey: AppRoutes.scaffoldState,

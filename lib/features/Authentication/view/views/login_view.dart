@@ -1,7 +1,6 @@
-
 // ignore_for_file: unnecessary_null_comparison
 
-import 'dart:developer'; 
+import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
@@ -17,10 +16,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-
 /*
-ahmedgamal@gmail.com
+ahmedgamal@gmail.com 
 123456789
+
+
+emadmagdy@gmail.com
+123456789hg
+
+
+alimohamed@gmail.com
+ali12345
 */
 
 class LoginView extends StatelessWidget {
@@ -90,7 +96,7 @@ class LoginView extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     const ForgetPasswordWidget(),
-                    const SizedBox(height: 10), 
+                    const SizedBox(height: 10),
                     DefaultButton(
                       onPressed: () async {
                         UserCredential response =
@@ -101,6 +107,7 @@ class LoginView extends StatelessWidget {
                         log("=========");
                         if (response != null) {
                           AppRoutes.pushNamedNavigator(
+                            replacement: true,
                             routeName: Routes.navBar,
                           );
                         } else {

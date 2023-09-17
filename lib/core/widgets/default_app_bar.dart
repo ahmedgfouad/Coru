@@ -1,3 +1,4 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 /* import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,7 +28,7 @@ class DefaultAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference userInfoReference =
-        FirebaseFirestore.instance.collection('users_info');
+        FirebaseFirestore.instance.collection(userInfoCollectionName);
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0.r),

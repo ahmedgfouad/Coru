@@ -14,6 +14,7 @@ abstract class Routes {
   static const String coursesCategories = "/courses_categories";
   static const String myCourses = "/my_courses";
   static const String cart = "/cart";
+  static const String headerChat = "/header_chats";
   static const String chat = "/chat";
   static const String changeTheme = "/change_theme";
 

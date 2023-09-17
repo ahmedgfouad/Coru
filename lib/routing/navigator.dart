@@ -2,6 +2,9 @@ import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/model/lessons_model.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
+import 'package:elearning_app/features/chat/views/chat_view.dart';
+import 'package:elearning_app/features/chat/views/header_chats_view.dart';
+
 import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
 import 'package:elearning_app/features/home/view/views/course_details_view.dart';
 
@@ -10,7 +13,6 @@ import 'package:elearning_app/features/home/view/views/lesson_details_view.dart'
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
-
 import 'package:elearning_app/features/payment/views/payment_view.dart';
 import 'package:elearning_app/features/profile/view/views/edit_profile_view.dart';
 import 'package:elearning_app/features/profile/view/views/localization_view.dart';
@@ -69,12 +71,19 @@ class AppRoutes {
       case Routes.search:
         return AppRoutes.aniamtedNavigation(screen: const SearchView());
 
+      case Routes.headerChat:
+        return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView());
+
+      case Routes.chat:
+        return AppRoutes.aniamtedNavigation(screen: ChatView());
+
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
       case Routes.coursesCategories:
         return AppRoutes.aniamtedNavigation(
             screen:
                 CoursesCategoriesView(category: settings.arguments as String));
+
       case Routes.courseDetails:
         return AppRoutes.aniamtedNavigation(
             screen: CourseDetailsView(
@@ -84,6 +93,7 @@ class AppRoutes {
             screen: LessonDetailsView(
           lesson: settings.arguments as Map,
         ));
+
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(

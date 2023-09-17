@@ -1,8 +1,13 @@
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/features/home/view/widgets/course_categories_grid_view.dart';
 import 'package:elearning_app/features/home/view/widgets/horizontal_course_list_view.dart';
+
 import 'package:elearning_app/features/home/view/widgets/recent_course.dart';
 import 'package:flutter/material.dart';
+
+import 'package:elearning_app/features/home/view/widgets/vertical_course_card.dart';
+import 'package:flutter/material.dart'; 
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends StatelessWidget {

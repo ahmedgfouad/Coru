@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/features/chat/views/header_chats_view.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/features/cart/view/views/cart_view.dart';
-import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
@@ -39,12 +41,13 @@ class _NavBarViewState extends State<NavBarView> {
         'screen': const MyCoursesView(),
       },
       {
+
         'title': "${getLang(context, 'cart')}",
         'screen': const CartView(),
       },
       {
         'title': "${getLang(context, 'chat')}",
-        'screen': const ChatView(),
+        'screen':  const HeaderChatsView(),
       },
       {
         'title': "${getLang(context, 'profile')}",

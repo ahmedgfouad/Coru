@@ -4,7 +4,7 @@ import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
 class DefaultFormField extends StatelessWidget {
-  late final String tittle;
+  String? tittle;
   late final double width;
   late double height;
   TextEditingController? controller;
@@ -17,15 +17,17 @@ class DefaultFormField extends StatelessWidget {
   TextStyle? textStyle;
   void Function()? suffixButtonPressed;
   bool isPassword;
+  bool isAuth;
   late final Color borderColor;
   late final Color cursorColor;
   late final Color textColor;
   String? initValue;
   final void Function(String?)? onChange;
+  final void Function(String?)? onSubmitted;
 
   DefaultFormField({
     super.key,
-    required this.tittle,
+    this.tittle,
     required this.width,
     required this.height,
     this.controller,
@@ -33,6 +35,7 @@ class DefaultFormField extends StatelessWidget {
     required this.validate,
     this.hintText,
     this.isPassword = false,
+    this.isAuth = true,
     this.suffixButtonPressed,
     this.obSecure,
     this.prefix,
@@ -43,6 +46,7 @@ class DefaultFormField extends StatelessWidget {
     this.cursorColor = Colors.blue,
     this.initValue,
     this.onChange,
+     this.onSubmitted,
   });
 
   @override
@@ -50,23 +54,30 @@ class DefaultFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          tittle,
-          style: textStyle ??
-               TextStyle(
-                fontWeight: FontWeight.bold,
-                color: AppColors.primaryColor,
-              ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
+        isAuth
+            ? Column(
+                children: [
+                  Text(
+                    tittle!,
+                    style: textStyle ??
+                        TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryColor,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              )
+            : const Column(),
         SizedBox(
           width: width,
           height: height,
           child: TextFormField(
             initialValue: initValue,
-            onChanged: onChange,
+            onChanged: onChange, 
+            onFieldSubmitted: onSubmitted,
             style: TextStyle(color: textColor),
             cursorColor: cursorColor,
             keyboardType: type,
@@ -74,6 +85,7 @@ class DefaultFormField extends StatelessWidget {
             obscureText: obSecure ?? false,
             validator: validate,
             decoration: InputDecoration(
+                hintText: hintText,
                 filled: true,
                 contentPadding: const EdgeInsets.only(
                   left: 10,

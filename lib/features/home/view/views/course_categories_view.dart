@@ -26,6 +26,7 @@ class CoursesCategoriesView extends StatelessWidget {
                       course: value.courses![index], index: index),
                   itemCount: value.courses!.length,
                 ),
+
               ),
             ],
           );
