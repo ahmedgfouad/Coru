@@ -20,6 +20,7 @@ class AppImages {
   static const notification = 'assets/svg/notification.svg';
   static const medical = 'assets/svg/medical.svg';
   static const programming = 'assets/svg/programming.svg';
+  static const allCourses = 'assets/svg/all_courses.svg';
   static const pharmacy = 'assets/svg/pharmacy.svg';
   static const solidBookmark = 'assets/svg/solid_bookmark.svg';
   static const logo = 'assets/svg/logo.svg';

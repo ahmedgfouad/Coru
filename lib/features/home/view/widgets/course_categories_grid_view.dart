@@ -1,6 +1,5 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/images.dart';
-
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/handlers/localization.dart';
 import 'package:elearning_app/routing/navigator.dart';
@@ -19,7 +18,7 @@ class CourseCategoriesGridView extends StatelessWidget {
     var provider = Provider.of<HomeController>(context, listen: true);
 
     List<Map<String, dynamic>> category = [
-      {'title': getLang(context, 'all_courses'), 'icon': AppImages.medical},
+      {'title': getLang(context, 'all_courses'), 'icon': AppImages.allCourses},
       {'title': getLang(context, 'medical'), 'icon': AppImages.medical},
       {'title': getLang(context, 'programming'), 'icon': AppImages.programming},
       {'title': getLang(context, 'marketing'), 'icon': AppImages.marketing},

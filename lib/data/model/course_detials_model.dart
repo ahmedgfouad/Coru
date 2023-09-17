@@ -9,6 +9,7 @@ class CourseDetailsModel {
   String? price;
   String? rating;
   String? hours;
+  String? about;
   int? studentNumber;
   List<Lessons>? lessons;
   CourseDetailsModel({
@@ -32,6 +33,7 @@ class CourseDetailsModel {
     rating = json['rating'] ?? 'empty';
     hours = json['hours'] ?? 'empty';
     studentNumber = json['student_number'] ?? 0;
+     about = json['about'] ?? 'empty';
     if (json['lessons'] != null) {
       lessons = <Lessons>[];
       json['lessons'].forEach((v) {
@@ -49,6 +51,7 @@ class CourseDetailsModel {
     data['price'] = price ?? 'empty';
     data['rating'] = rating ?? 'empty';
     data['hours'] = hours ?? 'empty';
+    data['about'] = about ?? 'empty';
     data['student_number'] = studentNumber ?? 0;
     if (lessons != null) {
       data['lessons'] = lessons!.map((v) => v.toJson()).toList();
