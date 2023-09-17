@@ -10,6 +10,7 @@ abstract class Routes {
   static const String onboarding = "/onboarding";
   static const String search = "/search";
   static const String courseDetails = "/course_details";
+  static const String lessonDetails = "/lesson_details";
   static const String coursesCategories = "/courses_categories";
   static const String myCourses = "/my_courses";
   static const String cart = "/cart";

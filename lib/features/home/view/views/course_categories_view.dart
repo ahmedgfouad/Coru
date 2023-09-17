@@ -7,40 +7,33 @@ import 'package:provider/provider.dart';
 
 class CoursesCategoriesView extends StatelessWidget {
   final String category;
-  const CoursesCategoriesView({
-    super.key,
-    required this.category
-  });
+  const CoursesCategoriesView({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: 
-      //To Do : see the overflow error
-      Column(
-        children: [
-          DefaultAppBar(title: category//category,
+    return Scaffold(body: SafeArea(
+      child:
+          //To Do : see the overflow error
+          Consumer<HomeController>(builder: (context, value, child) {
+        if (value.courses != null)
+          return Column(
+            children: [
+              DefaultAppBar(title: category),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(8.0.r),
+                  itemBuilder: (context, index) => VerticalCourseCard(
+                      course: value.courses![index], index: index),
+                  itemCount: value.courses!.length,
+                ),
               ),
-          /* Padding(
-        padding: EdgeInsets.all(8.0),
-        /* child: VerticalListView(
-             cardWidget: VerticalCourseCard(),
-           ), */
-           
-      ), */
-          Consumer<HomeController>(
-            builder: (context, value, child) => Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.all(8.0.r),
-                itemBuilder: (context, index) =>
-                    VerticalCourseCard(course: value.courses![index]),
-                itemCount: value.courses!.length,
-              ),
-            ),
-          )
-        ],
-      ),
+            ],
+          );
+        else
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+      }),
     ));
   }
 }
