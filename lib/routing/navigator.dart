@@ -1,11 +1,15 @@
+import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/data/model/lessons_model.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/header_chats_view.dart';
 
 import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
+import 'package:elearning_app/features/home/view/views/course_details_view.dart';
 
 import 'package:elearning_app/features/home/view/views/home_view.dart';
+import 'package:elearning_app/features/home/view/views/lesson_details_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
@@ -34,6 +38,9 @@ class AppRoutes {
       case Routes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
 
+      case Routes.home:
+        return AppRoutes.aniamtedNavigation(screen: const HomeView());
+
       case Routes.signUp:
         return AppRoutes.aniamtedNavigation(screen: const SignupView());
 
@@ -42,9 +49,6 @@ class AppRoutes {
 
       case Routes.navBar:
         return AppRoutes.aniamtedNavigation(screen: const NavBarView());
-
-      case Routes.home:
-        return AppRoutes.aniamtedNavigation(screen: const HomeView());
 
       case Routes.profile:
         return AppRoutes.aniamtedNavigation(screen: const ProfileView());
@@ -79,6 +83,16 @@ class AppRoutes {
         return AppRoutes.aniamtedNavigation(
             screen:
                 CoursesCategoriesView(category: settings.arguments as String));
+
+      case Routes.courseDetails:
+        return AppRoutes.aniamtedNavigation(
+            screen: CourseDetailsView(
+                course: settings.arguments as CourseDetailsModel));
+      case Routes.lessonDetails:
+        return AppRoutes.aniamtedNavigation(
+            screen: LessonDetailsView(
+          lesson: settings.arguments as Map,
+        ));
 
       default:
         return AppRoutes.aniamtedNavigation(

@@ -21,27 +21,27 @@ class FirebaseServices {
   }
 
   Future<List<CourseDetailsModel>?>? getTopCourses() async {
-    log('1');
     List<CourseDetailsModel>? topCourses = [];
-    log('2');
+
     // Get docs from collection reference
     QuerySnapshot querySnapshot =
         await allCourses.where('rating', isGreaterThan: '4').get();
-log('3');
+
     // Get data from docs and convert map to List
     topCourses = querySnapshot.docs
         .map((doc) =>
             CourseDetailsModel.fromJson(doc.data() as Map<String, dynamic>))
         .toList();
-        log('4');
+
     return topCourses;
   }
 
-  Future<List<CourseDetailsModel>?>? getCourseCategories(String category) async {
+  Future<List<CourseDetailsModel>?>? getCourseCategories(
+      String category) async {
     List<CourseDetailsModel>? courseCategory = [];
     // Get docs from collection reference
     QuerySnapshot querySnapshot =
-        await allCourses.where('category', isEqualTo:category ).get();
+        await allCourses.where('category', isEqualTo: category).get();
 
     // Get data from docs and convert map to List
     courseCategory = querySnapshot.docs
@@ -49,5 +49,16 @@ log('3');
             CourseDetailsModel.fromJson(doc.data() as Map<String, dynamic>))
         .toList();
     return courseCategory;
+  }
+
+  Future<CourseDetailsModel> getRecentCourse(int index) async {
+    
+    QuerySnapshot recentCourse = await allCourses.get();
+    log(recentCourse.toString());
+    //String id = recentCourse.docs[index].id;
+    CourseDetailsModel courseDetailsModel = CourseDetailsModel.fromJson(
+        recentCourse.docs[index].data() as Map<String, dynamic>);
+    //log(id);
+    return courseDetailsModel;
   }
 }
