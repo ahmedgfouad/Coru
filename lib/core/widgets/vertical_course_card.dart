@@ -27,7 +27,7 @@ class VerticalCourseCard extends StatelessWidget {
     var provider = Provider.of<HomeController>(context, listen: true);
     return InkWell(
       onTap: () {
-        provider.getRecentCourse(index);
+        provider.getRecentCourse(index:index);
         AppRoutes.pushNamedNavigator(routeName: Routes.courseDetails,arguments: course);
       },
       child: Container(
