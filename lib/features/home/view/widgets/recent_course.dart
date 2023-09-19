@@ -1,4 +1,4 @@
-import 'package:elearning_app/features/home/view/widgets/vertical_course_card.dart';
+import 'package:elearning_app/core/widgets/vertical_course_card.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -34,7 +34,7 @@ class RecentCourse extends StatelessWidget {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               VerticalCourseCard(
-                course: value.recentCourse!,
+                course: value.courses![value.index!],
                  index: value.index!,
               ),
             ],

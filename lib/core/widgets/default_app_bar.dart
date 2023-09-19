@@ -137,8 +137,6 @@ class DefaultAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference userInfoReference =
-        FirebaseFirestore.instance.collection('users_info');
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0.r),
@@ -178,18 +176,28 @@ class DefaultAppBar extends StatelessWidget {
                     onPressed: () => AppRoutes.pushNamedNavigator(
                         routeName: Routes.notification),
                   ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.02,
+                  ),
                   CustomIconButton(
                     iconImage: AppImages.bookmark,
                     onPressed: () => AppRoutes.pushNamedNavigator(
                          routeName: Routes.bookmarkedCourses),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.02,
                   ),
                   CustomIconButton(
                       iconImage: AppImages.search,
                       onPressed: () {
                         AppRoutes.pushNamedNavigator(
                              routeName: Routes.search);
+                             /* Navigator.pushNamed(context, Routes.search); */
                       
                       }),
+                      SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.02,
+                  ),
                 ],
               )
            //دا الجزء اللي انت ظبطت فيه لوجيك الاب بار بس كان بيعمل ايرور عشان الاي دي فعملته كومنت مؤقتا

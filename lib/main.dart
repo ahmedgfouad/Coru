@@ -47,11 +47,10 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MultiProvider(
         providers: [ 
-          ChangeNotifierProvider(
-              create: (context) => HomeController()..getTopCourses()),
+          
 
           ChangeNotifierProvider(
-              create: (context) => HomeController()..getTopCourses()),
+              create: (context) => HomeController()..getTopCourses()/* ..getRecentCourse() */),
           ChangeNotifierProvider(create: (context) => MyCoursesController()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),

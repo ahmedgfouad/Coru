@@ -5,7 +5,7 @@ import 'package:elearning_app/features/home/view/widgets/horizontal_course_list_
 import 'package:elearning_app/features/home/view/widgets/recent_course.dart';
 import 'package:flutter/material.dart';
 
-import 'package:elearning_app/features/home/view/widgets/vertical_course_card.dart';
+import 'package:elearning_app/core/widgets/vertical_course_card.dart';
 import 'package:flutter/material.dart'; 
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
