@@ -33,7 +33,8 @@ class CourseDetailsModel {
     rating = json['rating'] ?? 'empty';
     hours = json['hours'] ?? 'empty';
     studentNumber = json['student_number'] ?? 0;
-     about = json['about'] ?? 'empty';
+    about = json['about'] ?? 'empty';
+    
     if (json['lessons'] != null) {
       lessons = <Lessons>[];
       json['lessons'].forEach((v) {

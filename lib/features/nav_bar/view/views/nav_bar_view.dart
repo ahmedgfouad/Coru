@@ -28,6 +28,7 @@ class _NavBarViewState extends State<NavBarView> {
     AppImages.chat,
     AppImages.profile,
   ];
+
   @override
   Widget build(BuildContext context) {
     // double MediaQueryHelper.width = MediaQuery.of(context).size.width;
@@ -41,13 +42,12 @@ class _NavBarViewState extends State<NavBarView> {
         'screen': const MyCoursesView(),
       },
       {
-
         'title': "${getLang(context, 'cart')}",
         'screen': const CartView(),
       },
       {
         'title': "${getLang(context, 'chat')}",
-        'screen':  const HeaderChatsView(),
+        'screen': const HeaderChatsView(),
       },
       {
         'title': "${getLang(context, 'profile')}",
@@ -57,9 +57,14 @@ class _NavBarViewState extends State<NavBarView> {
 
     return Scaffold(
       body: screens[currentIndex]['screen'],
+      
       bottomNavigationBar: Container(
-        margin: EdgeInsets.fromLTRB(MediaQueryHelper.width * .04, 0,
-            MediaQueryHelper.width * .04, MediaQueryHelper.height * .006),
+        margin: EdgeInsets.fromLTRB(
+          MediaQueryHelper.width * .04,
+          0,
+          MediaQueryHelper.width * .04,
+          MediaQueryHelper.height * .006,
+        ),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(18),
