@@ -55,6 +55,7 @@ class FirebaseServices {
     QuerySnapshot recentCourse = await allCourses.get();
     log(recentCourse.toString());
     //String id = recentCourse.docs[index].id;
+    
     CourseDetailsModel courseDetailsModel = CourseDetailsModel.fromJson(
         recentCourse.docs[index].data() as Map<String, dynamic>);
     //log(id);
