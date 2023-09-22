@@ -123,6 +123,7 @@ class DefaultAppBar extends StatelessWidget {
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/custom_icon_button.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -153,14 +154,14 @@ class DefaultAppBar extends StatelessWidget {
             ? Row(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.04,
+                    width: MediaQueryHelper.width * 0.04,
                   ),
                   CircleAvatar(
                     backgroundColor: AppColors.primaryColor,
-                    radius: 4,
+                    radius: 4.r,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.02,
+                    width: MediaQueryHelper.width * 0.02,
                   ),
                   CircleAvatar(
                     backgroundColor: AppColors.primaryColor,
@@ -177,7 +178,7 @@ class DefaultAppBar extends StatelessWidget {
                         routeName: Routes.notification),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.02,
+                    width: MediaQueryHelper.width * 0.02,
                   ),
                   CustomIconButton(
                     iconImage: AppImages.bookmark,
@@ -185,7 +186,7 @@ class DefaultAppBar extends StatelessWidget {
                          routeName: Routes.bookmarkedCourses),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.02,
+                    width: MediaQueryHelper.width * 0.02,
                   ),
                   CustomIconButton(
                       iconImage: AppImages.search,
@@ -196,7 +197,7 @@ class DefaultAppBar extends StatelessWidget {
                       
                       }),
                       SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.02,
+                    width: MediaQueryHelper.width * 0.02,
                   ),
                 ],
               )

@@ -1,4 +1,5 @@
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +22,7 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       SizedBox(
-        height: MediaQuery.sizeOf(context).height * .05,
+        height: MediaQueryHelper.height * .05,
         child: TabBar(
           unselectedLabelColor: Colors.grey, indicatorWeight: 3,
           labelColor: AppColors.primaryColor, isScrollable: false,
@@ -37,10 +38,10 @@ class CustomTabBar extends StatelessWidget {
       ),
       SizedBox(
         height: isMyCourses
-            ? MediaQuery.sizeOf(context).height / 2
-            : MediaQuery.sizeOf(context).height,
-        width: MediaQuery.sizeOf(context).width,
-        child: TabBarView(
+            ? MediaQueryHelper.height *.75
+            : MediaQueryHelper.height,
+        width: MediaQueryHelper.width,
+        child: TabBarView(physics: BouncingScrollPhysics(),
           controller: tabController,
           children: viewsBody,
         ),
