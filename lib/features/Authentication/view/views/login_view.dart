@@ -17,16 +17,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 /*
-ahmedgamal@gmail.com 
+ahmedgamal@gmail.com
 123456789
 
 
 emadmagdy@gmail.com
-123456789hg
-
-
-alimohamed@gmail.com
-ali12345
+123456789
 */
 
 class LoginView extends StatelessWidget {

@@ -1,6 +1,4 @@
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 
 class PaymentController {
   Map paymentInfo = {

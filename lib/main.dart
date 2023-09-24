@@ -1,10 +1,14 @@
 // ignore_for_file: unused_import, await_only_futures
 
+import 'dart:developer';
+
 import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
+import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
@@ -26,10 +30,12 @@ void main() async {
   await Firebase.initializeApp();
 
   var user = await FirebaseAuth.instance.currentUser;
-  // print("======the user in main == ${user!.email}============");
+  log("======the user in main == ${user?.email}============");
   if (user == null) {
+    log("in if ${user.toString()}");
     isLogIn = false;
   } else {
+    log("in else ${user.toString()}");
     isLogIn = true;
   }
   runApp(const MyApp());
@@ -40,21 +46,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MultiProvider(
-        providers: [ 
-          
-
+        providers: [
           ChangeNotifierProvider(
-              create: (context) => HomeController()..getTopCourses()/* ..getRecentCourse() */),
+              create: (context) =>
+                  HomeController()..getTopCourses() /* ..getRecentCourse() */),
           ChangeNotifierProvider(create: (context) => MyCoursesController()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => UserGusetController()),
+          ChangeNotifierProvider(create: (context) => EditProfileController()),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -88,6 +93,8 @@ class MyApp extends StatelessWidget {
                   return locale;
                 }
               }
+            } else {
+              return supportedLocales.first;
             }
             return supportedLocales.first;
           },
