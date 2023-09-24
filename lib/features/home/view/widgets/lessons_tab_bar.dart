@@ -6,10 +6,10 @@ import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LessonsTabBar extends StatelessWidget {
+class LessonsList extends StatelessWidget {
   final List<Lessons> lesson;
 
-  const LessonsTabBar({super.key, required this.lesson});
+  const LessonsList({super.key, required this.lesson});
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +42,11 @@ class LessonsTabBar extends StatelessWidget {
                     ],
                   ),
                   child: ListTile(
-                    onTap: () { AppRoutes.pushNamedNavigator(
-                    routeName: Routes.lessonDetails,
-                    arguments: {'lesson': lesson[index], 'index': index});},
+                    onTap: () {
+                      AppRoutes.pushNamedNavigator(
+                          routeName: Routes.lessonDetails,
+                          arguments: {'lesson': lesson[index], 'index': index});
+                    },
                     title: Text(
                       lesson[index].title!,
                       overflow: TextOverflow.ellipsis,

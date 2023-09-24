@@ -1,4 +1,4 @@
-import 'package:elearning_app/data/model/users_info/my_cource_model.dart';
+import 'package:elearning_app/data/model/users_info/my_course_model.dart';
 
 class UserInfoModel {
   String? firstName;
@@ -9,7 +9,7 @@ class UserInfoModel {
   String? imageProfileUrl;
   String? userId;
   List<String>? bookMark;
-  List<MyCourseModel>? myCources;
+  List<MyCourseModel>? myCourses;
 
   UserInfoModel({
     this.firstName,
@@ -20,7 +20,7 @@ class UserInfoModel {
     this.imageProfileUrl,
     this.userId,
     this.bookMark,
-    this.myCources,
+    this.myCourses,
   });
 
   UserInfoModel.fromJson(Map<String, dynamic> json) {
@@ -41,9 +41,9 @@ class UserInfoModel {
     }
 
     if (json['my_course'] != null) {
-      myCources = <MyCourseModel>[];
+      myCourses = <MyCourseModel>[];
       json['my_course'].forEach((v) {
-        myCources!.add(MyCourseModel.fromJson(v));
+        myCourses!.add(MyCourseModel.fromJson(v));
       });
     }
   }
@@ -62,8 +62,8 @@ class UserInfoModel {
       data['book_mark'] = bookMark!.map((v) => v).toList();
     }
 
-    if (myCources != null) {
-      data['lessons'] = myCources!.map((v) => v.toJson()).toList();
+    if (myCourses != null) {
+      data['my_course'] = myCourses!.map((v) => v.toJson()).toList();
     }
 
     return data;

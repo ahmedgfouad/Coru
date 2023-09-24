@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
@@ -38,4 +40,20 @@ class UserInfoServices {
 
     return userData;
   }
+  Future<UserInfoModel> getUserInfo({required String userId}) async {
+    UserInfoModel userInfo = UserInfoModel();
+    DocumentSnapshot querySnapshot = await allUsersInfo.doc(userId).get();
+    userInfo =
+        UserInfoModel.fromJson(querySnapshot.data() as Map<String, dynamic>);
+    log("user info= ${userInfo.myCourses}");
+    return userInfo;
+  }
+  /* Future<UserInfoModel> getUserCourseProgress({required String userId}) async {
+    UserInfoModel userInfo = UserInfoModel();
+    DocumentSnapshot querySnapshot = await allUsersInfo.doc(userId).get();
+    userInfo =
+        UserInfoModel.fromJson(querySnapshot.data() as Map<String, dynamic>);
+     
+        return userInfo;
+  } */
 }
