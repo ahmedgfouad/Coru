@@ -1,7 +1,10 @@
 // ignore_for_file: unused_import, await_only_futures
 
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
+import 'package:elearning_app/features/cart/view/views/cart_view.dart';
+import 'package:elearning_app/features/home/view/views/course_details_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
@@ -11,8 +14,8 @@ import 'package:elearning_app/features/profile/view/view_model/theme_controller.
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -40,18 +43,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MultiProvider(
-        providers: [ 
-          
-
+        providers: [
           ChangeNotifierProvider(
-              create: (context) => HomeController()..getTopCourses()/* ..getRecentCourse() */),
-          ChangeNotifierProvider(create: (context) => MyCoursesController()),
+              //remove getCourses after finishing myCourses view
+              create: (context) => HomeController()
+                ..getTopCourses()
+                ..getCourses(courseFilter: "All courses")
+                ..getRecentCourse()),
+          ChangeNotifierProvider(
+              create: (context) => MyCoursesController()..getUserCourses()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => UserGusetController()),
@@ -64,6 +69,7 @@ class MyApp extends StatelessWidget {
           themeMode:
               Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
+          //home:CartView(),
           initialRoute: isLogIn ? Routes.navBar : Routes.splash,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],
@@ -93,6 +99,7 @@ class MyApp extends StatelessWidget {
           },
           locale:
               Provider.of<LocalizationController>(context, listen: true).local,
+          // home: CourseDetailsView(course: CourseDetailsModel()),
         ),
       ),
     );

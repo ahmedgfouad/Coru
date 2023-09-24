@@ -9,10 +9,13 @@ class HomeController extends ChangeNotifier {
   List<CourseDetailsModel>? _courses;
   List<CourseDetailsModel>? get courses => _courses;
   List<CourseDetailsModel>? _topCourses;
-  List<CourseDetailsModel>? get topCourses => _topCourses;
-
+  List<CourseDetailsModel>? get topCourses => _topCourses;/* 
+  CourseDetailsModel? _recentCourse/* =CourseDetailsModel() */; */
+  CourseDetailsModel? /* get  */recentCourse/*  => _recentCourse */;
+  /* String? id;
+  /* String? get id => _id; */
   int? _index;
-  int? get index => _index;
+  int? get index => _index; */
 
   void getCourses({required String courseFilter}) async {
     if (courseFilter == 'All courses' || courseFilter == 'كل الدورات') {
@@ -29,15 +32,15 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getRecentCourse({int? index}) async {
-    _index = index;
-    await _firebaseServices.getRecentCourse(index!);
+  void getRecentCourse() async {
+    recentCourse=await _firebaseServices.getRecentCourse(recentCourse!.id!);
     notifyListeners();
   }
 
   void getSearchedCourses(String searchedCourses) async {
     _courses = await _firebaseServices.getAllCourses()!.then((value) => value!
-        .where((searcedCourse) => searcedCourse.name!.toLowerCase().contains(searchedCourses))
+        .where((searcedCourse) =>
+            searcedCourse.name!.toLowerCase().contains(searchedCourses))
         .toList());
     notifyListeners();
   }

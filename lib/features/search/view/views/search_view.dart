@@ -33,7 +33,7 @@ class SearchView extends StatelessWidget {
                             value.courses!.length,
                             (index) => VerticalCourseCard(
                               course: value.courses![index],
-                              index: index,
+                              /* index: index, */
                             ),
                           ),
                         );

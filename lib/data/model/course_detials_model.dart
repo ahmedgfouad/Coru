@@ -2,6 +2,7 @@
 import 'package:elearning_app/data/model/lessons_model.dart';
 
 class CourseDetailsModel {
+  String? id;
   String? name;
   String? image;
   String? category;
@@ -13,6 +14,7 @@ class CourseDetailsModel {
   int? studentNumber;
   List<Lessons>? lessons;
   CourseDetailsModel({
+    this.id,
     this.name,
     this.image,
     this.category,
@@ -20,6 +22,7 @@ class CourseDetailsModel {
     this.price,
     this.rating,
     this.hours,
+    this.about,
     this.studentNumber,
     this.lessons,
   });
@@ -34,7 +37,7 @@ class CourseDetailsModel {
     hours = json['hours'] ?? 'empty';
     studentNumber = json['student_number'] ?? 0;
     about = json['about'] ?? 'empty';
-    
+
     if (json['lessons'] != null) {
       lessons = <Lessons>[];
       json['lessons'].forEach((v) {
