@@ -1,4 +1,5 @@
 import 'package:elearning_app/core/widgets/vertical_course_card.dart';
+import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -13,7 +14,10 @@ class RecentCourse extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HomeController>(
       builder: (context, value, child) {
-        if (value.index != null) {
+        if (value.recentCourse == null ||
+            value.recentCourse == CourseDetailsModel()) {
+          return Container();
+        } else {
           return Column(
             children: [
               Row(
@@ -34,13 +38,11 @@ class RecentCourse extends StatelessWidget {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               VerticalCourseCard(
-                course: value.courses![value.index!],
-                 index: value.index!,
+                course: value.recentCourse!,
+                 /* index: value.index!, */
               ),
             ],
           );
-        } else {
-          return Container();
         }
       },
     );

@@ -38,14 +38,10 @@ class _MyCoursesViewState extends State<MyCoursesView>
       body: SafeArea(
         child: Column(
           children: [
-            DefaultAppBar(title: 'My Courses'),
+            const DefaultAppBar(title: 'My Courses'),
             CustomTabBar(
-              isMyCourses: true,
               tabController: _tabController,
-              viewsBody: [
-                InProgressTabBar(),
-                CompleteTabBar()
-              ],
+              viewsBody: const [InProgressTabBar(), CompleteTabBar()],
               viewsTitle: const [
                 Tab(
                   text: 'In Progress',

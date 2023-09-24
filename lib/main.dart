@@ -3,6 +3,7 @@
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
+import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/home/view/views/course_details_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
@@ -52,9 +53,10 @@ class MyApp extends StatelessWidget {
               //remove getCourses after finishing myCourses view
               create: (context) => HomeController()
                 ..getTopCourses()
-                ..getCourses(
-                    courseFilter: "All courses") /* ..getRecentCourse() */),
-          ChangeNotifierProvider(create: (context) => MyCoursesController()),
+                ..getCourses(courseFilter: "All courses")
+                ..getRecentCourse()),
+          ChangeNotifierProvider(
+              create: (context) => MyCoursesController()..getUserCourses()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => UserGusetController()),
@@ -67,6 +69,7 @@ class MyApp extends StatelessWidget {
           themeMode:
               Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
+          //home:CartView(),
           initialRoute: isLogIn ? Routes.navBar : Routes.splash,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],
@@ -96,7 +99,7 @@ class MyApp extends StatelessWidget {
           },
           locale:
               Provider.of<LocalizationController>(context, listen: true).local,
-          home: CourseDetailsView(course: CourseDetailsModel()),
+          // home: CourseDetailsView(course: CourseDetailsModel()),
         ),
       ),
     );

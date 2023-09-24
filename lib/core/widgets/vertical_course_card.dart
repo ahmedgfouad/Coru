@@ -12,13 +12,13 @@ import 'package:provider/provider.dart';
 class VerticalCourseCard extends StatelessWidget {
   //final bool bookmarked;
   final bool isProgress;
-  final CourseDetailsModel course;
-  final int index;
+  final  course;
+  /* final int index; */
   //final bool isRecent;
   const VerticalCourseCard({
     super.key,
     required this.course,
-    required this.index,
+    /*  required this.index, */
     //this.isRecent=false,
     // this.bookmarked = false,
     this.isProgress = false,
@@ -27,10 +27,12 @@ class VerticalCourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<HomeController>(context, listen: true);
+    var homeProvider = Provider.of<HomeController>(context, listen: true);
     return InkWell(
       onTap: () {
-        provider.getRecentCourse(index: index);
+        homeProvider.recentCourse = course;
+        homeProvider.recentCourse!.id = course.id;
+        homeProvider.getRecentCourse();
         AppRoutes.pushNamedNavigator(
             routeName: Routes.courseDetails, arguments: course);
       },
@@ -65,65 +67,65 @@ class VerticalCourseCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(
-              width: 8,
-            ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(left: 8.0.r),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.sizeOf(context).height * .01,
-                      ),
-                      Text(
-                        course.name /* course.name */ ?? 'Text',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        style: TextStyle(
-                            fontSize: 17.0.sp, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                          height: MediaQuery.sizeOf(context).height * .02),
-                      isProgress
-                          ? Container(height: MediaQueryHelper.height*.06,)
-                          : Text(
-                              '\$${course.price!}' /* course.price */,
-                              //course.price.toStringAsFixed(2) + '\$',
-                              style: TextStyle(
-                                fontSize: 15.0.sp,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primaryColor,
-                              ),
+                padding: EdgeInsets.only(left: 4.0.r),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height * .01,
+                    ),
+                    Text(
+                      course.name /* course.name */ ?? 'Text',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                          fontSize: 17.0.sp, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * .02),
+                    isProgress
+                        ? Text(
+                            course.instructor! /* course.price */,
+                            //course.price.toStringAsFixed(2) + '\$',
+                            style: TextStyle(
+                              fontSize: 11.0.sp,
+                              /* fontWeight: FontWeight.bold, */
+                              color: AppColors.grey,
                             ),
-                      SizedBox(
-                          height: MediaQuery.sizeOf(context).height * .005),
-                      // Row(children: [
-                      //   Icon(
-                      //     Icons.star,
-                      //     color: Colors.yellow,
-                      //     size: 12.0.r,
-                      //   ),
-                      //   SizedBox(
-                      //       width: MediaQuery.sizeOf(context).width * .01),
-                      //   Text(
-                      //     '4.0',
-                      //     style: TextStyle(
-                      //       color: Colors.grey,
-                      //       fontSize: 10.0.r,
-                      //     ),
-                      //   ),
-                      // ]),
-                      
-                    ],
-                  ),
+                          )
+                        : Text(
+                            '\$${course.price!}' /* course.price */,
+                            //course.price.toStringAsFixed(2) + '\$',
+                            style: TextStyle(
+                              fontSize: 15.0.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * .005),
+                    // Row(children: [
+                    //   Icon(
+                    //     Icons.star,
+                    //     color: Colors.yellow,
+                    //     size: 12.0.r,
+                    //   ),
+                    //   SizedBox(
+                    //       width: MediaQuery.sizeOf(context).width * .01),
+                    //   Text(
+                    //     '4.0',
+                    //     style: TextStyle(
+                    //       color: Colors.grey,
+                    //       fontSize: 10.0.r,
+                    //     ),
+                    //   ),
+                    // ]),
+                  ],
                 ),
               ),
             ),
+           
              isProgress ? const ProgressCircle() : Container(),
           ],
         ),

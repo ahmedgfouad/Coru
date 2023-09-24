@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:elearning_app/core/widgets/vertical_course_card.dart';
+import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../home/view_model/home_controller.dart';
 
 class InProgressTabBar extends StatelessWidget {
   const InProgressTabBar({super.key});
@@ -10,16 +11,26 @@ class InProgressTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: List.generate(
-          10,
-          (index) => Consumer<HomeController>(
-            builder: (context, value, child) => VerticalCourseCard(isProgress: true,
-              course: value.courses![0],
-              index: 1,
-            ),
-          ),
-        ),
+      child: Consumer<MyCoursesController>(
+        builder: (context, value, child) {
+          if (value.myCoursesProgress == null) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return Column(
+              children: List.generate(
+                value.myCoursesProgress!.length,
+                (index) {
+                  log('$value.myCoursesProgress');
+                  return VerticalCourseCard(
+                    isProgress: true,
+                    course: value.myCoursesProgress![index],
+                    /* index: 1, */
+                  );
+                },
+              ),
+            );
+          }
+        },
       ),
     );
   }

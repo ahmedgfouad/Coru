@@ -35,9 +35,14 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
                 itemCount: provider.topCourses!.length,
                 //itemCount: 3,
                 itemBuilder: (context, index) {
+                  log('top course id $index : ${provider.topCourses![index].id.toString()}');
+
                   return InkWell(
                     onTap: () {
-                      provider.getRecentCourse(index: index);
+                      provider.recentCourse = provider.topCourses![index];
+                      provider.recentCourse!.id =
+                          provider.topCourses![index].id;
+                      provider.getRecentCourse();
                       AppRoutes.pushNamedNavigator(
                           routeName: Routes.courseDetails,
                           arguments: provider.topCourses![index]);

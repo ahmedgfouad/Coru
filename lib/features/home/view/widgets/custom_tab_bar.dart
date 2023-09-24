@@ -3,19 +3,16 @@ import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class CustomTabBar extends StatelessWidget {
   final TabController tabController;
   final List<Widget> viewsBody;
   final List<Tab> viewsTitle;
-  final bool isMyCourses;
+
   const CustomTabBar({
     super.key,
     required this.tabController,
     required this.viewsBody,
     required this.viewsTitle,
-    required this.isMyCourses,
   });
 
   @override
@@ -37,11 +34,10 @@ class CustomTabBar extends StatelessWidget {
         ),
       ),
       SizedBox(
-        height: isMyCourses
-            ? MediaQueryHelper.height *.75
-            : MediaQueryHelper.height,
+        height: MediaQueryHelper.height * .75,
         width: MediaQueryHelper.width,
-        child: TabBarView(physics: BouncingScrollPhysics(),
+        child: TabBarView(
+          physics: const BouncingScrollPhysics(),
           controller: tabController,
           children: viewsBody,
         ),
