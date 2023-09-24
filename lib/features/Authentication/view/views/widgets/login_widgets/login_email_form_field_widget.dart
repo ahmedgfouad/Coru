@@ -8,17 +8,17 @@ class LoginEmailFormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
-                      tittle: "Email",
-                      width: 300,
-                      height: 45,
-                      controller: LogInController.emailController,
-                      type: TextInputType.name,
-                      validate: (value) {
-                        if (value!.isEmpty) {
-                          return 'You should enter email';
-                        }
-                        return null;
-                      },
-                    );
+      tittle: "Email",
+      width: 300,
+      height: 45,
+      controller: LogInController.emailController,
+      type: TextInputType.name,
+      validate: (value) {
+        if (value!.isEmpty) {
+          return 'You should enter email';
+        }
+        return null;
+      },
+    );
   }
 }

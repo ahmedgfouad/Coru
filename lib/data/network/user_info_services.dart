@@ -18,7 +18,7 @@ class UserInfoServices {
 
   Future<UserInfoModel> getInfoOneUserById({required String userId}) async {
     QuerySnapshot userInfo =
-        await allUsersInfo.where("user_id", isEqualTo: userId).get();
+        await allUsersInfo.where(useridField, isEqualTo: userId).get();
 
     UserInfoModel userData = UserInfoModel.fromJson(
       userInfo.docs.first.data() as Map<String, dynamic>,

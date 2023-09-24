@@ -1,4 +1,6 @@
-import 'dart:developer';
+// ignore_for_file: unnecessary_null_comparison
+
+import 'dart:developer'; 
 
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
@@ -13,28 +15,27 @@ class LoginButtonActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  DefaultButton(
-                      onPressed: () async {
-                        UserCredential response =
-                            await LogInController().loginAuth(
-                          LogInController.emailController.text,
-                          LogInController.passwordController.text,
-                        );
-                        log("=========");
-                        if (response != null) {
-                          AppRoutes.pushNamedNavigator(
-                            replacement: true,
-                            routeName: Routes.navBar,
-                          );
-                        } else {
-                          log("eroor");
-                        }
-                      },
-                      width: 300,
-                      height: 45,
-                      backgroundColor: AppColors.primaryColor,
-                      text: "Log in",
-                      borderRadius: 15,
-                    );
+    return DefaultButton(
+      onPressed: () async {
+        UserCredential response = await LogInController().loginAuth(
+          LogInController.emailController.text,
+          LogInController.passwordController.text,
+        );
+        log("=========");
+        if (response != null) {
+          AppRoutes.pushNamedNavigator(
+            replacement: true,
+            routeName: Routes.navBar,
+          );
+        } else {
+          log("eroor");
+        }
+      },
+      width: 300,
+      height: 45,
+      backgroundColor: AppColors.primaryColor,
+      text: "Log in",
+      borderRadius: 15,
+    );
   }
 }

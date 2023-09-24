@@ -1,8 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
-import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
@@ -23,8 +19,7 @@ class EditProfileView extends StatefulWidget {
 }
 
 class _EditProfileViewState extends State<EditProfileView> {
-  // CollectionReference userInfoRef =
-  //     FirebaseFirestore.instance.collection(userInfoCollectionName);
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +32,11 @@ class _EditProfileViewState extends State<EditProfileView> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Consumer<EditProfileController>(
-                builder: (BuildContext context, EditProfileController provider,
-                    Widget? child) {
+                builder: (
+                  BuildContext context,
+                  EditProfileController provider,
+                  Widget? child,
+                ) {
                   provider.getUserDataById();
                   var userData = provider.userDataById;
                   if (userData != null) {
