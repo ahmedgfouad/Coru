@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/logIn_controller.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/features/profile/view/views/widgets/profile_app_bar.dart';
 import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
 import 'package:elearning_app/features/profile/view/views/widgets/profile_option.dart';
@@ -28,11 +26,10 @@ class ProfileView extends StatelessWidget {
                   itemCount: ProfileController().optionInfo.length,
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 20),
-                  itemBuilder: (context, index) =>
-                      Consumer<UserGusetController>(
+                  itemBuilder: (context, index) => Consumer<AuthController>(
                         builder: (
                           BuildContext context,
-                          UserGusetController provier,
+                          AuthController provier,
                           Widget? child,
                         ) =>
                             ProfileOptionWidget(
@@ -46,8 +43,8 @@ class ProfileView extends StatelessWidget {
                                 " in sign out button the cureent state befor sign out is :"
                                 " ${provier.isGuest}",
                               );
-                              LogInController().makeTextFormFieldEmpty();
-                              SignUpController().makeTextFormFieldEmpty();
+                              AuthController().makeTextFormFieldEmpty();
+                              AuthController().makeTextFormFieldEmpty();
                               provier.changeCurentState();
                               print(
                                 " in sign out button the cureent state after sign out is :"

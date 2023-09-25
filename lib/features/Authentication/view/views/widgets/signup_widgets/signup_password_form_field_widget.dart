@@ -1,5 +1,5 @@
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +8,7 @@ class SignupPasswordFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SignUpController>(
+    return Consumer<AuthController>(
       builder: (
         BuildContext context,
         provider,
@@ -18,7 +18,7 @@ class SignupPasswordFormFieldWidget extends StatelessWidget {
         tittle: "Password",
         width: 300,
         height: 45,
-        controller: SignUpController.passwordController,
+        controller: AuthController.passwordController,
         type: TextInputType.name,
         validate: (value) {
           if (value!.isEmpty) {
@@ -26,11 +26,11 @@ class SignupPasswordFormFieldWidget extends StatelessWidget {
           }
           return null;
         },
-        suffix: SignUpController.obSecurePassword
+        suffix: AuthController.obSecurePassword
             ? Icons.visibility_off_outlined
             : Icons.remove_red_eye_outlined,
         isPassword: true,
-        obSecure: SignUpController.obSecurePassword,
+        obSecure: AuthController.obSecurePassword,
         suffixButtonPressed: () {
           provider.changeObSecurePassword();
         },
