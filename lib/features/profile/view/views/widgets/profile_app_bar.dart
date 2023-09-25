@@ -3,7 +3,7 @@ import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +18,7 @@ class ProfileAppBarWidget extends StatelessWidget {
         FirebaseFirestore.instance.collection(userInfoCollectionName);
 
     return Center(
-      child: Consumer<UserGusetController>(
+      child: Consumer<AuthController>(
         builder: (BuildContext context, provider, Widget? child) => Container(
           width: 390,
           height: 176,
@@ -29,7 +29,7 @@ class ProfileAppBarWidget extends StatelessWidget {
               bottomRight: Radius.circular(70),
             ),
           ),
-          child: provider.isGuest 
+          child: provider.isGuest
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

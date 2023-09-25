@@ -1,9 +1,9 @@
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
-import 'package:elearning_app/data/network/user_info_services.dart';
+import 'package:elearning_app/data/network/user_services.dart';
 import 'package:flutter/material.dart';
 
 class ChatController extends ChangeNotifier {
-  final UserInfoServices _userInfoServices = UserInfoServices();
+  final UserServices _userInfoServices = UserServices();
 
   UserInfoModel? _userData;
   UserInfoModel? get userDataFromSearchingByName => _userData;

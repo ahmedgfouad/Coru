@@ -1,9 +1,8 @@
 // ignore_for_file: unused_import, await_only_futures
 
-import 'dart:developer'; 
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
+import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/home/view/views/course_details_view.dart';
@@ -65,8 +64,9 @@ class MyApp extends StatelessWidget {
               create: (context) => MyCoursesController()..getUserCourses()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
-          ChangeNotifierProvider(create: (context) => UserGusetController()),
+          ChangeNotifierProvider(create: (context) => AuthController()),
           ChangeNotifierProvider(create: (context) => EditProfileController()),
+          ChangeNotifierProvider(create: (context) => AuthController()),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -1,5 +1,5 @@
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class SignupFirstNameAndLastNameWidget extends StatelessWidget {
@@ -14,7 +14,7 @@ class SignupFirstNameAndLastNameWidget extends StatelessWidget {
             tittle: "First name",
             width: 130,
             height: 45,
-            controller: SignUpController.firstNameController,
+            controller: AuthController.firstNameController,
             type: TextInputType.name,
             validate: (value) {
               if (value!.isEmpty) {
@@ -26,7 +26,7 @@ class SignupFirstNameAndLastNameWidget extends StatelessWidget {
             tittle: "Last name",
             width: 130,
             height: 45,
-            controller: SignUpController.lastNameController,
+            controller: AuthController.lastNameController,
             type: TextInputType.name,
             validate: (value) {
               if (value!.isEmpty) {
