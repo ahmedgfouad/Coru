@@ -1,10 +1,15 @@
-// ignore_for_file: avoid_print
+import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
+import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpController extends ChangeNotifier {
   static final GlobalKey<FormState> formStat = GlobalKey();
+
+  UserInfoModel userInfoModel = UserInfoModel();
 
   static TextEditingController firstNameController = TextEditingController();
   static TextEditingController lastNameController = TextEditingController();
@@ -27,7 +32,7 @@ class SignUpController extends ChangeNotifier {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
-    notifyListeners(); 
+    notifyListeners();
   }
 
   changeObSecureConfirmPassword() {
@@ -35,29 +40,46 @@ class SignUpController extends ChangeNotifier {
     notifyListeners();
   }
 
-  signUpAuth(String email, String password) async {
+  signUpAuth() async {
     var formData = formStat.currentState;
     if (formData!.validate()) {
       formData.save();
       try {
         UserCredential userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
+          email: emailController.text,
+          password: passwordController.text,
         );
         return userCredential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          print('The password provided is too weak.');
+          log('The password provided is too weak.');
         } else if (e.code == 'email-already-in-use') {
-          print('The account already exists for that email.');
+          log('The account already exists for that email.');
         }
       } catch (e) {
-        print(e);
+        log("in firebase exeption ${e.toString()}");
       }
       // print("The user UID = ${userCredential.user!.uid}");
     } else {
       print("Not Validate");
     }
+  }
+
+  void storeUserInfoToFireStore({required String userId}) async {
+    await FirebaseFirestore.instance
+        .collection(userInfoCollectionName)
+        .doc(userId)
+        .set({
+      firstNameField: firstNameController.text,
+      lastNameField: lastNameController.text,
+      emailField: emailController.text,
+      passwordField: passwordController.text,
+      confirmPasswordField: confirmPasswordController.text,
+      useridField: userId,
+      imageProfiledField: '',
+      myCoursekField: '',
+      bookMarkField: '',
+    });
   }
 }

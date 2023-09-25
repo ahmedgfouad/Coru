@@ -1,5 +1,4 @@
 import 'package:elearning_app/data/model/course_detials_model.dart';
-import 'package:elearning_app/data/model/lessons_model.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
