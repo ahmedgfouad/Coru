@@ -94,7 +94,7 @@ class AppRoutes {
         );
       case Routes.cart:
         return AppRoutes.aniamtedNavigation(
-            screen: CartView(course: settings.arguments as CourseDetailsModel));
+            screen: CartView(/* course: settings.arguments as CourseDetailsModel */));
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(

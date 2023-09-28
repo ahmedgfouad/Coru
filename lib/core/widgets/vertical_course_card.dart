@@ -4,6 +4,7 @@ import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/custom_icon_button.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/model/users_info/my_course_model.dart';
+import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view/widgets/progress_circle.dart';
 import 'package:elearning_app/routing/navigator.dart';
@@ -149,7 +150,7 @@ class VerticalCourseCard extends StatelessWidget {
         isCart
             ? Positioned(top: -1,right: -1,
                 child:/*  CustomIconButton(iconImage: AppImages.addToCart,onPressed: cartOnPressed,) */IconButton(
-                  onPressed: cartOnPressed,
+                  onPressed:cartOnPressed /* Provider.of<CartController>(context).removeCourse(course) */,
                   icon: Icon(
                     Icons.delete,
                     color: Colors.red,
