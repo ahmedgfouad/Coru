@@ -56,3 +56,21 @@
 //     ),
 //   );
 // }
+import 'package:flutter/material.dart';
+
+class Example extends StatelessWidget {
+  const Example({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Floating Navigation Bar"
+        ),
+      ),
+      // INCLUDE LIST OF WIDGETS INSIDE BODY
+       // [Home(), Search(), Cart(), Profile()]
+    );
+  }
+}

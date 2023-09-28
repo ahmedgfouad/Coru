@@ -28,5 +28,6 @@ class AppImages {
   static const onBoarding1 = 'assets/svg/onboarding1.svg';
   static const onBoarding2 = 'assets/svg/onboarding2.svg';
   static const onBoarding3 = 'assets/svg/onboarding3.svg';
+  static const emptyCart = 'assets/svg/empty_cart.svg';
   static const login = 'assets/svg/login.svg';
 }

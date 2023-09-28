@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
 import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/home/view/views/course_details_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
@@ -54,16 +55,15 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MultiProvider(
         providers: [
           ChangeNotifierProvider(
-
-              //remove getCourses after finishing myCourses view
               create: (context) => HomeController()
                 ..getTopCourses()
-                ..getCourses(courseFilter: "All courses")
                 ..getRecentCourse()),
           ChangeNotifierProvider(
               create: (context) => MyCoursesController()..getUserCourses()),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
+          ChangeNotifierProvider(create: (context) => EditProfileController()),
+          ChangeNotifierProvider(create: (context) => CartController()),
           ChangeNotifierProvider(create: (context) => AuthController()),
           ChangeNotifierProvider(create: (context) => EditProfileController()),
           ChangeNotifierProvider(create: (context) => AuthController()),

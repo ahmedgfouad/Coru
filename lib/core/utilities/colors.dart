@@ -14,6 +14,7 @@ class AppColors {
 
 class AppTheme {
   ThemeData lightTheme = ThemeData(
+    indicatorColor:Color.fromARGB(255, 137, 103, 211) ,
     iconTheme: const IconThemeData(color: Colors.black),
     scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.light(

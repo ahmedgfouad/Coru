@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
+import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/features/home/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
@@ -50,7 +51,7 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
                       margin:
-                          EdgeInsets.fromLTRB(12.0.r, 12.0.r, 12.0.r, 20.0.r),
+                          EdgeInsets.fromLTRB(12.0.r, 12.0.r, 12.0.r, 16.0.r),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0.r),
                         color: Theme.of(context).colorScheme.primaryContainer,
@@ -90,7 +91,8 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
                                       '${provider.topCourses![index].name}',
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style: AppStyles.textStyle16,
+                                      style: AppStyles.textStyle16.copyWith(
+                                          fontWeight: FontWeight.bold,color: Theme.of(context).colorScheme.background),
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
@@ -105,12 +107,13 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              0.001),
+                                              0.002),
                                       Row(children: [
                                         Icon(
                                           Icons.star,
                                           //color: AppColors.thirdColor,
                                           size: 12.0.r,
+                                          color: Colors.amber,
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -119,7 +122,7 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
                                                 0.01),
                                         Text(
                                           '${provider.topCourses![index].rating}',
-                                          style: AppStyles.textStyle10,
+                                          style: AppStyles.textStyle10.copyWith(color: Colors.grey),
                                           //textColor: Colors.grey,
                                         )
                                       ]),
