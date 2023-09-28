@@ -48,12 +48,5 @@ class UserInfoServices {
     log("user info= ${userInfo.myCourses}");
     return userInfo;
   }
-  /* Future<UserInfoModel> getUserCourseProgress({required String userId}) async {
-    UserInfoModel userInfo = UserInfoModel();
-    DocumentSnapshot querySnapshot = await allUsersInfo.doc(userId).get();
-    userInfo =
-        UserInfoModel.fromJson(querySnapshot.data() as Map<String, dynamic>);
-     
-        return userInfo;
-  } */
+  
 }

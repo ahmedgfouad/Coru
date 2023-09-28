@@ -5,12 +5,15 @@ import 'package:elearning_app/core/widgets/default_button.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/home/view/widgets/course_app_bar.dart';
 import 'package:elearning_app/features/home/view/widgets/lessons_tab_bar.dart';
+import 'package:elearning_app/routing/navigator.dart';
+import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CourseDetailsView extends StatelessWidget {
   final CourseDetailsModel course;
+  
   const CourseDetailsView({super.key, required this.course});
 
   @override
@@ -80,7 +83,12 @@ class CourseDetailsView extends StatelessWidget {
                             backgroundColor: AppColors.primaryColor,
                             width: MediaQueryHelper.width * .4,
                             height: MediaQueryHelper.height * .05,
-                            onPressed: () {},
+                            onPressed: () {
+                              
+                              AppRoutes.pushNamedNavigator(
+                                  routeName: Routes.cart,arguments: course);
+                                  
+                            },
                           )
                         ],
                       ),
@@ -129,9 +137,9 @@ class CourseDetailsView extends StatelessWidget {
                         ],
                       ),
                       const Divider(
-                          thickness: 1,
-                          color: Colors.grey,
-                          ),
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
                       Text(
                         ' About',
                         style: TextStyle(

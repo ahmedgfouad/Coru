@@ -3,7 +3,8 @@ import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:flutter/material.dart';
 
 class ProgressCircle extends StatelessWidget {
-  const ProgressCircle({super.key});
+  final String progress;
+  const ProgressCircle({super.key,this.progress=''});
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +18,18 @@ class ProgressCircle extends StatelessWidget {
             color: AppColors.primaryColor,
             backgroundColor: Colors.grey.shade400,
             strokeWidth: 9,
-            value: .5,
+            value: double.parse(progress)/100,
             strokeAlign: -1,
           ),
         ),
         Positioned(
             bottom: MediaQueryHelper.height * .03,
-            right: MediaQueryHelper.width * .04,
+            right: MediaQueryHelper.width * .05,
             child: Center(
               child: Text(
-                '50%',
+                '%$progress',
                 style: TextStyle(
-                   // color: AppColors.primaryColor,
+                    // color: AppColors.primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
               ),

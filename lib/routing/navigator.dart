@@ -1,12 +1,11 @@
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
+import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/header_chats_view.dart';
-
 import 'package:elearning_app/features/home/view/views/course_categories_view.dart';
 import 'package:elearning_app/features/home/view/views/course_details_view.dart';
-
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/home/view/views/lesson_details_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
@@ -89,10 +88,13 @@ class AppRoutes {
                 course: settings.arguments as CourseDetailsModel));
       case Routes.lessonDetails:
         return AppRoutes.aniamtedNavigation(
-            screen: LessonDetailsView(
-          lesson: settings.arguments as Map,
-        ));
-
+          screen: LessonDetailsView(
+            lesson: settings.arguments as Map,
+          ),
+        );
+      case Routes.cart:
+        return AppRoutes.aniamtedNavigation(
+            screen: CartView(course: settings.arguments as CourseDetailsModel));
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(

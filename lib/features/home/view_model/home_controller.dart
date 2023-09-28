@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/network/firebase_services.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +7,13 @@ class HomeController extends ChangeNotifier {
   List<CourseDetailsModel>? _courses;
   List<CourseDetailsModel>? get courses => _courses;
   List<CourseDetailsModel>? _topCourses;
-  List<CourseDetailsModel>? get topCourses => _topCourses;/* 
+  List<CourseDetailsModel>? get topCourses =>
+      _topCourses; /* 
   CourseDetailsModel? _recentCourse/* =CourseDetailsModel() */; */
-  CourseDetailsModel? /* get  */recentCourse/*  => _recentCourse */;
+  CourseDetailsModel? /* get  */ recentCourse /*  => _recentCourse */;
+  List<CourseDetailsModel> userProgressCourses=[];
+    List<CourseDetailsModel> userCompleteCourses=[];
+
   /* String? id;
   /* String? get id => _id; */
   int? _index;
@@ -33,7 +35,7 @@ class HomeController extends ChangeNotifier {
   }
 
   void getRecentCourse() async {
-    recentCourse=await _firebaseServices.getRecentCourse(recentCourse!.id!);
+    recentCourse = await _firebaseServices.getRecentCourse(recentCourse!.id!);
     notifyListeners();
   }
 
