@@ -1,5 +1,4 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
-import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,8 +7,7 @@ class PrivacyPolicyViwe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.secondaryColor,
+    return Scaffold( 
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -21,9 +19,11 @@ class PrivacyPolicyViwe extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
                       const Text(
                         '1. Types data we collect',
                         style: AppStyles.textStyle18,
+
                       ),
                       SizedBox(
                         height: 15.h,

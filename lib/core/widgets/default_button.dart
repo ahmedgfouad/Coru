@@ -7,7 +7,7 @@ class DefaultButton extends StatelessWidget {
   final double height;
   final Color backgroundColor;
   final String text;
-  final double? borderRadius ;
+  final double borderRadius ;
   final double? fontSize;
   final double? opacity;
   final FontWeight? fontWeight;
@@ -18,7 +18,7 @@ class DefaultButton extends StatelessWidget {
     required this.height,
     required this.backgroundColor,
     required this.text,
-    required this.borderRadius,
+    this.borderRadius=10,
     this.fontSize,
     this.opacity,
     this.fontWeight,
@@ -33,7 +33,7 @@ class DefaultButton extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           color: backgroundColor.withOpacity(1),
-          borderRadius: BorderRadius.circular(borderRadius!),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: Center(
           child: Text(

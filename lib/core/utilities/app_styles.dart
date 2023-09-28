@@ -1,3 +1,4 @@
+import 'package:elearning_app/routing/navigator.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
@@ -19,11 +20,12 @@ abstract class AppStyles {
     fontSize: 18,
     fontWeight: FontWeight.w600,
   );
-  static const textStyle16 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
-  );
-
+  ///////
+  static final textStyle16 = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Theme.of(AppRoutes.navigatorState.currentContext!).colorScheme.primary);
+///////
   static const textStyle14 = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
