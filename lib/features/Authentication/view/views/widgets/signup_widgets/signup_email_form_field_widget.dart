@@ -1,5 +1,5 @@
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/signup_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class SignupEmailFormFieldWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class SignupEmailFormFieldWidget extends StatelessWidget {
         tittle: "Email",
         width: 300,
         height: 45,
-        controller: SignUpController.emailController,
+        controller: AuthController.emailController,
         type: TextInputType.name,
         validate: (value) {
           if (value!.isEmpty) {

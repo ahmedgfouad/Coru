@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
-import 'package:elearning_app/data/network/user_info_services.dart';
+import 'package:elearning_app/data/network/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +16,7 @@ class EditProfileController extends ChangeNotifier {
   UserInfoModel? _userDataById;
   UserInfoModel? get userDataById => _userDataById;
 
-  final UserInfoServices _userInfoServices = UserInfoServices();
+  final UserServices _userInfoServices = UserServices();
 
   CollectionReference profileRef =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
@@ -99,9 +99,6 @@ class EditProfileController extends ChangeNotifier {
     print("===========================");
     print(imageUrl);
   }
-
-
-
 
   void editProfile() async {
     var allDocs = await profileRef.get();

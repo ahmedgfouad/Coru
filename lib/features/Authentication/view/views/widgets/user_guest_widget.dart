@@ -1,8 +1,8 @@
-// ignore_for_file: unused_local_variable, avoid_print
+import 'dart:developer';
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/guest_controller.dart';
+import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,19 +14,18 @@ class SignupAsGuestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserCredential userCredential;
     return Center(
-      child: Consumer<UserGusetController>(
+      child: Consumer<AuthController>(
         builder: (
           BuildContext context,
-          UserGusetController provider,
+          AuthController provider,
           Widget? child,
         ) =>
             TextButton(
           onPressed: () async {
-            userCredential = await FirebaseAuth.instance.signInAnonymously();
+            await FirebaseAuth.instance.signInAnonymously();
             await provider.changeCurentState();
-            print("in user guest widget and isguest = ${provider.isGuest}");
+            log("in user guest widget and isguest = ${provider.isGuest}");
             AppRoutes.pushNamedNavigator(
               routeName: Routes.navBar,
             );
