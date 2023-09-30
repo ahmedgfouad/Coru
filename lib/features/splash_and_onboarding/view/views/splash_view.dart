@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  @override
+   @override
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
@@ -39,27 +40,33 @@ class _SplashViewState extends State<SplashView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
+                  /* SvgPicture.asset(
                     AppImages.logo,
                     height: 70,
                     width: 70,
+                  ), */
+                  SizedBox(
+                    height: MediaQueryHelper.height * .06,
                   ),
+                  Image.asset(AppImages.coru,
+                      height: MediaQueryHelper.height * .5,
+                      width: MediaQueryHelper.width * .5),
                 ],
               ),
             ),
             Positioned(
-              top: -200,
-              left: -20,
+              top: MediaQueryHelper.height * -.25,
+              left: MediaQueryHelper.width * -.005,
               child: CircleAvatar(
-                backgroundColor: AppColors.curvePrimary.withOpacity(.7),
-                radius: 180,
+                backgroundColor: AppColors.primaryColor/* .withOpacity(.9) */,
+                radius: 200,
               ),
             ),
             Positioned(
-              top: -150,
-              left: -200,
+              top: MediaQueryHelper.height * -.14,
+              left: MediaQueryHelper.width * -.4,
               child: CircleAvatar(
-                backgroundColor: AppColors.curveSecondary.withOpacity(.5),
+                backgroundColor: AppColors.secondaryColor/* .withOpacity(.7) */,
                 radius: 200,
               ),
             ),

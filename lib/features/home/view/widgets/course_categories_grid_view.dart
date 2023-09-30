@@ -53,7 +53,7 @@ class CourseCategoriesGridView extends StatelessWidget {
                     offset: const Offset(0, 0),
                   ),
                 ],
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.secondary/* .withOpacity(.7) */,
                 borderRadius: BorderRadius.circular(15.r)),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

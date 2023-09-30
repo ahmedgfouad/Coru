@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
+import 'package:elearning_app/ex.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
@@ -14,6 +15,7 @@ import 'package:elearning_app/features/profile/view/view_model/edit_profile_cont
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
+import 'package:elearning_app/features/splash_and_onboarding/view/views/splash_view.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,13 +72,13 @@ class MyApp extends StatelessWidget {
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ELearning App',
+          title: 'CORU',
           theme: AppTheme().lightTheme,
           darkTheme: AppTheme().darkTheme,
           themeMode:
               Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          //home:CartView(),
+          //home:SplashView(),
           initialRoute: isLogIn ? Routes.navBar : Routes.splash,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],

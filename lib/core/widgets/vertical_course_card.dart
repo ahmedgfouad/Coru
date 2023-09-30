@@ -56,12 +56,13 @@ class VerticalCourseCard extends StatelessWidget {
             ],
           ),
           child: InkWell(
-            onTap: () {
+            onTap: () async{
       homeProvider.recentCourse = course;
       homeProvider.recentCourse!.id = course.id;
       homeProvider.getRecentCourse();
-      AppRoutes.pushNamedNavigator(
+     var value= await AppRoutes.pushNamedNavigator(
           routeName: Routes.courseDetails, arguments: course);
+          if (value==true){}
     },
             child: Row(
               children: [

@@ -101,7 +101,7 @@ class _NavBarViewState extends State<NavBarView> {
                               : MediaQueryHelper.width * 0.159,
                           decoration: BoxDecoration(
                             color: index == currentIndex
-                                ? Theme.of(context).colorScheme.secondary
+                                ? Theme.of(context).colorScheme.secondary.withOpacity(.3)
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(16),
                           ),

@@ -47,7 +47,7 @@ class CartView extends StatelessWidget {
                               return VerticalCourseCard(
                                 course: value.cartCourses[index],
                                 cartOnPressed: () {
-                                  value.removeCourse(value.cartCourses[index]);
+                                  value.removeCourse(value.cartCourses[index].id!);
                                 },
                                 isCart: true,
                               );
