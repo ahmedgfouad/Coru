@@ -82,7 +82,7 @@ class AuthController extends ChangeNotifier {
     userModel.lasttName = lastNameController.text;
     userModel.email = emailController.text;
     userModel.password = passwordController.text;
-    userModel.cofirmPassword = confirmPasswordController.text;
+    userModel.confirmPassword = confirmPasswordController.text;
     userModel.bookMark = <String>[];
     userModel.myCourses = <MyCourseModel>[];
     userModel.userId = userCredential!.user!.uid;

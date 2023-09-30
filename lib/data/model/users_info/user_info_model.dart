@@ -5,7 +5,7 @@ class UserInfoModel {
   String? lasttName;
   String? email;
   String? password;
-  String? cofirmPassword;
+  String? confirmPassword;
   String? imageProfileUrl;
   String? userId;
   List<String>? bookMark;
@@ -16,7 +16,7 @@ class UserInfoModel {
     this.lasttName,
     this.email,
     this.password,
-    this.cofirmPassword,
+    this.confirmPassword,
     this.imageProfileUrl,
     this.userId,
     this.bookMark,
@@ -28,12 +28,11 @@ class UserInfoModel {
     lasttName = json['last_name'];
     email = json['email'];
     password = json['password'];
-    cofirmPassword = json['confirm_password'];
+    confirmPassword = json['confirm_password'];
     imageProfileUrl = json['image_profile_rul'];
     userId = json['user_id'];
 
     if (json['book_mark'] != null) {
-      //["","","","",""]
       bookMark = <String>[];
       json['book_mark'].forEach((v) {
         bookMark!.add(v);
@@ -54,11 +53,11 @@ class UserInfoModel {
     data["last_name"] = lasttName;
     data["email"] = email;
     data["password"] = password;
-    data["confirm_password"] = cofirmPassword;
+    data["confirm_password"] = confirmPassword;
     data["image_profile_rul"] = imageProfileUrl;
     data["user_id"] = userId;
 
-     if (bookMark != null) {
+    if (bookMark != null) {
       data['book_mark'] = bookMark!.map((v) => v).toList();
     }
 

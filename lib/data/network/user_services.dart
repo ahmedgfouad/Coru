@@ -3,12 +3,16 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
+import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class UserServices {
+  static var ref;
+  static var imageUrl;
   CollectionReference allUsersInfo =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
-
+  UserInfoModel userModel = UserInfoModel();
 
   Future<UserCredential?> signupServices({
     required String email,
@@ -37,11 +41,10 @@ class UserServices {
   Future<UserCredential?> loginServices({
     required String email,
     required String password,
-  }) async {  
-        UserCredential? userCredential; 
+  }) async {
+    UserCredential? userCredential;
     try {
-       userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -52,10 +55,9 @@ class UserServices {
       } else if (e.code == 'wrong-password') {
         log('كلمه المرور خاطئه');
       }
-    } 
+    }
     return userCredential;
   }
-
 
   void storeUserInfoToFireStore({required UserInfoModel userModel}) async {
     Map<String, dynamic> userMap = userModel.toJson();
@@ -63,6 +65,12 @@ class UserServices {
         .collection(userInfoCollectionName)
         .doc(userModel.userId)
         .set(userMap);
+  }
+
+  void updateUserInfoOnFireStore({required UserInfoModel userModel}) async {
+    String docId = FirebaseAuth.instance.currentUser!.uid;
+    Map<String, dynamic> userMap = userModel.toJson();
+    await allUsersInfo.doc(docId).update(userMap);
   }
 
   Future<List<UserInfoModel>> getAllInfoFromUsers() async {
@@ -75,19 +83,18 @@ class UserServices {
     return listOfUsersInof;
   }
 
-  Future<UserInfoModel> getInfoOneUserById({required String userId}) async {
-    QuerySnapshot userInfo =
-        await allUsersInfo.where(useridField, isEqualTo: userId).get();
-
-    UserInfoModel userData = UserInfoModel.fromJson(
-      userInfo.docs.first.data() as Map<String, dynamic>,
+  Future<UserInfoModel> getInfoOneUserById() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    DocumentSnapshot userInfo = await allUsersInfo.doc(userId).get();
+    UserInfoModel userData =await UserInfoModel.fromJson(
+      userInfo.data() as Map<String, dynamic>,
     );
-
     return userData;
   }
 
-  Future<UserInfoModel> searchForUserByName(
-      {required String nameOfUser}) async {
+  Future<UserInfoModel> searchForUserByName({
+    required String nameOfUser,
+  }) async {
     QuerySnapshot userInfo =
         await allUsersInfo.where("first_name", isEqualTo: nameOfUser).get();
 
@@ -105,6 +112,15 @@ class UserServices {
         UserInfoModel.fromJson(querySnapshot.data() as Map<String, dynamic>);
     log("user info= ${userInfo.myCourses}");
     return userInfo;
+  }
+
+  dynamic uploadingImageToFireStorage() async {
+    DateTime date = DateTime.now();
+    ref = FirebaseStorage.instance.ref("$date");
+    await ref.putFile(EditProfileController.file);
+    imageUrl = await ref.getDownloadURL();
+
+    return imageUrl; 
   }
 
 }
