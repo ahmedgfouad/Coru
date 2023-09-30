@@ -6,7 +6,6 @@ import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:provider/provider.dart';
 
 class UserServices {
   static var ref;

@@ -81,7 +81,7 @@ class EditProfileController extends ChangeNotifier {
     notifyListeners();
   }
 
-  editProfileInfo() {
+  editProfileInfo() { 
     _userDataById!.userId = FirebaseAuth.instance.currentUser!.uid;
     _userInfoServices.updateUserInfoOnFireStore(userModel: _userDataById!);
   }

@@ -1,30 +1,113 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:developer';
+
+import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
-import 'package:elearning_app/data/network/firebase_services.dart';
+import 'package:elearning_app/core/widgets/default_button.dart';
+import 'package:elearning_app/core/widgets/vertical_course_card.dart';
+import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
+import 'package:elearning_app/routing/navigator.dart';
+import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class CartView extends StatelessWidget {
-  const CartView({super.key});
+  /* final CourseDetailsModel? course; */
+  const CartView({
+    super.key,
+    /* this.course */
+  });
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: IconButton(
-            onPressed: () async {
-              print("======");
-              await FirebaseFirestore.instance.collection('user_info').add({
-                'test1': 'test1111',
-                'test2': 'test2222',
-              });
-            },
-            icon: const Icon(Icons.add),
-          ),
-      /* SafeArea(
-          child: Column(
-        children: [DefaultAppBar(title: 'Cart'),],
-      ),), */
-    ));
+      body: SafeArea(
+        child: Column(
+          children: [
+            const DefaultAppBar(title: 'Cart'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Consumer<CartController>(
+                builder: (context, value, child) {
+                  //log('message: course: ${course!.name}');
+                  /* value.addCourse(course!); */
+                  log('message: ${value.cartCourses}');
+                  /* value.getTotal(); */
+
+                  if (value.cartCourses.isNotEmpty) {
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQueryHelper.height * 0.73,
+                          child: ListView.builder(
+                            itemBuilder: (context, index) {
+                              log('message: ${value.cartCourses[index]}');
+                              return VerticalCourseCard(
+                                course: value.cartCourses[index],
+                                cartOnPressed: () {
+                                  value.removeCourse(value.cartCourses[index].id!);
+                                },
+                                isCart: true,
+                              );
+                            },
+                            itemCount: value.cartCourses.length,
+                          ),
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: Text('Total:\$${value.total}',
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: DefaultButton(
+                                  text: 'Buy',
+                                  height: MediaQueryHelper.height * 0.05,
+                                  width: MediaQueryHelper.width * 0.3,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  onPressed: () => AppRoutes.pushNamedNavigator(
+                                      routeName: Routes.payment),
+                                ),
+                              ),
+                            ])
+                      ],
+                    );
+                  } else {
+                    log('message: ${value.cartCourses}');
+                    return Column(//mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                    
+                      //Spacer(),
+                      SizedBox(
+                        height: MediaQueryHelper.height * .2,
+                      ),
+                      SvgPicture.asset(
+                        AppImages.emptyCart,
+                        height: 250,
+                      ),
+                      SizedBox(
+                        height: MediaQueryHelper.height * .02,
+                      ),
+                      Center(
+                        child: Text('No Courses in Cart'),
+                      ),
+                    ]);
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

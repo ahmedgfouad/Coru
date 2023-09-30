@@ -1,6 +1,7 @@
 class AppImages {
   static const avatar = 'assets/images/avatar.jpg';
   static const courseImage = 'assets/images/course.png';
+  static const coru = 'assets/images/coru.png';
   static const search = 'assets/svg/search.svg';
   static const arrowBack = 'assets/svg/arrow_back.svg';
   static const myCourses = 'assets/svg/my_courses.svg';
@@ -28,5 +29,6 @@ class AppImages {
   static const onBoarding1 = 'assets/svg/onboarding1.svg';
   static const onBoarding2 = 'assets/svg/onboarding2.svg';
   static const onBoarding3 = 'assets/svg/onboarding3.svg';
+  static const emptyCart = 'assets/svg/empty_cart.svg';
   static const login = 'assets/svg/login.svg';
 }

@@ -10,7 +10,6 @@ import 'package:elearning_app/features/Authentication/view/views/widgets/signup_
 import 'package:elearning_app/features/Authentication/view/views/widgets/user_guest_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({Key? key}) : super(key: key);

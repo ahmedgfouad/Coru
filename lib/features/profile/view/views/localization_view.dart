@@ -17,57 +17,54 @@ class _LocalizationViewState extends State<LocalizationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ChangeNotifierProvider(
-          create: (BuildContext context) => LocalizationController(),
-          child: Column(
-            children: [
-              const DefaultAppBar(title: 'Language'),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Consumer<LocalizationController>(
-                  builder: (context, provider, child) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Suggested',
+        child: Column(
+          children: [
+            const DefaultAppBar(title: 'Language'),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Consumer<LocalizationController>(
+                builder: (context, provider, child) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Suggested',
+                      style: AppStyles.textStyle18.copyWith(
+                        color: AppColors.curvePrimary,
+                      ),
+                    ),
+                    RadioListTile(
+                      activeColor: AppColors.primaryColor,
+                      title: Text(
+                        'English',
                         style: AppStyles.textStyle18.copyWith(
-                          color: AppColors.curvePrimary,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primaryColor,
                         ),
                       ),
-                      RadioListTile(
-                        activeColor: AppColors.primaryColor,
-                        title: Text(
-                          'English',
-                          style: AppStyles.textStyle18.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.primaryColor,
-                          ),
+                      value: provider.english,
+                      groupValue: provider.index,
+                      onChanged: (int? tileIndex) =>
+                          provider.toggleLanguage(tileIndex!),
+                    ),
+                    RadioListTile(
+                      activeColor: AppColors.primaryColor,
+                      title: Text(
+                        'عربي',
+                        style: AppStyles.textStyle18.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.primaryColor,
                         ),
-                        value: provider.english,
-                        groupValue: provider.index,
-                        onChanged: (int? tileIndex) =>
-                            provider.toggleLanguage(tileIndex!),
                       ),
-                      RadioListTile(
-                        activeColor: AppColors.primaryColor,
-                        title: Text(
-                          'عربي',
-                          style: AppStyles.textStyle18.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.primaryColor,
-                          ),
-                        ),
-                        value: provider.arabic,
-                        groupValue: provider.index,
-                        onChanged: (int? tileIndex) =>
-                            provider.toggleLanguage(tileIndex!),
-                      ),
-                    ],
-                  ),
+                      value: provider.arabic,
+                      groupValue: provider.index,
+                      onChanged: (int? tileIndex) =>
+                          provider.toggleLanguage(tileIndex!),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
