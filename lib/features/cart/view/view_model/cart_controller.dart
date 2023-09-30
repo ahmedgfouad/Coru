@@ -7,44 +7,43 @@ class CartController extends ChangeNotifier {
   List<CourseDetailsModel> cartCourses =
       []; /* 
   List<CourseDetailsModel> get cartCourses => _cartCourses; */
-  List<CourseDetailsModel> newCart =
-      []; /* 
-  List<CourseDetailsModel> get newCart => _newCart; */
+
   String _total = '0';
   String get total => _total;
+  bool _isDuplicate = false;
+  bool get isDuplicate => _isDuplicate;
   void addCourse(CourseDetailsModel course) {
     if (cartCourses.isEmpty) {
-      newCart.add(course);
-      cartCourses = newCart;
+      cartCourses.add(course);
     } else {
-      /* for (var i in _cartCourses) {
-        if (i.name != course.name) {
-          _cartCourses.add(course);
-        }
-        /*  notifyListeners(); */
-      } */
-      /* newCart.add(course);
-      cartCourses = newCart.where((element) {
+      cartCourses.forEach((element) {
         log('element name: ${element.name}');
         log('course name: ${course.name}');
-        return element.name != course.name;
-      }).toList(); */
-       newCart.forEach((element) {
-        log('element name: ${element.name}');
-        log('course name: ${course.name}');
-        if (element.name != course.name) {         
-          newCart.add(course);
+        if (element.name == course.name) {
+          _isDuplicate = true;
+          /* newCart.add(course); */
         }
       });
-      cartCourses = newCart;
+      if (!_isDuplicate) {
+        cartCourses.add(course);
+      }
     }
 
-    /* notifyListeners(); */
+    notifyListeners();
   }
 
-  removeCourse(CourseDetailsModel course) {
-    cartCourses.remove(course);
+  removeCourse(String courseId) {
+    cartCourses.removeWhere((element) {
+      if (element.id == courseId) {
+        _total =
+            (double.parse(_total) - double.parse(element.price!)).toString();
+        return true;
+      }
+      return false;
+    });
+
     log('message: message: $cartCourses');
+    notifyListeners();
   }
 
   void getTotal() {

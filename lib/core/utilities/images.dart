@@ -1,6 +1,7 @@
 class AppImages {
   static const avatar = 'assets/images/avatar.jpg';
   static const courseImage = 'assets/images/course.png';
+  static const coru = 'assets/images/coru.png';
   static const search = 'assets/svg/search.svg';
   static const arrowBack = 'assets/svg/arrow_back.svg';
   static const myCourses = 'assets/svg/my_courses.svg';

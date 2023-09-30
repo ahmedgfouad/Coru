@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 class CourseDetailsView extends StatelessWidget {
   final CourseDetailsModel course;
-  
+
   const CourseDetailsView({super.key, required this.course});
 
   @override
@@ -86,12 +86,15 @@ class CourseDetailsView extends StatelessWidget {
                             width: MediaQueryHelper.width * .4,
                             height: MediaQueryHelper.height * .05,
                             onPressed: () {
-                              
-                              AppRoutes.pushNamedNavigator(
-                                  routeName: Routes.cart/* ,arguments: course */);
-                                  Provider.of<CartController>(context, listen: false).addCourse(course);
-                                  Provider.of<CartController>(context, listen: false).getTotal();
-                                  
+                              Provider.of<CartController>(context,
+                                      listen: false)
+                                  .addCourse(course);
+                              Provider.of<CartController>(context,
+                                      listen: false)
+                                  .getTotal();
+                              Navigator.pop(context,true);
+                              /* AppRoutes.pushNamedNavigator(
+                                  routeName: Routes.cart/* ,arguments: course */); */
                             },
                           )
                         ],
