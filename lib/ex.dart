@@ -1,58 +1,47 @@
-// import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
+import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// class AppTheme {
-//   ThemeData lightTheme = ThemeData(
-//     iconTheme: const IconThemeData(color: Colors.black),
-//     buttonTheme: const ButtonThemeData(
-//       buttonColor: Color(0xff981A1E),
-//     ),
-//     //scaffoldBackgroundColor: Color(0xfff9f2d5),
-//     fontFamily: 'Cairo',
-//     textTheme:  TextTheme(
-//         titleSmall: TextStyle(//fontWeight: FontWeight.bold,
-//           color: Colors.white, fontSize: 13.sp, ),
-//         titleMedium: TextStyle(),
-//         titleLarge: TextStyle(),
-//         //////////////
-//         displayMedium: TextStyle(),
-//         displayLarge: TextStyle(),
-//         displaySmall: TextStyle(),
-//         /////////////////////
-//         headlineMedium: TextStyle(),
-//         headlineSmall: TextStyle(),
-//         headlineLarge: TextStyle(),
-//         /////////////////
-//         bodyLarge: TextStyle(),
-//         bodySmall: TextStyle(),
-//         bodyMedium: TextStyle(color: Colors.white, fontSize: 20.sp, shadows: [
-//           Shadow(color: Colors.black, blurRadius: 2, offset: Offset(1, 1))
-//         ]),
-//         ////////////////
-//         labelSmall: TextStyle(),
-//         labelLarge: TextStyle(),
-//         labelMedium:TextStyle(fontWeight: FontWeight.bold,
-//           color: Colors.white, fontSize: 25.sp, shadows: [
-//           Shadow(color: Colors.black, blurRadius: 2, offset: Offset(1, 1))
-//         ]),),
-//     colorScheme: const ColorScheme.light(
-//       primary: Color(0xff981A1E),
-//       secondary: Color(0xff283255),
-//       background: Color(0xff69A0C7),
-//       brightness: Brightness.light,
-//       primaryContainer: Color(0xff174459),
-//       secondaryContainer: Color(0xfff9f2d5),
-//     ),
-//   );
-//   ThemeData darkTheme = ThemeData(
-//     scaffoldBackgroundColor: const Color(0xff181A20),
-//     iconTheme: const IconThemeData(color: Colors.white),
-//     colorScheme: const ColorScheme.dark(
-//       background: Colors.white,
-//       primaryContainer: Color(0xff1F222A),
-//       primary: Color(0xfff9f2d5),
-//       secondary: Color(0xffd6bf97),
-//       brightness: Brightness.dark,
-//       // background: Colors.
-//     ),
-//   );
-// }
+class EX extends StatelessWidget {
+  const EX({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+          child: Consumer<EditProfileController>(
+        builder: (
+          BuildContext context,
+          EditProfileController provider,
+          Widget? child,
+        ) =>
+            Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () async {
+                CollectionReference testData = FirebaseFirestore.instance
+                    .collection(userInfoCollectionName);
+
+                var dataOfTest =
+                    await testData.doc('Ygq4oW7dXmOoa8Lbv7sz4xeNweI3').get();
+                var data = dataOfTest.data() as Map<String, dynamic>;
+                print("======");
+                print(data['email']);
+                print("=====");
+                // await provider.getUserDataById();
+                // print("=======");
+                // await provider.getUserDataTest();
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
+      )),
+    );
+  }
+}

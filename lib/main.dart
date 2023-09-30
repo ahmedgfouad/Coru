@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => AuthController()),
-          ChangeNotifierProvider(create: (context) => EditProfileController()),
+          ChangeNotifierProvider(create: (context) => EditProfileController()..getUserDataById()),
           ChangeNotifierProvider(create: (context) => AuthController()),
         ],
         builder: (context, _) => MaterialApp(
