@@ -27,7 +27,7 @@ class EmailFormFieldEditProfileWidget extends StatelessWidget {
           // if (value!.isEmpty) {
           //   return 'You should enter email';
           // }
-          // return null;
+          return null;
         });
   }
 }

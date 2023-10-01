@@ -31,7 +31,7 @@ class FirstAndLastNameEditProfileWidet extends StatelessWidget {
             // if (value!.isEmpty) {
             //   return 'You should enter first name';
             // }
-            // return null;
+            return null;
           },
         ),
         DefaultFormField(
@@ -47,7 +47,7 @@ class FirstAndLastNameEditProfileWidet extends StatelessWidget {
               // if (value!.isEmpty) {
               //   return 'You should enter last name';
               // }
-              // return null;
+              return null;
             }),
       ],
     );

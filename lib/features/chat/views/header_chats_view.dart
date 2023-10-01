@@ -1,5 +1,4 @@
-
-import 'package:elearning_app/core/widgets/default_app_bar.dart';
+// import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/chat/views/widgets/header_chat_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +14,10 @@ class HeaderChatsView extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              const DefaultAppBar(
-                isHome: false,
-                title: "Inbox",
-              ),
+              // const DefaultAppBar(
+              //   isHome: false,
+              //   title: "Inbox",
+              // ),
               Padding(
                 padding: EdgeInsets.all(10.h),
                 child: SingleChildScrollView(
@@ -34,7 +33,6 @@ class HeaderChatsView extends StatelessWidget {
                         validate: (val) {
                           return null;
                         },
-                        
                       ),
                       SizedBox(height: 10.h),
                       ListView.builder(

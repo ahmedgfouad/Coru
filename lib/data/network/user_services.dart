@@ -7,9 +7,10 @@ import 'package:elearning_app/features/profile/view/view_model/edit_profile_cont
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+
 class UserServices {
-  static var ref;
-  static var imageUrl;
+  var ref;
+  var imageUrl;
   CollectionReference allUsersInfo =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
   UserInfoModel userModel = UserInfoModel();
@@ -67,7 +68,7 @@ class UserServices {
         .set(userMap);
   }
 
-  void updateUserInfoOnFireStore({required UserInfoModel userModel}) async {
+  Future<void> updateUserInfoOnFireStore({required UserInfoModel userModel}) async {
     String docId = FirebaseAuth.instance.currentUser!.uid;
     Map<String, dynamic> userMap = userModel.toJson();
     await allUsersInfo.doc(docId).update(userMap);
@@ -86,7 +87,7 @@ class UserServices {
   Future<UserInfoModel> getInfoOneUserById() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     DocumentSnapshot userInfo = await allUsersInfo.doc(userId).get();
-    UserInfoModel userData =await UserInfoModel.fromJson(
+    UserInfoModel userData = UserInfoModel.fromJson(
       userInfo.data() as Map<String, dynamic>,
     );
     return userData;
@@ -114,13 +115,15 @@ class UserServices {
     return userInfo;
   }
 
-  dynamic uploadingImageToFireStorage() async {
+  Future<String> uploadingImageToFireStorage() async {
     DateTime date = DateTime.now();
+
     ref = FirebaseStorage.instance.ref("$date");
+
     await ref.putFile(EditProfileController.file);
     imageUrl = await ref.getDownloadURL();
+    print('the image url in uploadding is : $imageUrl');
 
-    return imageUrl; 
+    return imageUrl;
   }
-
 }

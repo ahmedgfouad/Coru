@@ -10,13 +10,14 @@ import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends ChangeNotifier {
   UserInfoModel? _userDataById;
-  UserInfoModel? get userData => _userDataById;
+  UserInfoModel? get userDataById => _userDataById;
 
   final UserServices _userInfoServices = UserServices();
 
   CollectionReference profileRef =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
 
+  // UserInfoModel userModel = UserInfoModel();
 
   static File? file;
 
@@ -29,8 +30,6 @@ class EditProfileController extends ChangeNotifier {
     return _userDataById;
   }
 
-  
-
   void changeFirstName({required String firstName}) {
     _userDataById!.firstName = firstName;
     _userDataById!.firstName = firstName;
@@ -42,12 +41,12 @@ class EditProfileController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void changeEmail({required String email}) { 
+  void changeEmail({required String email}) {
     _userDataById!.email = email;
     notifyListeners();
   }
 
-  void changePassword({required String password}) { 
+  void changePassword({required String password}) {
     _userDataById!.password = password;
     notifyListeners();
   }
@@ -78,11 +77,13 @@ class EditProfileController extends ChangeNotifier {
   uploadingImageToFireStorage() async {
     _userDataById!.imageProfileUrl =
         await _userInfoServices.uploadingImageToFireStorage();
+    print("image url in controller : ${_userDataById!.imageProfileUrl}");
     notifyListeners();
   }
 
-  editProfileInfo() { 
+  Future<void> editProfileInfo() async {
     _userDataById!.userId = FirebaseAuth.instance.currentUser!.uid;
-    _userInfoServices.updateUserInfoOnFireStore(userModel: _userDataById!);
+    await _userInfoServices.updateUserInfoOnFireStore(
+        userModel: _userDataById!);
   }
 }
