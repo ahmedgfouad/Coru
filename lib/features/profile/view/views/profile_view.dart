@@ -23,6 +23,7 @@ class ProfileView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: ProfileController().optionInfo.length,
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 20),
@@ -37,19 +38,12 @@ class ProfileView extends StatelessWidget {
                               .optionInfo[index.toString()][0],
                           optionName: ProfileController()
                               .optionInfo[index.toString()][1],
-                          onTap: () {
-                            if (index == 5) {
-                              print(
-                                " in sign out button the cureent state befor sign out is :"
-                                " ${provier.isGuest}",
-                              );
-                              AuthController().makeTextFormFieldEmpty();
-                              AuthController().makeTextFormFieldEmpty();
-                              provier.changeCurentState();
-                              print(
-                                " in sign out button the cureent state after sign out is :"
-                                " ${provier.isGuest}",
-                              );
+                          onTap: ()  {
+                            if (index == 5) { 
+                              provier.makeTextFormFieldEmpty(); 
+                               provier.changeUserCurentState(
+                                isGuest: false,
+                              ); 
                               FirebaseAuth.instance.signOut();
                               AppRoutes.pushNamedNavigator(
                                 replacement: true,

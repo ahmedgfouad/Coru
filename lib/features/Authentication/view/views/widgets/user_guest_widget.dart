@@ -24,7 +24,7 @@ class SignupAsGuestWidget extends StatelessWidget {
             TextButton(
           onPressed: () async {
             await FirebaseAuth.instance.signInAnonymously();
-            await provider.changeCurentState();
+            await provider.changeUserCurentState(isGuest:  true);
             log("in user guest widget and isguest = ${provider.isGuest}");
             AppRoutes.pushNamedNavigator(
               routeName: Routes.navBar,

@@ -26,8 +26,8 @@ class AuthController extends ChangeNotifier {
 
   bool isGuest = false;
 
-  changeCurentState() {
-    isGuest = !isGuest;
+  changeUserCurentState({required bool isGuest}) {
+    this.isGuest = isGuest;
     notifyListeners();
   }
 

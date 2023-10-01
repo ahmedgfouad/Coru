@@ -21,10 +21,8 @@ class ConfirmButtonEditProfileWidget extends StatelessWidget {
       ) =>
           DefaultButton(
         onPressed: () async {
-          // await provider.show();
           await provider.editProfileInfo();
-
-          // Navigator.pop(context);
+          Navigator.pop(context);
         },
         width: 300,
         height: 45,

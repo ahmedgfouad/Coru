@@ -32,7 +32,7 @@ class PasswordFormFieldEditProfileWidget extends StatelessWidget {
           // if (val!.isEmpty) {
           //   Provider.of<EditProfileController>(context).changePassword(password: val);
           // }
-          // return null;
+          return null;
         },
         suffix: provider.obSecurePassword
             ? Icons.visibility_off_outlined
