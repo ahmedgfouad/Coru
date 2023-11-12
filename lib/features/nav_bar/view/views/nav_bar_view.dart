@@ -81,75 +81,72 @@ class _NavBarViewState extends State<NavBarView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
                 listOfIcons.length,
-                (index) => Container(
-                      //margin: const EdgeInsets.symmetric(horizontal: 4),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            currentIndex = index;
-                          });
-                          print(currentIndex);
-                        },
-                        child: AnimatedContainer(
-                          height: MediaQuery.of(context).size.height,
-                          duration: const Duration(seconds: 2),
-                          curve: Curves.fastLinearToSlowEaseIn,
-                          margin: EdgeInsets.symmetric(
-                              horizontal: MediaQueryHelper.width * 0.01),
-                          width: index == currentIndex
-                              ? MediaQueryHelper.width * 0.17
-                              : MediaQueryHelper.width * 0.159,
-                          decoration: BoxDecoration(
-                            color: index == currentIndex
-                                ? Theme.of(context).colorScheme.secondary.withOpacity(.3)
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(16),
+                (index) => InkWell(
+                  onTap: () {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                    print(currentIndex);
+                  },
+                  child: AnimatedContainer(
+                    height: MediaQuery.of(context).size.height,
+                    duration: const Duration(seconds: 2),
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    margin: EdgeInsets.symmetric(
+                        horizontal: MediaQueryHelper.width * 0.01),
+                    width: index == currentIndex
+                        ? MediaQueryHelper.width * 0.17
+                        : MediaQueryHelper.width * 0.159,
+                    decoration: BoxDecoration(
+                      color: index == currentIndex
+                          ? Theme.of(context).colorScheme.secondary.withOpacity(.3)
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: index == currentIndex
+                            ? MainAxisAlignment.spaceEvenly
+                            : MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            listOfIcons[index],
+                            width: MediaQueryHelper.width * 0.034,
+                            height: MediaQueryHelper.height * 0.034,
+                            colorFilter: ColorFilter.mode(
+                                /* index == currentIndex
+                                    ? Theme.of(context).colorScheme.primary
+                                    : */
+                                Theme.of(context).iconTheme.color!,
+                                BlendMode.srcIn),
                           ),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: index == currentIndex
-                                  ? MainAxisAlignment.spaceEvenly
-                                  : MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  listOfIcons[index],
-                                  width: MediaQueryHelper.width * 0.034,
-                                  height: MediaQueryHelper.height * 0.034,
-                                  colorFilter: ColorFilter.mode(
-                                      /* index == currentIndex
-                                          ? Theme.of(context).colorScheme.primary
-                                          : */
-                                      Theme.of(context).iconTheme.color!,
-                                      BlendMode.srcIn),
-                                ),
-                                AnimatedSize(
-                                    duration: const Duration(seconds: 1),
-                                    child: SizedBox(
-                                      height: index == currentIndex
-                                          ? MediaQuery.of(context).size.height *
-                                              0.005
-                                          : 0,
-                                    )),
-                                AnimatedOpacity(
-                                  opacity: index == currentIndex ? 1 : 0,
-                                  duration: const Duration(seconds: 1),
-                                  child: index == currentIndex
-                                      ? FittedBox(
-                                          child: Text(
-                                            screens[index]['title'],
-                                            style: TextStyle(
-                                                fontSize: 10.sp,
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .background),
-                                          ),
-                                        )
-                                      : Container(),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    )),
+                          AnimatedSize(
+                              duration: const Duration(seconds: 1),
+                              child: SizedBox(
+                                height: index == currentIndex
+                                    ? MediaQuery.of(context).size.height *
+                                        0.005
+                                    : 0,
+                              )),
+                          AnimatedOpacity(
+                            opacity: index == currentIndex ? 1 : 0,
+                            duration: const Duration(seconds: 1),
+                            child: index == currentIndex
+                                ? FittedBox(
+                                    child: Text(
+                                      screens[index]['title'],
+                                      style: TextStyle(
+                                          fontSize: 10.sp,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .background),
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ]),
+                  ),
+                )),
           ),
         ),
       ),

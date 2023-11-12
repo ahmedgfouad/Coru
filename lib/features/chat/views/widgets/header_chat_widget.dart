@@ -1,12 +1,14 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
-import 'package:elearning_app/core/utilities/images.dart';
+import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 
 class HeaderChatWidget extends StatelessWidget {
+  final UserInfoModel userInfoModel;
   const HeaderChatWidget({
     super.key,
+    required this.userInfoModel,
   });
 
   @override
@@ -21,8 +23,9 @@ class HeaderChatWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(AppImages.avatar),
+              CircleAvatar(
+                backgroundImage:
+                    NetworkImage(userInfoModel.imageProfileUrl.toString()),
               ),
               const SizedBox(
                 width: 10,
@@ -30,9 +33,18 @@ class HeaderChatWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Ahmed Gamal",
-                    style: AppStyles.textStyle16,
+                  Row(
+                    children: [
+                      Text(
+                        "${userInfoModel.firstName}",
+                        style: AppStyles.textStyle16,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        "${userInfoModel.lasttName}",
+                        style: AppStyles.textStyle16,
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 5,

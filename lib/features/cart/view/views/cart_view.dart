@@ -19,7 +19,6 @@ class CartView extends StatelessWidget {
     /* this.course */
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +46,8 @@ class CartView extends StatelessWidget {
                               return VerticalCourseCard(
                                 course: value.cartCourses[index],
                                 cartOnPressed: () {
-                                  value.removeCourse(value.cartCourses[index].id!);
+                                  value.removeCourse(
+                                      value.cartCourses[index].id!);
                                 },
                                 isCart: true,
                               );
@@ -85,7 +85,6 @@ class CartView extends StatelessWidget {
                     log('message: ${value.cartCourses}');
                     return Column(//mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                    
                       //Spacer(),
                       SizedBox(
                         height: MediaQueryHelper.height * .2,
@@ -97,7 +96,7 @@ class CartView extends StatelessWidget {
                       SizedBox(
                         height: MediaQueryHelper.height * .02,
                       ),
-                      Center(
+                      const Center(
                         child: Text('No Courses in Cart'),
                       ),
                     ]);

@@ -44,14 +44,15 @@ class _DefaultSearchBarState extends State<DefaultSearchBar> {
               child: SizedBox(
                 width: MediaQueryHelper.width * .8,
                 child: TextFormField(
-                    cursorColor: Theme.of(context).colorScheme.primary,
-                    decoration: const InputDecoration(
-                      hintText: 'Find a course...',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
-                    onChanged: widget.onChanged),
+                  cursorColor: Theme.of(context).colorScheme.primary,
+                  decoration: const InputDecoration(
+                    hintText: 'Find a course...',
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                  onChanged: widget.onChanged,
+                ),
               ),
             ),
             secondChild: Container(),

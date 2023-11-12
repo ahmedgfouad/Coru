@@ -16,6 +16,7 @@ class CartController extends ChangeNotifier {
     if (cartCourses.isEmpty) {
       cartCourses.add(course);
     } else {
+      // ignore: avoid_function_literals_in_foreach_calls
       cartCourses.forEach((element) {
         log('element name: ${element.name}');
         log('course name: ${course.name}');

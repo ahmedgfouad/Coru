@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,7 +8,6 @@ import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
 
 class UserServices {
   var ref;
@@ -68,21 +69,33 @@ class UserServices {
         .set(userMap);
   }
 
-  Future<void> updateUserInfoOnFireStore({required UserInfoModel userModel}) async {
+  Future<void> updateUserInfoOnFireStore(
+      {required UserInfoModel userModel}) async {
     String docId = FirebaseAuth.instance.currentUser!.uid;
     Map<String, dynamic> userMap = userModel.toJson();
     await allUsersInfo.doc(docId).update(userMap);
   }
 
-  Future<List<UserInfoModel>> getAllInfoFromUsers() async {
-    List<UserInfoModel> listOfUsersInof = [];
+  Future<List<UserInfoModel>> getAllUsersInfo() async {
+    List<UserInfoModel> listOfAllUsersInof = [];
     QuerySnapshot querySnapshot = await allUsersInfo.get();
-    listOfUsersInof = querySnapshot.docs
+    listOfAllUsersInof = querySnapshot.docs
         .map((e) => UserInfoModel.fromJson(e.data() as Map<String, dynamic>))
         .toList();
 
-    return listOfUsersInof;
+    return listOfAllUsersInof;
   }
+
+  // Future<List<UserInfoModel>> getAllUsers() async {
+  //   List<UserInfoModel> listOfAllUsers = [];
+  //   QuerySnapshot querySnapshot = await allUsersInfo.get();
+  //   for (var document in querySnapshot.docs) {
+  //     UserInfoModel userInfoModel =
+  //         UserInfoModel.fromJson(document.data() as Map<String, dynamic>);
+  //     listOfAllUsers.add(userInfoModel);
+  //   }
+  //   return listOfAllUsers;
+  // }
 
   Future<UserInfoModel> getInfoOneUserById() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
@@ -97,7 +110,7 @@ class UserServices {
     required String nameOfUser,
   }) async {
     QuerySnapshot userInfo =
-        await allUsersInfo.where("first_name", isEqualTo: nameOfUser).get();
+        await allUsersInfo.where(firstNameField, isEqualTo: nameOfUser).get();
 
     UserInfoModel userData = UserInfoModel.fromJson(
       userInfo.docs.first.data() as Map<String, dynamic>,
@@ -122,7 +135,7 @@ class UserServices {
 
     await ref.putFile(EditProfileController.file);
     imageUrl = await ref.getDownloadURL();
-    print('the image url in uploadding is : $imageUrl');
+    log('the image url in uploadding is : $imageUrl');
 
     return imageUrl;
   }

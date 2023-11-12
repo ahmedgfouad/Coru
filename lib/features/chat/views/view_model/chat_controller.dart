@@ -4,12 +4,34 @@ import 'package:flutter/material.dart';
 
 class ChatController extends ChangeNotifier {
   final UserServices _userInfoServices = UserServices();
+  TextEditingController searchController = TextEditingController();
+  bool isSearchFieldEmpty = true;
+  List<UserInfoModel> allUsersInfo = [];
 
-  UserInfoModel? _userData;
-  UserInfoModel? get userDataFromSearchingByName => _userData;
+  void changeSearchStateToEmpty() {
+    isSearchFieldEmpty = true;
+    notifyListeners();
+  }
 
-  getUserDatafromsearchingByName(String name) async {
-    _userData = await _userInfoServices.searchForUserByName(nameOfUser: name);
+  void changeSearchStateToNotEmpty() {
+    isSearchFieldEmpty = false;
+    notifyListeners();
+  }
+
+  void getallUsersInfo() async {
+    allUsersInfo = await _userInfoServices.getAllUsersInfo();
+    notifyListeners();
+  }
+
+  void searchForUser(String name) async {
+    allUsersInfo = await _userInfoServices.getAllUsersInfo().then(
+          (value) => value.where(
+            (element) {
+              var fullName = "${element.firstName}${element.lasttName}";
+              return fullName.toLowerCase().contains(name);
+            },
+          ).toList(),
+        );
     notifyListeners();
   }
 }

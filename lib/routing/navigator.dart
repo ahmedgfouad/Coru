@@ -29,10 +29,12 @@ class AppRoutes {
       RouteObserver<PageRoute>();
   static final GlobalKey<ScaffoldMessengerState> scaffoldState =
       GlobalKey<ScaffoldMessengerState>();
+
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splash:
         return MaterialPageRoute(builder: (context) => const SplashView());
+
       case Routes.onboarding:
         return MaterialPageRoute(builder: (context) => const OnboardingView());
 
@@ -77,24 +79,30 @@ class AppRoutes {
 
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
+
       case Routes.coursesCategories:
         return AppRoutes.aniamtedNavigation(
-            screen:
-                CoursesCategoriesView(category: settings.arguments as String));
+          screen: CoursesCategoriesView(category: settings.arguments as String),
+        );
 
       case Routes.courseDetails:
         return AppRoutes.aniamtedNavigation(
-            screen: CourseDetailsView(
-                course: settings.arguments as CourseDetailsModel));
+          screen: CourseDetailsView(
+              course: settings.arguments as CourseDetailsModel),
+        );
+
       case Routes.lessonDetails:
         return AppRoutes.aniamtedNavigation(
           screen: LessonDetailsView(
             lesson: settings.arguments as Map,
           ),
         );
+
       case Routes.cart:
         return AppRoutes.aniamtedNavigation(
-            screen: CartView(/* course: settings.arguments as CourseDetailsModel */));
+          screen: const CartView(),
+        );
+        
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(
