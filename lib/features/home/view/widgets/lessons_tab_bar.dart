@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/data/model/lessons_model.dart';
@@ -51,7 +53,7 @@ class LessonsList extends StatelessWidget {
                       lesson[index].title!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: TextStyle(fontSize: 25),
+                      style: const TextStyle(fontSize: 25),
                     ),
                     leading: CircleAvatar(
                       backgroundColor: AppColors.secondaryColor,
@@ -69,7 +71,7 @@ class LessonsList extends StatelessWidget {
                     ),
                     trailing: InkWell(
                         onTap: () {
-                          print('click');
+                          log('click');
                         },
                         child: Icon(Icons.play_circle_fill_rounded,
                             color: AppColors.primaryColor, size: 35.0.r)),

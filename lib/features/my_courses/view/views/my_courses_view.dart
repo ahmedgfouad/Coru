@@ -18,11 +18,6 @@ class _MyCoursesViewState extends State<MyCoursesView>
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
-    /* CourseDetailsModel().getCourseDetails(courseId: 'VBSLwh4NeHEYeDfuYJHn');
-    AllCoursesModel().getAllCourses(); */
-    /*  CourseCategoryModel().getCourseCategory(); */
-    /* BookmarkedCourses().getBookmarkedCourses(); */
-    /* AddCourse().addCourse(); */
     super.initState();
   }
 
@@ -36,22 +31,25 @@ class _MyCoursesViewState extends State<MyCoursesView>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const DefaultAppBar(title: 'My Courses'),
-            CustomTabBar(
-              tabController: _tabController,
-              viewsBody: const [InProgressTabBar(), CompleteTabBar()],
-              viewsTitle: const [
-                Tab(
-                  text: 'In Progress',
-                ),
-                Tab(
-                  text: 'Complete',
-                ),
-              ],
-            )
-          ],
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const DefaultAppBar(title: 'My Courses'),
+              CustomTabBar(
+                tabController: _tabController,
+                viewsBody: const [InProgressTabBar(), CompleteTabBar()],
+                viewsTitle: const [
+                  Tab(
+                    text: 'In Progress',
+                  ),
+                  Tab(
+                    text: 'Complete',
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

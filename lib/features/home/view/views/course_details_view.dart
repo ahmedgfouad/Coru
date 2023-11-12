@@ -6,8 +6,6 @@ import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
 import 'package:elearning_app/features/home/view/widgets/course_app_bar.dart';
 import 'package:elearning_app/features/home/view/widgets/lessons_tab_bar.dart';
-import 'package:elearning_app/routing/navigator.dart';
-import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,6 +1,5 @@
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
-import 'package:elearning_app/data/model/lessons_model.dart';
 import 'package:flutter/material.dart';
 
 class LessonDetailsView extends StatelessWidget {
@@ -13,16 +12,16 @@ class LessonDetailsView extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(children: [
-          DefaultAppBar(
+          const DefaultAppBar(
             title: 'Lesson Details',
           ),
           
           Container(
-            margin: EdgeInsets.symmetric(horizontal:16),
+            margin: const EdgeInsets.symmetric(horizontal:16),
             height: MediaQuery.sizeOf(context).height * .3,
             width: MediaQuery.sizeOf(context).width,
             decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
                     image: NetworkImage('https://picsum.photos/200/300'),
                     fit: BoxFit.cover),
                 color: Colors.white,
@@ -31,7 +30,7 @@ class LessonDetailsView extends StatelessWidget {
                   BoxShadow(
                       color: Colors.grey.withOpacity(.5),
                       blurRadius: 12,
-                      offset: Offset(0, 2))
+                      offset: const Offset(0, 2))
                 ]),
           ),
           SizedBox(
@@ -51,7 +50,7 @@ class LessonDetailsView extends StatelessWidget {
                           fontSize: 20),
                     ),
                     Text("${lesson['lesson'].title}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontWeight: FontWeight.bold)),
@@ -60,7 +59,7 @@ class LessonDetailsView extends StatelessWidget {
                 SizedBox(
                   height: MediaQueryHelper.height * .02,
                 ),
-                Text('Description:',
+                const Text('Description:',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -69,7 +68,7 @@ class LessonDetailsView extends StatelessWidget {
                   height: MediaQueryHelper.height * .01,
                 ),
                 Text('${lesson['lesson'].description!}',
-                    style: TextStyle(color: Colors.grey, fontSize: 15)),
+                    style: const TextStyle(color: Colors.grey, fontSize: 15)),
               ],
             ),
           )

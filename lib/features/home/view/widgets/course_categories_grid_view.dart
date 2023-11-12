@@ -32,14 +32,17 @@ class CourseCategoriesGridView extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: category.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 4 / 5, mainAxisExtent: 190.r),
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 5,
+          mainAxisExtent: 190.r,
+        ),
         itemBuilder: (context, index) => InkWell(
           onTap: () {
-            
             provider.getCourses(courseFilter: category[index]['title']);
             AppRoutes.pushNamedNavigator(
-                routeName: Routes.coursesCategories,
-                arguments: category[index]['title']);
+              routeName: Routes.coursesCategories,
+              arguments: category[index]['title'],
+            );
           },
           child: Container(
             margin: EdgeInsets.all(8.0.r),
@@ -53,7 +56,9 @@ class CourseCategoriesGridView extends StatelessWidget {
                     offset: const Offset(0, 0),
                   ),
                 ],
-                color: Theme.of(context).colorScheme.secondary/* .withOpacity(.7) */,
+                color: Theme.of(context)
+                    .colorScheme
+                    .secondary /* .withOpacity(.7) */,
                 borderRadius: BorderRadius.circular(15.r)),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

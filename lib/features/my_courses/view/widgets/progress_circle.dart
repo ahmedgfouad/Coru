@@ -28,7 +28,7 @@ class ProgressCircle extends StatelessWidget {
             child: Center(
               child: Text(
                 '%$progress',
-                style: TextStyle(
+                style: const TextStyle(
                     // color: AppColors.primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 16),

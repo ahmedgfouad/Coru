@@ -21,10 +21,12 @@ class SearchView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  DefaultSearchBar(onChanged: (value) {
-                    Provider.of<HomeController>(context, listen: false)
-                        .getSearchedCourses(value);
-                  }),
+                  DefaultSearchBar(
+                    onChanged: (value) {
+                      Provider.of<HomeController>(context, listen: false)
+                          .getSearchedCourses(value);
+                    },
+                  ),
                   Consumer<HomeController>(
                     builder: (context, value, child) {
                       if (value.courses != null) {
@@ -33,7 +35,6 @@ class SearchView extends StatelessWidget {
                             value.courses!.length,
                             (index) => VerticalCourseCard(
                               course: value.courses![index],
-                              /* index: index, */
                             ),
                           ),
                         );

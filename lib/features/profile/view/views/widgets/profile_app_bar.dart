@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
@@ -20,7 +22,7 @@ class ProfileAppBarWidget extends StatelessWidget {
           provider,
           Widget? child,
         ) {
-          print("The staues user is guest : ${provider.isGuest}");
+          log("The staues user is guest : ${provider.isGuest}");
           return Container(
             width: 390,
             height: 176,
