@@ -34,4 +34,15 @@ class ChatController extends ChangeNotifier {
         );
     notifyListeners();
   }
+
+  void addChat({
+    required userId,
+    required frientId, 
+  }) {
+    _userInfoServices.addNewChat(
+      userId: userId,
+      friendId: frientId,
+    );
+    notifyListeners();
+  }
 }

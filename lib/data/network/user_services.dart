@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, avoid_function_literals_in_foreach_calls
 
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
+import 'package:elearning_app/features/chat/data/chat_model.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -14,6 +15,7 @@ class UserServices {
   var imageUrl;
   CollectionReference allUsersInfo =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
+
   UserInfoModel userModel = UserInfoModel();
 
   Future<UserCredential?> signupServices({
@@ -77,8 +79,12 @@ class UserServices {
   }
 
   Future<List<UserInfoModel>> getAllUsersInfo() async {
+    String curentUserUid = FirebaseAuth.instance.currentUser!.uid;
+
     List<UserInfoModel> listOfAllUsersInof = [];
-    QuerySnapshot querySnapshot = await allUsersInfo.get();
+    QuerySnapshot querySnapshot = await allUsersInfo
+        .where(useridField, isNotEqualTo: curentUserUid)
+        .get();
     listOfAllUsersInof = querySnapshot.docs
         .map((e) => UserInfoModel.fromJson(e.data() as Map<String, dynamic>))
         .toList();
@@ -86,36 +92,12 @@ class UserServices {
     return listOfAllUsersInof;
   }
 
-  // Future<List<UserInfoModel>> getAllUsers() async {
-  //   List<UserInfoModel> listOfAllUsers = [];
-  //   QuerySnapshot querySnapshot = await allUsersInfo.get();
-  //   for (var document in querySnapshot.docs) {
-  //     UserInfoModel userInfoModel =
-  //         UserInfoModel.fromJson(document.data() as Map<String, dynamic>);
-  //     listOfAllUsers.add(userInfoModel);
-  //   }
-  //   return listOfAllUsers;
-  // }
-
   Future<UserInfoModel> getInfoOneUserById() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     DocumentSnapshot userInfo = await allUsersInfo.doc(userId).get();
     UserInfoModel userData = UserInfoModel.fromJson(
       userInfo.data() as Map<String, dynamic>,
     );
-    return userData;
-  }
-
-  Future<UserInfoModel> searchForUserByName({
-    required String nameOfUser,
-  }) async {
-    QuerySnapshot userInfo =
-        await allUsersInfo.where(firstNameField, isEqualTo: nameOfUser).get();
-
-    UserInfoModel userData = UserInfoModel.fromJson(
-      userInfo.docs.first.data() as Map<String, dynamic>,
-    );
-
     return userData;
   }
 
@@ -139,4 +121,49 @@ class UserServices {
 
     return imageUrl;
   }
+
+  ChatModel chatModel = ChatModel();
+  CollectionReference collectionReference =
+      FirebaseFirestore.instance.collection('chat');
+  List setOfUsersId = [];
+  List bridge = [];
+
+  void addNewChat({
+    required userId,
+    required friendId,
+  }) {
+    bridge.clear();
+    if (setOfUsersId.isEmpty) {
+      chatModel.userId = userId;
+      chatModel.friendId = friendId;
+      setOfUsersId.add(chatModel);
+      print("not exist and we add to list ");
+      return;
+    } else {
+      setOfUsersId.forEach((element) {
+        if ((element.userId == userId || element.friendId == userId) &&
+            (element.userId == friendId || element.friendId == friendId)) {
+          print(" exist ");
+          return;
+        } else {
+          print("not exist");
+          chatModel.userId = userId;
+          chatModel.friendId = friendId;
+          bridge.add(chatModel);
+          return;
+        }
+      });
+    }
+
+    bridge.forEach((element) {
+      print("in bridge for eacth and the : ${element.friendId}");
+      setOfUsersId.add(element);
+    });
+    print(setOfUsersId);
+    print(setOfUsersId.last.friendId);
+  }
 }
+  //   await FirebaseFirestore.instance.collection('chat').doc().set({
+    //     'user_id': userId,
+    //     'friend_id': friendId,
+    //   });

@@ -1,8 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elearning_app/core/utilities/constants.dart';
+import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Ex extends StatelessWidget {
   Ex({super.key});
@@ -12,31 +15,55 @@ class Ex extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('users_info')
-            .where('uid', isNotEqualTo: curentUser)
-            .snapshots(),
+      body: Consumer<ExController>(
         builder: (
           BuildContext context,
-          AsyncSnapshot<QuerySnapshot> snapshot,
+          ExController provider,
+          Widget? child,
         ) {
-          if (snapshot.hasError) {
-            return const Center(
-              child: Text("Error"),
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: Text("loading"),
-            );
-          }
-          if (snapshot.hasData) { 
-            return const Center(child: Text("Data"));
-          }
-          return const CircularProgressIndicator();
+          provider.getUsers();
+
+          return ListView.separated(
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemCount: provider.lisOfUsers.length,
+            itemBuilder: (context, index) { 
+              return Card(
+                child: ListTile(
+                  title: Text("${provider.lisOfUsers[index].firstName}"),
+                ),
+              );
+            },
+          );
         },
       ),
     );
+  }
+}
+
+class ExServices {
+  CollectionReference allUsersInfo =
+      FirebaseFirestore.instance.collection(userInfoCollectionName);
+
+  String curentuser = FirebaseAuth.instance.currentUser!.uid;
+
+  Future<List<UserInfoModel>> exGetAllUsers() async {
+    List<UserInfoModel> listOfAllUsersInof = [];
+    QuerySnapshot querySnapshot =
+        await allUsersInfo.where('user_id', isNotEqualTo: curentuser).get();
+    listOfAllUsersInof = querySnapshot.docs
+        .map((e) => UserInfoModel.fromJson(e.data() as Map<String, dynamic>))
+        .toList();
+
+    return listOfAllUsersInof;
+  }
+}
+
+class ExController extends ChangeNotifier {
+  ExServices userServices = ExServices();
+  List<UserInfoModel> lisOfUsers = [];
+
+  void getUsers() async {
+    lisOfUsers = await userServices.exGetAllUsers();
+    notifyListeners();
   }
 }
