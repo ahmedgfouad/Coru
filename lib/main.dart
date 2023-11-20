@@ -3,7 +3,7 @@ import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
 import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
@@ -62,7 +62,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
               create: (context) => EditProfileController()..getUserDataById()),
           ChangeNotifierProvider(create: (context) => AuthController()),
-          ChangeNotifierProvider(create: (context) => ChatController()),
+          ChangeNotifierProvider(create: (context) => ChatController()..getallUsersInfo()),
+          // ChangeNotifierProvider(create: (context) => ExController()),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,

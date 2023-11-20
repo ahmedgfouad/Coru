@@ -10,13 +10,13 @@ class SearchChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ChatController>(
-      builder: (
-        BuildContext context,
-        ChatController provider,
-        Widget? child,
-      ) =>
-          DefaultFormField(
+    return Consumer<ChatController>(builder: (
+      BuildContext context,
+      ChatController provider,
+      Widget? child,
+    ) {
+      List ex = [];
+      return DefaultFormField(
         width: 400,
         height: 50,
         isAuth: false,
@@ -24,10 +24,26 @@ class SearchChatWidget extends StatelessWidget {
         controller: provider.searchController,
         suffix: Icons.search,
         isPassword: true,
+        suffixButtonPressed: () {
+          ex.add(2);
+          ex.forEach((element) {
+            print("========");
+            print(ex);
+            print("========");
+          });
+          ex.clear();
+          print(ex);
+          print("object");
+          // List li = [5, 6];
+          // li.forEach((element) {
+          //   ex.add(element);
+          // });
+          // print(ex);
+        },
         validate: (val) {
           return null;
         },
-      ),
-    );
+      );
+    });
   }
 }

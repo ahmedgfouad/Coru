@@ -76,6 +76,7 @@ class AuthController extends ChangeNotifier {
       log("Not Valid");
     }
   }
+  
 
   storeUserDataToFireStor() {
     userModel.firstName = firstNameController.text;

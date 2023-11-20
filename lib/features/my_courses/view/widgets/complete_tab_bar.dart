@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:elearning_app/core/widgets/vertical_course_card.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

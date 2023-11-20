@@ -1,7 +1,7 @@
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/model/users_info/my_course_model.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view/widgets/progress_circle.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
