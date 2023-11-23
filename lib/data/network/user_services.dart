@@ -127,40 +127,50 @@ class UserServices {
       FirebaseFirestore.instance.collection('chat');
   List setOfUsersId = [];
   List bridge = [];
+  String existStat = "";
 
   void addNewChat({
     required userId,
     required friendId,
   }) {
     bridge.clear();
+
     if (setOfUsersId.isEmpty) {
       chatModel.userId = userId;
       chatModel.friendId = friendId;
       setOfUsersId.add(chatModel);
       print("not exist and we add to list ");
+      print(setOfUsersId.length);
       return;
     } else {
-      setOfUsersId.forEach((element) {
-        if ((element.userId == userId || element.friendId == userId) &&
-            (element.userId == friendId || element.friendId == friendId)) {
+      for (int i = 0; i < setOfUsersId.length; i++) {
+        if ((setOfUsersId[i].userId == userId ||
+                setOfUsersId[i].friendId == userId) &&
+            (setOfUsersId[i].userId == friendId ||
+                setOfUsersId[i].friendId == friendId)) {
+          print("in $i loop");
           print(" exist ");
-          return;
+          existStat = "exist";
         } else {
-          print("not exist");
-          chatModel.userId = userId;
-          chatModel.friendId = friendId;
-          bridge.add(chatModel);
-          return;
+          existStat = "notExist";
         }
-      });
-    }
+      }
 
-    bridge.forEach((element) {
-      print("in bridge for eacth and the : ${element.friendId}");
-      setOfUsersId.add(element);
-    });
-    print(setOfUsersId);
-    print(setOfUsersId.last.friendId);
+      if (existStat == "notExist") {
+        chatModel.userId = userId;
+        chatModel.friendId = friendId;
+        bridge.add(chatModel);
+      }
+    }
+    setOfUsersId.add(bridge.first);
+    print("====");
+    print(setOfUsersId.length);
+    for (int i = 0; i < setOfUsersId.length; i++) {
+      print(setOfUsersId[i].friendId);
+    }
+    print("=======");
+
+    existStat = "";
   }
 }
   //   await FirebaseFirestore.instance.collection('chat').doc().set({

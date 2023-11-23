@@ -36,6 +36,7 @@ dependencies:
   firebase_storage: ^11.2.6
   flutter:
     sdk: flutter
+  flutter_chat_bubble: ^2.0.2
   flutter_localizations:
     sdk: flutter
   flutter_paypal_checkout: ^1.0.1
