@@ -1,9 +1,8 @@
 import 'dart:developer';
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
-import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';

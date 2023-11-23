@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/core/widgets/vertical_course_card.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/features/search/view/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,10 +21,12 @@ class SearchView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  DefaultSearchBar(onChanged: (value) {
-                    Provider.of<HomeController>(context, listen: false)
-                        .getSearchedCourses(value);
-                  }),
+                  DefaultSearchBar(
+                    onChanged: (value) {
+                      Provider.of<HomeController>(context, listen: false)
+                          .getSearchedCourses(value);
+                    },
+                  ),
                   Consumer<HomeController>(
                     builder: (context, value, child) {
                       if (value.courses != null) {
@@ -33,7 +35,6 @@ class SearchView extends StatelessWidget {
                             value.courses!.length,
                             (index) => VerticalCourseCard(
                               course: value.courses![index],
-                              /* index: index, */
                             ),
                           ),
                         );

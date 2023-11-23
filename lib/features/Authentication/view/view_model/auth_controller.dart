@@ -26,8 +26,8 @@ class AuthController extends ChangeNotifier {
 
   bool isGuest = false;
 
-  changeCurentState() {
-    isGuest = !isGuest;
+  changeUserCurentState({required bool isGuest}) {
+    this.isGuest = isGuest;
     notifyListeners();
   }
 
@@ -76,13 +76,14 @@ class AuthController extends ChangeNotifier {
       log("Not Valid");
     }
   }
+  
 
   storeUserDataToFireStor() {
     userModel.firstName = firstNameController.text;
     userModel.lasttName = lastNameController.text;
     userModel.email = emailController.text;
     userModel.password = passwordController.text;
-    userModel.cofirmPassword = confirmPasswordController.text;
+    userModel.confirmPassword = confirmPasswordController.text;
     userModel.bookMark = <String>[];
     userModel.myCourses = <MyCourseModel>[];
     userModel.userId = userCredential!.user!.uid;

@@ -1,5 +1,5 @@
+import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
-import 'package:elearning_app/data/model/lessons_model.dart';
 import 'package:flutter/material.dart';
 
 class LessonDetailsView extends StatelessWidget {
@@ -12,22 +12,66 @@ class LessonDetailsView extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(children: [
-          DefaultAppBar(
+          const DefaultAppBar(
             title: 'Lesson Details',
           ),
-          Image.network(
-              'https://picsum.photos/200/300',
-              height: MediaQuery.sizeOf(context).height * .3,
-              width: MediaQuery.sizeOf(context).width,
-              fit: BoxFit.cover,
+          
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal:16),
+            height: MediaQuery.sizeOf(context).height * .3,
+            width: MediaQuery.sizeOf(context).width,
+            decoration: BoxDecoration(
+                image: const DecorationImage(
+                    image: NetworkImage('https://picsum.photos/200/300'),
+                    fit: BoxFit.cover),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(.5),
+                      blurRadius: 12,
+                      offset: const Offset(0, 2))
+                ]),
+          ),
+          SizedBox(
+            height: MediaQueryHelper.height * .02,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Lesson ${lesson['index'] + 1}: ",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 20),
+                    ),
+                    Text("${lesson['lesson'].title}",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQueryHelper.height * .02,
+                ),
+                const Text('Description:',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+                SizedBox(
+                  height: MediaQueryHelper.height * .01,
+                ),
+                Text('${lesson['lesson'].description!}',
+                    style: const TextStyle(color: Colors.grey, fontSize: 15)),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(children: [
-                Text("Lesson ${lesson['index']+1}: ${lesson['lesson'].title}"),
-                Text('Description: ${lesson['lesson'].description!}'),
-              ],),
-            )
+          )
         ]),
       )),
     );

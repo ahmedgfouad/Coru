@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_checkout/flutter_paypal_checkout.dart';
 
@@ -59,14 +61,14 @@ class PaymentByPayBalWidget extends StatelessWidget {
       ],
       note: "Contact us for any questions on your order.",
       onSuccess: (Map params) async {
-        print("onSuccess: $params");
+        log("onSuccess: $params");
       },
       onError: (error) {
-        print("onError: $error");
+        log("onError: $error");
         Navigator.pop(context);
       },
       onCancel: () {
-        print('cancelled:');
+        log('cancelled:');
       },
     );
   }

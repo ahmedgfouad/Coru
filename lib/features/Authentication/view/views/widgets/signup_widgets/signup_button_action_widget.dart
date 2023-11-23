@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'dart:developer';
+
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
@@ -29,7 +31,7 @@ class SignUpButtonActionWidget extends StatelessWidget {
               routeName: Routes.navBar,
             );
           } else {
-            print("is null");
+            log("is null");
           }
         },
         width: 300,

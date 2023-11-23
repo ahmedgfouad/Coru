@@ -1,7 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/features/Authentication/view/view_model/logIn_controller.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/accounts_icons.dart';
 import 'package:elearning_app/features/Authentication/view/views/widgets/forget_password_widget.dart';
@@ -15,8 +12,20 @@ import 'package:flutter_svg/svg.dart';
 
 /*
 ahmedgamal@gmail.com
-123456789 
+123456789
 
+
+emadmagdy@gmail.com
+123456789
+
+saifheshamt@gmail.com
+123456789
+
+abdohanafi@gmail.com
+123456789
+
+aliaaasaad@gmail.com
+123456789
 
 */
 

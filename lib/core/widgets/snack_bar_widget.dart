@@ -1,7 +1,7 @@
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
-void showCustomSnackBar(BuildContext context, String message) {
+void showCustomSnackBar(BuildContext context, String message, String s) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(

@@ -4,41 +4,52 @@ import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:flutter/material.dart';
 
 class CartController extends ChangeNotifier {
-  final List<CourseDetailsModel> _cartCourses = [];
-  List<CourseDetailsModel> get cartCourses => _cartCourses;
+  List<CourseDetailsModel> cartCourses =
+      []; /* 
+  List<CourseDetailsModel> get cartCourses => _cartCourses; */
+
   String _total = '0';
   String get total => _total;
+  bool _isDuplicate = false;
+  bool get isDuplicate => _isDuplicate;
   void addCourse(CourseDetailsModel course) {
-    /* if (_cartCourses.isEmpty) { */
-      _cartCourses.add(course);
-    /* } else { */
-      /* for (var i in _cartCourses) {
-        if (i.name != course.name) {
-          _cartCourses.add(course);
+    if (cartCourses.isEmpty) {
+      cartCourses.add(course);
+    } else {
+      // ignore: avoid_function_literals_in_foreach_calls
+      cartCourses.forEach((element) {
+        log('element name: ${element.name}');
+        log('course name: ${course.name}');
+        if (element.name == course.name) {
+          _isDuplicate = true;
+          /* newCart.add(course); */
         }
-        /*  notifyListeners(); */
-      } */
-      /* _cartCourses
-          .where((element) {
-            log('element name: ${element.name}');
-            log('course name: ${course.name}');
-            return element.name != course.name;
-          })
-          .toList()
-          .add(course); */
-   // }
+      });
+      if (!_isDuplicate) {
+        cartCourses.add(course);
+      }
+    }
 
-    /* notifyListeners(); */
+    notifyListeners();
   }
 
-  removeCourse(CourseDetailsModel course) {
-    _cartCourses.remove(course);
-    log('message: message: $_cartCourses');
+  removeCourse(String courseId) {
+    cartCourses.removeWhere((element) {
+      if (element.id == courseId) {
+        _total =
+            (double.parse(_total) - double.parse(element.price!)).toString();
+        return true;
+      }
+      return false;
+    });
+
+    log('message: message: $cartCourses');
+    notifyListeners();
   }
 
   void getTotal() {
     double price = 0;
-    for (var i in _cartCourses) {
+    for (var i in cartCourses) {
       price += double.parse(i.price!);
     }
     _total = price.toString();

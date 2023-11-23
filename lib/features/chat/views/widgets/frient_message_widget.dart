@@ -2,21 +2,24 @@
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
-import 'package:elearning_app/features/chat/data/message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendMessageWidget extends StatelessWidget {
-  MessageModel messageModel;
-  FriendMessageWidget({Key? key, required this.messageModel}) : super(key: key);
+  String message;
+  FriendMessageWidget({Key? key, required this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.centerLeft,
       child: Container(
-        padding:
-            EdgeInsets.only(top: 15.h, bottom: 15.h, left: 10.w, right: 10.w),
+        padding: EdgeInsets.only(
+          top: 15.h,
+          bottom: 15.h,
+          left: 10.w,
+          right: 10.w,
+        ),
         decoration: const BoxDecoration(
           color: AppColors.grey,
           borderRadius: BorderRadius.only(
@@ -29,7 +32,7 @@ class FriendMessageWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              messageModel.message,
+              message,
               style: AppStyles.textStyle14.copyWith(color: AppColors.white),
             ),
           ],

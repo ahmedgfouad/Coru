@@ -1,18 +1,12 @@
-// ignore_for_file: unused_import, await_only_futures
-
 import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
-import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
-import 'package:elearning_app/features/cart/view/views/cart_view.dart';
-import 'package:elearning_app/features/home/view/views/course_details_view.dart';
-import 'package:elearning_app/features/home/view/views/home_view.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
-import 'package:elearning_app/features/profile/view/view_model/profile_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -31,7 +25,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  var user = await FirebaseAuth.instance.currentUser;
+  var user = FirebaseAuth.instance.currentUser;
   log("======the user in main == ${user?.email}============");
   if (user == null) {
     log("in if ${user.toString()}");
@@ -65,18 +59,21 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => EditProfileController()),
           ChangeNotifierProvider(create: (context) => CartController()),
           ChangeNotifierProvider(create: (context) => AuthController()),
-          ChangeNotifierProvider(create: (context) => EditProfileController()),
+          ChangeNotifierProvider(
+              create: (context) => EditProfileController()..getUserDataById()),
           ChangeNotifierProvider(create: (context) => AuthController()),
+          ChangeNotifierProvider(create: (context) => ChatController()..getallUsersInfo()),
+          // ChangeNotifierProvider(create: (context) => ExController()),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ELearning App',
+          title: 'CORU',
           theme: AppTheme().lightTheme,
           darkTheme: AppTheme().darkTheme,
           themeMode:
               Provider.of<ThemeController>(context, listen: true).themeMode,
           onGenerateRoute: AppRoutes.onGenerateRoute,
-          //home:CartView(),
+          //home:SplashView(),
           initialRoute: isLogIn ? Routes.navBar : Routes.splash,
           navigatorKey: AppRoutes.navigatorState,
           navigatorObservers: [AppRoutes.routeObserver],

@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/widgets/vertical_course_card.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';

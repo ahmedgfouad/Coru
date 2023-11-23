@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'dart:developer';
+
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/widgets/default_button.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
@@ -22,14 +24,14 @@ class LoginButtonActionWidget extends StatelessWidget {
           DefaultButton(
         onPressed: () async {
           await provider.loginAuth();
-          print("=========");
+          log("=========");
           if (provider.userCredential != null) {
             AppRoutes.pushNamedNavigator(
               replacement: true,
               routeName: Routes.navBar,
             );
           } else {
-            print("eroor");
+            log("eroor");
           }
         },
         width: 300,

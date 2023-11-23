@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/images.dart';
-import 'package:elearning_app/features/home/view_model/home_controller.dart';
+import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/handlers/localization.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -32,14 +32,17 @@ class CourseCategoriesGridView extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: category.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 4 / 5, mainAxisExtent: 190.r),
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 5,
+          mainAxisExtent: 190.r,
+        ),
         itemBuilder: (context, index) => InkWell(
           onTap: () {
-            
             provider.getCourses(courseFilter: category[index]['title']);
             AppRoutes.pushNamedNavigator(
-                routeName: Routes.coursesCategories,
-                arguments: category[index]['title']);
+              routeName: Routes.coursesCategories,
+              arguments: category[index]['title'],
+            );
           },
           child: Container(
             margin: EdgeInsets.all(8.0.r),
@@ -53,7 +56,9 @@ class CourseCategoriesGridView extends StatelessWidget {
                     offset: const Offset(0, 0),
                   ),
                 ],
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context)
+                    .colorScheme
+                    .secondary /* .withOpacity(.7) */,
                 borderRadius: BorderRadius.circular(15.r)),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
