@@ -1,9 +1,7 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
+import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
-import 'package:elearning_app/routing/navigator.dart';
-import 'package:elearning_app/routing/routes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +11,19 @@ class HeaderChatWidget extends StatelessWidget {
     super.key,
     required this.userInfoModel,
   });
+
+  void callChatDetailsScreen(
+    BuildContext context,
+    String name,
+    String uid,
+  ) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChatView(friendUid: uid),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +35,11 @@ class HeaderChatWidget extends StatelessWidget {
       ) =>
           GestureDetector(
         onTap: () {
-          String curentUser = FirebaseAuth.instance.currentUser!.uid;
-          provider.addChat(
-            userId: curentUser,
-            frientId: userInfoModel.userId,
-           
+          callChatDetailsScreen(
+            context,
+            userInfoModel.firstName.toString(),
+            userInfoModel.userId.toString(),
           );
-          AppRoutes.pushNamedNavigator(routeName: Routes.chat);
         },
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
