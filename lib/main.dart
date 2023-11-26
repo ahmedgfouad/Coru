@@ -53,17 +53,20 @@ class MyApp extends StatelessWidget {
                 ..getTopCourses()
                 ..getRecentCourse()),
           ChangeNotifierProvider(
-              create: (context) => MyCoursesController()..getUserCourses()),
+            create: (context) => MyCoursesController()..getUserCourses(),
+          ),
           ChangeNotifierProvider(create: (context) => ThemeController()),
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => EditProfileController()),
           ChangeNotifierProvider(create: (context) => CartController()),
           ChangeNotifierProvider(create: (context) => AuthController()),
           ChangeNotifierProvider(
-              create: (context) => EditProfileController()..getUserDataById()),
+            create: (context) => EditProfileController()..getUserDataById(),
+          ),
           ChangeNotifierProvider(create: (context) => AuthController()),
-          ChangeNotifierProvider(create: (context) => ChatController()..getallUsersInfo()),
-          // ChangeNotifierProvider(create: (context) => ExController()),
+          ChangeNotifierProvider(
+            create: (context) => ChatController()..getallUsersInfo(),
+          ),
         ],
         builder: (context, _) => MaterialApp(
           debugShowCheckedModeBanner: false,

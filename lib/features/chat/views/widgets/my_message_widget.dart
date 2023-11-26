@@ -11,33 +11,38 @@ class MyMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Container(
-        padding: EdgeInsets.only(
-          top: 15.h,
-          bottom: 15.h,
-          left: 10.w,
-          right: 10.w,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-            bottomLeft: Radius.circular(15),
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 15.h,
+              bottom: 15.h,
+              left: 10.w,
+              right: 10.w,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.primaryColor,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+                bottomLeft: Radius.circular(15),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  message,
+                  style: AppStyles.textStyle14.copyWith(color: AppColors.white),
+                ),
+              ],
+            ),
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              message,
-              style: AppStyles.textStyle14.copyWith(color: AppColors.white),
-            ),
-          ],
-        ),
-      ),
+        const SizedBox(height: 5),
+      ],
     );
   }
 }
