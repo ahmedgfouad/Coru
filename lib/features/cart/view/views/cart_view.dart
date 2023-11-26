@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
@@ -13,11 +12,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class CartView extends StatelessWidget {
-  /* final CourseDetailsModel? course; */
-  const CartView({
-    super.key,
-    /* this.course */
-  });
+  const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,63 +24,50 @@ class CartView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Consumer<CartController>(
-                builder: (context, value, child) {
-                  //log('message: course: ${course!.name}');
-                  /* value.addCourse(course!); */
-                  log('message: ${value.cartCourses}');
-                  /* value.getTotal(); */
-
-                  if (value.cartCourses.isNotEmpty) {
+                builder: (context, provider, child) {
+                  if (provider.cartCourses.isNotEmpty) {
                     return Column(
                       children: [
                         SizedBox(
-                          height: MediaQueryHelper.height * 0.73,
+                          height: MediaQueryHelper.height / 1.5,
                           child: ListView.builder(
+                            itemCount: provider.cartCourses.length,
                             itemBuilder: (context, index) {
-                              log('message: ${value.cartCourses[index]}');
                               return VerticalCourseCard(
-                                course: value.cartCourses[index],
+                                course: provider.cartCourses[index],
                                 cartOnPressed: () {
-                                  value.removeCourse(
-                                      value.cartCourses[index].id!);
+                                  provider.removeCourse(
+                                    provider.cartCourses[index].id!,
+                                  );
                                 },
                                 isCart: true,
                               );
                             },
-                            itemCount: value.cartCourses.length,
                           ),
                         ),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                flex: 3,
-                                child: Text('Total:\$${value.total}',
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    )),
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: DefaultButton(
-                                  text: 'Buy',
-                                  height: MediaQueryHelper.height * 0.05,
-                                  width: MediaQueryHelper.width * 0.3,
-                                  backgroundColor:
-                                      Theme.of(context).colorScheme.primary,
-                                  onPressed: () => AppRoutes.pushNamedNavigator(
-                                      routeName: Routes.payment),
-                                ),
+                              Text('Total:\$${provider.total}',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              DefaultButton(
+                                text: 'Buy',
+                                height: MediaQueryHelper.height * 0.05,
+                                width: MediaQueryHelper.width * 0.3,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.primary,
+                                onPressed: () => AppRoutes.pushNamedNavigator(
+                                    routeName: Routes.payment),
                               ),
                             ])
                       ],
                     );
                   } else {
-                    log('message: ${value.cartCourses}');
-                    return Column(//mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                      //Spacer(),
+                    log('message: ${provider.cartCourses}');
+                    return Column(children: [
                       SizedBox(
                         height: MediaQueryHelper.height * .2,
                       ),
