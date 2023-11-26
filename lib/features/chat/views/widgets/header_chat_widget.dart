@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
+
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
-import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,19 +13,6 @@ class HeaderChatWidget extends StatelessWidget {
     required this.userInfoModel,
   });
 
-  void callChatDetailsScreen(
-    BuildContext context,
-    String name,
-    String uid,
-  ) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ChatView(friendUid: uid),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatController>(
@@ -35,11 +23,7 @@ class HeaderChatWidget extends StatelessWidget {
       ) =>
           GestureDetector(
         onTap: () {
-          callChatDetailsScreen(
-            context,
-            userInfoModel.firstName.toString(),
-            userInfoModel.userId.toString(),
-          );
+          provider.getChatData(userInfoModel.userId.toString(), context);
         },
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -70,9 +54,7 @@ class HeaderChatWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
@@ -85,21 +67,11 @@ class HeaderChatWidget extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                const Row(
-                  children: [
-                    Text(
-                      "10 :20 AM",
-                      style: AppStyles.textStyle12,
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    CircleAvatar(
-                      radius: 12,
-                      child: Text("2"),
-                    ),
-                  ],
+                const Text(
+                  "10 :20 AM",
+                  style: AppStyles.textStyle12,
                 ),
+                const SizedBox(width: 5),
               ],
             ),
           ),

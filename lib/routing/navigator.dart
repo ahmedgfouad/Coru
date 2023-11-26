@@ -75,7 +75,7 @@ class AppRoutes {
         return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView());
 
       case Routes.chat:
-        return AppRoutes.aniamtedNavigation(screen: const ChatView());
+        return AppRoutes.aniamtedNavigation(screen:   const ChatView());
 
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
