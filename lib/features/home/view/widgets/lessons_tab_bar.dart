@@ -8,10 +8,10 @@ import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LessonsList extends StatelessWidget {
+class LessonsListWidget extends StatelessWidget {
   final List<Lessons> lesson;
 
-  const LessonsList({super.key, required this.lesson});
+  const LessonsListWidget({super.key, required this.lesson});
 
   @override
   Widget build(BuildContext context) {

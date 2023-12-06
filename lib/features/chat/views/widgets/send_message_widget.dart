@@ -1,5 +1,6 @@
 import 'package:elearning_app/core/widgets/default_text_form_field.dart';
 import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,7 @@ class SendMessageWidget extends StatelessWidget {
       ) =>
           DefaultFormField(
         isAuth: false,
-        hintText: "send message",
+        hintText: S.of(context).send_message,
         onSubmitted: (data) {},
         width: MediaQuery.of(context).size.width,
         controller: provider.messageController,

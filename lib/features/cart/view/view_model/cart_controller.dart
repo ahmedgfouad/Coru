@@ -1,13 +1,12 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'dart:developer';
 
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:flutter/material.dart';
 
 class CartController extends ChangeNotifier {
-  List<CourseDetailsModel> cartCourses =
-      []; /* 
-  List<CourseDetailsModel> get cartCourses => _cartCourses; */
-
+  List<CourseDetailsModel> cartCourses = [];
   String _total = '0';
   String get total => _total;
   bool _isDuplicate = false;
@@ -16,13 +15,11 @@ class CartController extends ChangeNotifier {
     if (cartCourses.isEmpty) {
       cartCourses.add(course);
     } else {
-      // ignore: avoid_function_literals_in_foreach_calls
       cartCourses.forEach((element) {
         log('element name: ${element.name}');
         log('course name: ${course.name}');
         if (element.name == course.name) {
           _isDuplicate = true;
-          /* newCart.add(course); */
         }
       });
       if (!_isDuplicate) {
@@ -41,9 +38,7 @@ class CartController extends ChangeNotifier {
         return true;
       }
       return false;
-    });
-
-    log('message: message: $cartCourses');
+    }); 
     notifyListeners();
   }
 

@@ -7,7 +7,7 @@ import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/home/view/views/home_view.dart';
 import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
-import 'package:elearning_app/handlers/localization.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,23 +34,23 @@ class _NavBarViewState extends State<NavBarView> {
     // double MediaQueryHelper.width = MediaQuery.of(context).size.width;
     List<Map<String, dynamic>> screens = [
       {
-        'title': "${getLang(context, 'home')}",
+        'title': S.of(context).home,
         'screen': const HomeView(),
       },
       {
-        'title': "${getLang(context, 'my_courses')}",
+        'title': S.of(context).my_courses,
         'screen': const MyCoursesView(),
       },
       {
-        'title': "${getLang(context, 'cart')}",
+        'title': S.of(context).cart,
         'screen': const CartView(),
       },
       {
-        'title': "${getLang(context, 'chat')}",
+        'title': S.of(context).chat,
         'screen': const HeaderChatsView(),
       },
       {
-        'title': "${getLang(context, 'profile')}",
+        'title': S.of(context).profile,
         'screen': const ProfileView(),
       }
     ];

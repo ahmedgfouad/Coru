@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
@@ -14,9 +14,8 @@ class ChatController extends ChangeNotifier {
   bool isSearchFieldEmpty = true;
   List<UserInfoModel> allUsersInfo = [];
 
-  CollectionReference chats = FirebaseFirestore.instance.collection("chats"); 
+  CollectionReference chats = FirebaseFirestore.instance.collection("chats");
   var chatDocId;
-  
 
   void changeSearchStateToEmpty() {
     isSearchFieldEmpty = true;
@@ -60,8 +59,9 @@ class ChatController extends ChangeNotifier {
     return messageId == FirebaseAuth.instance.currentUser!.uid;
   }
 
-  void getChatData(friendId, context) async {
+  Future getChatData(friendId, context) async {
     String currentUserId = FirebaseAuth.instance.currentUser!.uid;
+    print("$friendId ||| $currentUserId ");
     await chats
         .where(
           'users',
@@ -71,17 +71,23 @@ class ChatController extends ChangeNotifier {
         .get()
         .then(
           (QuerySnapshot querySnapshot) {
+            print(querySnapshot.docs.isNotEmpty);
             if (querySnapshot.docs.isNotEmpty) {
-              chatDocId = querySnapshot.docs.single.id.toString();
-              notifyListeners();
+              chatDocId = querySnapshot.docs.single.id;
+              print("====== $chatDocId==========");
             } else {
+              print("=====4=====");
               chats.add({
-                'users': {currentUserId: null, friendId.userId.toString(): null}
-              }).then((value) => {
-                    chatDocId = value.toString(),
-                  });
+                'users': {currentUserId: null, friendId: null}
+              }).then(
+                (value) => {
+                  chatDocId = value.toString(),
+                },
+              );
               notifyListeners();
+              print("---------- $chatDocId---------");
             }
+            print("::::::::::: $chatDocId ::::::::::");
           },
         )
         .catchError((error) {});
@@ -92,5 +98,7 @@ class ChatController extends ChangeNotifier {
         builder: (context) => ChatView(chatDocId: chatDocId),
       ),
     );
+
+    notifyListeners();
   }
 }
