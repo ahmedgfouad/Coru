@@ -3,6 +3,7 @@ import 'package:elearning_app/features/home/view/widgets/course_categories_grid_
 import 'package:elearning_app/features/home/view/widgets/horizontal_course_list_view.dart';
 
 import 'package:elearning_app/features/home/view/widgets/recent_course.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 // ignore: unused_import
@@ -30,7 +31,7 @@ class HomeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Top Courses',
+                        S.of(context).top_courses,
                         style: TextStyle(
                             fontSize: 16.0.sp, fontWeight: FontWeight.bold),
                       ),
@@ -39,7 +40,7 @@ class HomeView extends StatelessWidget {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01),
                       Text(
-                        'Courses Type',
+                        S.of(context).coursses_type,
                         style: TextStyle(
                             fontSize: 16.0.sp, fontWeight: FontWeight.bold),
                       ),

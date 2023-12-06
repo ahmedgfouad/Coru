@@ -23,7 +23,10 @@ class HeaderChatWidget extends StatelessWidget {
       ) =>
           GestureDetector(
         onTap: () {
-          provider.getChatData(userInfoModel.userId.toString(), context);
+          provider.getChatData(
+            userInfoModel.userId,
+            context,
+          );
         },
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -35,9 +38,7 @@ class HeaderChatWidget extends StatelessWidget {
                   backgroundImage:
                       NetworkImage(userInfoModel.imageProfileUrl.toString()),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

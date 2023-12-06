@@ -1,7 +1,6 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
-import 'package:elearning_app/handlers/localization.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +17,12 @@ class CourseCategoriesGridView extends StatelessWidget {
     var provider = Provider.of<HomeController>(context, listen: true);
 
     List<Map<String, dynamic>> category = [
-      {'title': getLang(context, 'all_courses'), 'icon': AppImages.allCourses},
-      {'title': getLang(context, 'medical'), 'icon': AppImages.medical},
-      {'title': getLang(context, 'programming'), 'icon': AppImages.programming},
-      {'title': getLang(context, 'marketing'), 'icon': AppImages.marketing},
-      {'title': getLang(context, 'business'), 'icon': AppImages.business},
-      {'title': getLang(context, 'd3_design'), 'icon': AppImages.d3Design},
+      {'title':'all_courses', 'icon': AppImages.allCourses},
+      {'title':'medical', 'icon': AppImages.medical},
+      {'title':'programming', 'icon': AppImages.programming},
+      {'title':'marketing', 'icon': AppImages.marketing},
+      {'title':'business', 'icon': AppImages.business},
+      {'title':'d3_design', 'icon': AppImages.d3Design},
     ];
 
     return SizedBox(

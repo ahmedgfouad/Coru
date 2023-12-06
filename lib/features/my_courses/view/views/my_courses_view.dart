@@ -2,6 +2,7 @@ import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/features/home/view/widgets/custom_tab_bar.dart';
 import 'package:elearning_app/features/my_courses/view/widgets/complete_tab_bar.dart';
 import 'package:elearning_app/features/my_courses/view/widgets/in_progress_tab_bar.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class MyCoursesView extends StatefulWidget {
@@ -35,16 +36,16 @@ class _MyCoursesViewState extends State<MyCoursesView>
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              const DefaultAppBar(title: 'My Courses'),
+              DefaultAppBar(title: S.of(context).my_courses),
               CustomTabBar(
                 tabController: _tabController,
                 viewsBody: const [InProgressTabBar(), CompleteTabBar()],
-                viewsTitle: const [
+                viewsTitle: [
                   Tab(
-                    text: 'In Progress',
+                    text: S.of(context).in_progress,
                   ),
                   Tab(
-                    text: 'Complete',
+                    text: S.of(context).commplete,
                   ),
                 ],
               )
