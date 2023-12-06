@@ -1,5 +1,6 @@
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class NumberOfStrudentAndHoursCourseWidget extends StatelessWidget {
@@ -22,7 +23,7 @@ class NumberOfStrudentAndHoursCourseWidget extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
             const SizedBox(width: 3),
-            Text('${course.studentNumber!} student')
+            Text('${course.studentNumber!}  ${S.of(context).student}')
           ],
         ),
         Row(
@@ -32,7 +33,7 @@ class NumberOfStrudentAndHoursCourseWidget extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
             const SizedBox(width: 3),
-            Text('${course.hours!} hours')
+            Text('${course.hours!} ${S.of(context).hours}')
           ],
         ),
         Row(
@@ -42,7 +43,7 @@ class NumberOfStrudentAndHoursCourseWidget extends StatelessWidget {
               color: AppColors.primaryColor,
             ),
             const SizedBox(width: 3),
-            const Text('Certificate')
+            Text(S.of(context).certificate)
           ],
         ),
       ],

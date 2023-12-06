@@ -2,6 +2,7 @@ import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _LocalizationViewState extends State<LocalizationView> {
       body: SafeArea(
         child: Column(
           children: [
-            const DefaultAppBar(title: 'Language'),
+            DefaultAppBar(title: S.of(context).language),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: Consumer<LocalizationController>(
@@ -27,9 +28,9 @@ class _LocalizationViewState extends State<LocalizationView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Suggested',
+                      S.of(context).suggestions,
                       style: AppStyles.textStyle18.copyWith(
-                        color: AppColors.curvePrimary,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                     RadioListTile(
@@ -43,8 +44,10 @@ class _LocalizationViewState extends State<LocalizationView> {
                       ),
                       value: provider.english,
                       groupValue: provider.index,
-                      onChanged: (int? tileIndex) =>
-                          provider.toggleLanguage(tileIndex!),
+                      onChanged: (int? tileIndex) {
+                        provider.toggleLanguage(tileIndex!);
+                        
+                      },
                     ),
                     RadioListTile(
                       activeColor: AppColors.primaryColor,
@@ -57,8 +60,9 @@ class _LocalizationViewState extends State<LocalizationView> {
                       ),
                       value: provider.arabic,
                       groupValue: provider.index,
-                      onChanged: (int? tileIndex) =>
-                          provider.toggleLanguage(tileIndex!),
+                      onChanged: (int? tileIndex) {
+                        provider.toggleLanguage(tileIndex!); 
+                      },
                     ),
                   ],
                 ),

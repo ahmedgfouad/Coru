@@ -1,3 +1,5 @@
+import 'package:animated_rating_stars/animated_rating_stars.dart';
+import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/model/users_info/my_course_model.dart';
@@ -64,6 +66,7 @@ class VerticalCourseCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                const SizedBox(width: 5),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(left: 4.0.r),
@@ -71,9 +74,7 @@ class VerticalCourseCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: MediaQuery.sizeOf(context).height * .01,
-                        ),
+                        const SizedBox(height: 5),
                         Text(
                           course.name ?? 'Text',
                           overflow: TextOverflow.ellipsis,
@@ -81,26 +82,40 @@ class VerticalCourseCard extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 16.0.sp, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                            height: MediaQuery.sizeOf(context).height * .02),
-                        isProgress
-                            ? Text(
-                                course.instructor!,
-                                style: TextStyle(
-                                  fontSize: 11.0.sp,
-                                  color: AppColors.grey,
-                                ),
-                              )
-                            : Text(
-                                '\$${course.price!}',
-                                style: TextStyle(
-                                  fontSize: 15.0.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.primaryColor,
-                                ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Text(
+                              '\$${course.price!}',
+                              style: TextStyle(
+                                fontSize: 15.0.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryColor,
                               ),
-                        SizedBox(
-                            height: MediaQuery.sizeOf(context).height * .005),
+                            ),
+                            const SizedBox(width: 15),
+                            Icon(
+                              Icons.person,
+                              color: AppColors.primaryColor,
+                            ),
+                            Text(
+                              course.instructor!,
+                              style: AppStyles.textStyle14,
+                            ),
+                          ],
+                        ),
+                        AnimatedRatingStars(
+                          initialRating: double.parse("${course.rating}"),
+                          filledColor: AppColors.primaryColor,
+                          onChanged: (double rating) {},
+                          customFilledIcon: Icons.star,
+                          customHalfFilledIcon: Icons.star_half,
+                          customEmptyIcon: Icons.star_border,
+                          starSize: 15.0,
+                          animationCurve: Curves.easeInOut,
+                          readOnly: false,
+                        ),
+                        const SizedBox(height: 3),
                       ],
                     ),
                   ),
@@ -116,7 +131,7 @@ class VerticalCourseCard extends StatelessWidget {
         ),
         isCart
             ? Positioned(
-                top: -1,
+                top: 10,
                 right: -1,
                 child: IconButton(
                   onPressed: cartOnPressed,

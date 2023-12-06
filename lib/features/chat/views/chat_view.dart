@@ -6,6 +6,7 @@ import 'package:elearning_app/features/chat/views/view_model/chat_controller.dar
 import 'package:elearning_app/features/chat/views/widgets/frient_message_widget.dart';
 import 'package:elearning_app/features/chat/views/widgets/my_message_widget.dart';
 import 'package:elearning_app/features/chat/views/widgets/send_message_widget.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,7 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: StreamBuilder(
-    stream: FirebaseFirestore.instance
+      stream: FirebaseFirestore.instance
           .collection('chats')
           .doc(chatDocId)
           .collection("messages")
@@ -44,7 +45,7 @@ class ChatView extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    const DefaultAppBar(title: "Chat"),
+                    DefaultAppBar(title: S.of(context).chat),
                     Expanded(
                       child: ListView(
                         reverse: true,

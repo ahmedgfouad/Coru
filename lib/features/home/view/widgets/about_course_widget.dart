@@ -1,4 +1,5 @@
 import 'package:elearning_app/data/model/course_detials_model.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +16,7 @@ class AbouteCourseWidget extends StatelessWidget {
     return Column(
       children: [
         Text(
-          ' About',
+          S.of(context).about,
           style: TextStyle(
             fontSize: 22.0.sp,
             fontWeight: FontWeight.bold,

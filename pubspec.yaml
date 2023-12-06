@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_rating_stars: ^1.0.1
   cloud_firestore: ^4.9.1
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.9.0
@@ -87,3 +88,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

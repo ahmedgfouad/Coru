@@ -1,5 +1,7 @@
+import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
+import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class LessonDetailsView extends StatelessWidget {
@@ -12,12 +14,11 @@ class LessonDetailsView extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(children: [
-          const DefaultAppBar(
-            title: 'Lesson Details',
+          DefaultAppBar(
+            title: S.of(context).lesson_details,
           ),
-          
           Container(
-            margin: const EdgeInsets.symmetric(horizontal:16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             height: MediaQuery.sizeOf(context).height * .3,
             width: MediaQuery.sizeOf(context).width,
             decoration: BoxDecoration(
@@ -28,9 +29,10 @@ class LessonDetailsView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.withOpacity(.5),
-                      blurRadius: 12,
-                      offset: const Offset(0, 2))
+                    color: Colors.grey.withOpacity(.5),
+                    blurRadius: 12,
+                    offset: const Offset(0, 2),
+                  )
                 ]),
           ),
           SizedBox(
@@ -49,21 +51,23 @@ class LessonDetailsView extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                           fontSize: 20),
                     ),
-                    Text("${lesson['lesson'].title}",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
+                    Text(
+                      "${lesson['lesson'].title}",
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 SizedBox(
                   height: MediaQueryHelper.height * .02,
                 ),
-                const Text('Description:',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
+                Text(
+                  '${S.of(context).description} :',
+                  style: AppStyles.textStyle20
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
                   height: MediaQueryHelper.height * .01,
                 ),
