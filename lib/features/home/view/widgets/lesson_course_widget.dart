@@ -26,4 +26,3 @@ class LessonsCoursWidget extends StatelessWidget {
     );
   }
 }
-
