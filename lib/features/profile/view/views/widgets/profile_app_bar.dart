@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
+import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -22,13 +21,12 @@ class ProfileAppBarWidget extends StatelessWidget {
           provider,
           Widget? child,
         ) {
-          log("The staues user is guest : ${provider.isGuest}");
           return Container(
             width: 390,
             height: 176,
-            decoration: const BoxDecoration(
-              color: AppColors.thirdColor,
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(70),
                 bottomRight: Radius.circular(70),
               ),
@@ -55,10 +53,10 @@ class ProfileAppBarWidget extends StatelessWidget {
                     ],
                   )
                 : StreamBuilder(
-                    stream: Provider.of<EditProfileController>(context,
-                            listen: false)
-                        .getUserDataById()
-                        .asStream(),
+                    stream: Provider.of<EditProfileController>(
+                      context,
+                      listen: false,
+                    ).getUserDataById().asStream(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         UserInfoModel? userData = snapshot.data;
@@ -93,7 +91,17 @@ class ProfileAppBarWidget extends StatelessWidget {
                                 Text(
                                   "Astronaut",
                                   style: AppStyles.textStyle14.copyWith(
-                                    color: AppColors.grey,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background,
+                                  ),
+                                ),
+                                Consumer<ThemeController>(
+                                  builder: (context, provider, child) => Switch(
+                                    value: provider.index,
+                                    onChanged: (value) {
+                                      provider.toggleTheme(value);
+                                    },
                                   ),
                                 ),
                               ],

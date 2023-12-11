@@ -36,10 +36,11 @@ class CourseDetailsAppBar extends StatelessWidget {
                 width: MediaQueryHelper.width * 0.02,
               ),
               CustomIconButton(
-                  iconImage: AppImages.arrowBack,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
+                iconImage: AppImages.arrowBack,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ],
@@ -66,7 +67,7 @@ class CourseDetailsAppBar extends StatelessWidget {
           height: 30.0,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.inversePrimary,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0.r),
               topRight: Radius.circular(30.0.r),

@@ -32,7 +32,7 @@ class LessonsListWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 16.0.r),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0.r),
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.inversePrimary,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(.5),

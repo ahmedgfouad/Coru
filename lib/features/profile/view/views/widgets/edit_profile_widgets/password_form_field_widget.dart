@@ -22,6 +22,7 @@ class PasswordFormFieldEditProfileWidget extends StatelessWidget {
         Widget? child,
       ) =>
           DefaultFormField(
+        textColor: Theme.of(context).colorScheme.background,
         tittle: S.of(context).password,
         width: 300,
         height: 45,
@@ -29,7 +30,7 @@ class PasswordFormFieldEditProfileWidget extends StatelessWidget {
           provider.changePassword(password: val!);
         },
         initValue: userData!.password,
-        validate: (val) { 
+        validate: (val) {
           return null;
         },
         suffix: provider.obSecurePassword

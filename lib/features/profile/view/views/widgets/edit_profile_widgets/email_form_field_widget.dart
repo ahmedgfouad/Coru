@@ -16,6 +16,7 @@ class EmailFormFieldEditProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultFormField(
+      textColor: Theme.of(context).colorScheme.background,
       tittle: S.of(context).email,
       width: 300,
       height: 45,

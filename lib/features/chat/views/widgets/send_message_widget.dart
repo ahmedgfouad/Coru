@@ -22,6 +22,7 @@ class SendMessageWidget extends StatelessWidget {
       ) =>
           DefaultFormField(
         isAuth: false,
+        textColor: Theme.of(context).colorScheme.background,
         hintText: S.of(context).send_message,
         onSubmitted: (data) {},
         width: MediaQuery.of(context).size.width,

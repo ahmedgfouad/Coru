@@ -22,6 +22,7 @@ class ConfirmPasswordFormFieldEditProfileWidget extends StatelessWidget {
         Widget? child,
       ) =>
           DefaultFormField(
+        textColor: Theme.of(context).colorScheme.background,
         tittle: S.of(context).confirm_password,
         width: 300,
         height: 45,
@@ -30,7 +31,7 @@ class ConfirmPasswordFormFieldEditProfileWidget extends StatelessWidget {
         },
         initValue: userData!.confirmPassword,
         validate: (value) {
-          return null; 
+          return null;
         },
         suffix: provider.obSecureConfirmPassword
             ? Icons.visibility_off_outlined

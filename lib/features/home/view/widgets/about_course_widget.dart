@@ -20,6 +20,7 @@ class AbouteCourseWidget extends StatelessWidget {
           style: TextStyle(
             fontSize: 22.0.sp,
             fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.background,
           ),
         ),
         Text(course.about!),

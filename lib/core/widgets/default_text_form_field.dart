@@ -46,7 +46,7 @@ class DefaultFormField extends StatelessWidget {
     this.cursorColor = Colors.blue,
     this.initValue,
     this.onChange,
-     this.onSubmitted,
+    this.onSubmitted,
   });
 
   @override
@@ -75,8 +75,9 @@ class DefaultFormField extends StatelessWidget {
           width: width,
           height: height,
           child: TextFormField(
+            
             initialValue: initValue,
-            onChanged: onChange, 
+            onChanged: onChange,
             onFieldSubmitted: onSubmitted,
             style: TextStyle(color: textColor),
             cursorColor: cursorColor,
@@ -85,40 +86,41 @@ class DefaultFormField extends StatelessWidget {
             obscureText: obSecure ?? false,
             validator: validate,
             decoration: InputDecoration(
-                hintText: hintText,
-                filled: true,
-                contentPadding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
+              hintText: hintText,
+              filled: true,
+              contentPadding: const EdgeInsets.only(
+                left: 10,
+                right: 10,
+              ), 
+              suffixIcon: isPassword == true
+                  ? InkWell(
+                      onTap: suffixButtonPressed,
+                      child: Icon(
+                        suffix,
+                        size: 20,
+                        color: AppColors.primaryColor,
+                      ),
+                    )
+                  : null,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  color: borderColor,
                 ),
-                suffixIcon: isPassword == true
-                    ? InkWell(
-                        onTap: suffixButtonPressed,
-                        child: Icon(
-                          suffix,
-                          size: 20,
-                          color: AppColors.primaryColor,
-                        ),
-                      )
-                    : null,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: borderColor,
-                  ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  color: borderColor,
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: borderColor,
-                  ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(
+                  color: Colors.white,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.white,
-                  ),
-                )),
+              ),
+            ),
           ),
         ),
       ],

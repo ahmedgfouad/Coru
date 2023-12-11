@@ -46,12 +46,20 @@ class HeaderChatWidget extends StatelessWidget {
                       children: [
                         Text(
                           "${userInfoModel.firstName}",
-                          style: AppStyles.textStyle16,
+                          style: AppStyles.textStyle16.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondaryContainer,
+                          ),
                         ),
                         const SizedBox(width: 5),
                         Text(
                           "${userInfoModel.lasttName}",
-                          style: AppStyles.textStyle16,
+                          style: AppStyles.textStyle16.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondaryContainer,
+                          ),
                         ),
                       ],
                     ),

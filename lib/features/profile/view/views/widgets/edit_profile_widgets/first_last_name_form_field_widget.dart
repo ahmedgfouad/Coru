@@ -20,6 +20,7 @@ class FirstAndLastNameEditProfileWidet extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DefaultFormField(
+          textColor: Theme.of(context).colorScheme.background,
           tittle: S.of(context).first_name,
           width: 130.w,
           height: 45.h,
@@ -33,6 +34,7 @@ class FirstAndLastNameEditProfileWidet extends StatelessWidget {
           },
         ),
         DefaultFormField(
+          textColor: Theme.of(context).colorScheme.background,
           tittle: S.of(context).last_name,
           width: 130,
           height: 45,
