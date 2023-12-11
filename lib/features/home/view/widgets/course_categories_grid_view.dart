@@ -1,5 +1,4 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
-import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -14,39 +13,35 @@ class CourseCategoriesGridView extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<HomeController>(context, listen: true);
-
-    List<Map<String, dynamic>> category = [
-      {'title':'all_courses', 'icon': AppImages.allCourses},
-      {'title':'medical', 'icon': AppImages.medical},
-      {'title':'programming', 'icon': AppImages.programming},
-      {'title':'marketing', 'icon': AppImages.marketing},
-      {'title':'business', 'icon': AppImages.business},
-      {'title':'d3_design', 'icon': AppImages.d3Design},
-    ];
-
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .8,
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: category.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 4 / 5,
-          mainAxisExtent: 190.r,
-        ),
-        itemBuilder: (context, index) => InkWell(
-          onTap: () {
-            provider.getCourses(courseFilter: category[index]['title']);
-            AppRoutes.pushNamedNavigator(
-              routeName: Routes.coursesCategories,
-              arguments: category[index]['title'],
-            );
-          },
-          child: Container(
-            margin: EdgeInsets.all(8.0.r),
-            padding: EdgeInsets.all(8.0.r),
-            decoration: BoxDecoration(
+    return Consumer<HomeController>(
+      builder: (
+        BuildContext context,
+        provider,
+        Widget? child,
+      ) =>
+          SizedBox(
+        height: MediaQuery.of(context).size.height * .8,
+        child: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: provider.category.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 4 / 5,
+            mainAxisExtent: 190.r,
+          ),
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              provider.getCourses(
+                  courseFilter: provider.category[index]['title']);
+              AppRoutes.pushNamedNavigator(
+                routeName: Routes.coursesCategories,
+                arguments: provider.category[index]['title'],
+              );
+            },
+            child: Container(
+              margin: EdgeInsets.all(8.0.r),
+              padding: EdgeInsets.all(8.0.r),
+              decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(.5),
@@ -55,25 +50,26 @@ class CourseCategoriesGridView extends StatelessWidget {
                     offset: const Offset(0, 0),
                   ),
                 ],
-                color: Theme.of(context)
-                    .colorScheme
-                    .secondary /* .withOpacity(.7) */,
-                borderRadius: BorderRadius.circular(15.r)),
-            child: Column(
+                color: Theme.of(context).colorScheme.secondary,
+                borderRadius: BorderRadius.circular(15.r),
+              ),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SvgPicture.asset(
-                    category[index]['icon'],
+                    provider.category[index]['icon'],
                     width: MediaQuery.of(context).size.width * 0.1,
                     height: MediaQuery.of(context).size.height * 0.1,
                     colorFilter:
                         const ColorFilter.mode(Colors.black, BlendMode.srcIn),
                   ),
                   Text(
-                    category[index]['title'],
+                    provider.category[index]['title'],
                     style: AppStyles.textStyle20,
                   )
-                ]),
+                ],
+              ),
+            ),
           ),
         ),
       ),

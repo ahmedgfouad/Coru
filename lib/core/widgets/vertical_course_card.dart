@@ -78,7 +78,7 @@ class VerticalCourseCard extends StatelessWidget {
                         Text(
                           course.name ?? 'Text',
                           overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
+                          maxLines: 1,
                           style: TextStyle(
                               fontSize: 16.0.sp, fontWeight: FontWeight.bold),
                         ),
