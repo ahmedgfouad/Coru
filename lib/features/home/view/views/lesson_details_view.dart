@@ -36,9 +36,7 @@ class _LessonDetailsViewState extends State<LessonDetailsView> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              DefaultAppBar(
-                title: S.of(context).lesson_details,
-              ),
+              DefaultAppBar(title: S.of(context).lesson_details),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 height: MediaQuery.sizeOf(context).height / 2.3,

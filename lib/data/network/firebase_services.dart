@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 
 class FirebaseServices {
-  
   CollectionReference allCourses =
       FirebaseFirestore.instance.collection('course_details');
 
@@ -40,7 +39,8 @@ class FirebaseServices {
   }
 
   Future<List<CourseDetailsModel>?>? getCourseCategories(
-      String category) async {
+    String category,
+  ) async {
     List<CourseDetailsModel>? courseCategory = [];
     QuerySnapshot querySnapshot =
         await allCourses.where('category', isEqualTo: category).get();
@@ -57,8 +57,4 @@ class FirebaseServices {
         recentCourse.data() as Map<String, dynamic>);
     return courseDetailsModel;
   }
-
-
-
-
 }

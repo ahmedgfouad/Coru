@@ -1,8 +1,19 @@
+import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/data/network/firebase_services.dart';
 import 'package:flutter/material.dart';
 
-class HomeController extends ChangeNotifier {
+class HomeController extends ChangeNotifier { 
+
+  List<Map<String, dynamic>> category = [
+      {'title': 'All courses', 'icon': AppImages.allCourses},
+      {'title': 'medical', 'icon': AppImages.medical},
+      {'title': 'Programming', 'icon': AppImages.programming},
+      {'title': 'marketing', 'icon': AppImages.marketing},
+      {'title': 'Business', 'icon': AppImages.business},
+      {'title': 'Graphic Design', 'icon': AppImages.d3Design},
+    ];
+    
   final FirebaseServices _firebaseServices = FirebaseServices();
 
   List<CourseDetailsModel>? _courses;
@@ -11,7 +22,7 @@ class HomeController extends ChangeNotifier {
   List<CourseDetailsModel>? _topCourses;
   List<CourseDetailsModel>? get topCourses => _topCourses;
 
-  CourseDetailsModel? /* get  */ recentCourse /*  => _recentCourse */;
+  CourseDetailsModel?  recentCourse ;
   List<CourseDetailsModel> userProgressCourses = [];
   List<CourseDetailsModel> userCompleteCourses = [];
 
