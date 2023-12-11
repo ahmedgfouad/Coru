@@ -20,6 +20,7 @@ class SearchChatWidget extends StatelessWidget {
         width: 400,
         height: 50,
         isAuth: false,
+        textColor: Theme.of(context).colorScheme.background,
         hintText: S.of(context).search,
         controller: provider.searchController,
         suffix: Icons.search,

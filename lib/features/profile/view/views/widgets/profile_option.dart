@@ -38,7 +38,7 @@ class ProfileOptionWidget extends StatelessWidget {
                   Text(
                     optionName,
                     style: AppStyles.textStyle16.copyWith(
-                      color: AppColors.primaryColor,
+                      color: Theme.of(context).colorScheme.secondaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

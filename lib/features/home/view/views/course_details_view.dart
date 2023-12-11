@@ -29,7 +29,9 @@ class CourseDetailsView extends StatelessWidget {
                 ),
                 width: MediaQueryHelper.width,
                 height: MediaQueryHelper.height,
-                decoration: const BoxDecoration(color: Colors.white),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

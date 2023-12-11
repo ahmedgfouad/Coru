@@ -39,15 +39,11 @@ class _MyCoursesViewState extends State<MyCoursesView>
               DefaultAppBar(title: S.of(context).my_courses),
               CustomTabBar(
                 tabController: _tabController,
-                viewsBody: const [InProgressTabBar(), CompleteTabBar()],
                 viewsTitle: [
-                  Tab(
-                    text: S.of(context).in_progress,
-                  ),
-                  Tab(
-                    text: S.of(context).commplete,
-                  ),
+                  Tab(text: S.of(context).in_progress),
+                  Tab(text: S.of(context).commplete),
                 ],
+                viewsBody: const [InProgressTabBar(), CompleteTabBar()],
               )
             ],
           ),

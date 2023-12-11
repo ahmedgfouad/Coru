@@ -6,6 +6,7 @@ class ThemeController extends ChangeNotifier {
   bool index = true;
 
   get themeMode => _themeMode;
+  
   toggleTheme(bool index) {
     this.index = index;
     _themeMode = index ? ThemeMode.light : ThemeMode.dark;

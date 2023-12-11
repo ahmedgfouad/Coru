@@ -19,7 +19,11 @@ class LessonsCoursWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).lessons,
-          style: TextStyle(fontSize: 22.0.sp, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 22.0.sp,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.background,
+          ),
         ),
         LessonsListWidget(lesson: course.lessons!),
       ],

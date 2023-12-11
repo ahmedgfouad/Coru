@@ -15,25 +15,25 @@ class InProgressTabBar extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Consumer<MyCoursesController>(
-        builder: (context, value, child) {
-          if (value.myCoursesProgress == null) {
+        builder: (context, provider, child) {
+          if (provider.myCoursesProgress == null) {
             return const Center(child: CircularProgressIndicator());
           } else {
             homeProvider.getCourses(courseFilter: "All courses");
             return Column(
               children: List.generate(
-                value.myCoursesProgress!.length,
+                provider.myCoursesProgress!.length,
                 (index) {
-                  for(var i in homeProvider.courses!){
-                    if(i.id==value.myCoursesProgress![index].courseId){
+                  for (var i in homeProvider.courses!) {
+                    if (i.id == provider.myCoursesProgress![index].courseId) {
                       homeProvider.userProgressCourses.add(i);
                     }
                   }
-                  log('$value.myCoursesProgress');
+                  log('$provider.myCoursesProgress');
                   return VerticalCourseCard(
                     isProgress: true,
                     course: homeProvider.userProgressCourses[index],
-                    myCourse: value.myCoursesProgress![index],
+                    myCourse: provider.myCoursesProgress![index],
                     /* index: 1, */
                   );
                 },
