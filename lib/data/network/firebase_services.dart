@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/data/model/course_detials_model.dart';
 
@@ -51,7 +50,6 @@ class FirebaseServices {
 
   Future<CourseDetailsModel> getRecentCourse(String docId) async {
     DocumentSnapshot recentCourse = await allCourses.doc(docId).get();
-    log("recent course= ${recentCourse.id.toString()}");
 
     CourseDetailsModel courseDetailsModel = CourseDetailsModel.fromJson(
         recentCourse.data() as Map<String, dynamic>);

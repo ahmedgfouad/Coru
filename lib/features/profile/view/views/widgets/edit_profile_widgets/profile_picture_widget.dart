@@ -3,7 +3,7 @@
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/utilities/images.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
-import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
+import 'package:elearning_app/features/profile/view_model/edit_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

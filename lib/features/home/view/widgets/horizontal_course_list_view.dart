@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/media_quary.dart';
@@ -32,11 +32,8 @@ class _HorizontalCourseListViewState extends State<HorizontalCourseListView> {
           } else {
             return ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: provider.topCourses!.length,
-                //itemCount: 3,
-                itemBuilder: (context, index) {
-                  log('top course id $index : ${provider.topCourses![index].id.toString()}');
-
+                itemCount: provider.topCourses!.length, 
+                itemBuilder: (context, index) { 
                   return InkWell(
                     onTap: () {
                       provider.recentCourse = provider.topCourses![index];

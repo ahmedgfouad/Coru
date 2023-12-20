@@ -1,13 +1,12 @@
-import 'dart:developer';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/features/Authentication/view/view_model/auth_controller.dart';
 import 'package:elearning_app/features/cart/view/view_model/cart_controller.dart';
 import 'package:elearning_app/features/chat/views/view_model/chat_controller.dart';
 import 'package:elearning_app/features/home/view/view_model/home_controller.dart';
 import 'package:elearning_app/features/my_courses/view_model/my_courses_controller.dart';
-import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
-import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
-import 'package:elearning_app/features/profile/view/view_model/theme_controller.dart';
+import 'package:elearning_app/features/profile/view_model/edit_profile_controller.dart';
+import 'package:elearning_app/features/profile/view_model/localization_controller.dart';
+import 'package:elearning_app/features/profile/view_model/theme_controller.dart';
 import 'package:elearning_app/generated/l10n.dart';
 import 'package:elearning_app/routing/navigator.dart';
 import 'package:elearning_app/routing/routes.dart';
@@ -25,12 +24,10 @@ void main() async {
   await Firebase.initializeApp();
 
   var user = FirebaseAuth.instance.currentUser;
-  log("======the user in main == ${user?.email}============");
+
   if (user == null) {
-    log("in if ${user.toString()}");
     isLogIn = false;
   } else {
-    log("in else ${user.toString()}");
     isLogIn = true;
   }
   runApp(const MyApp());
@@ -58,6 +55,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => LocalizationController()),
           ChangeNotifierProvider(create: (context) => EditProfileController()),
           ChangeNotifierProvider(create: (context) => CartController()),
+          // ChangeNotifierProvider(create: (context) => BookMarkController()),
           ChangeNotifierProvider(create: (context) => AuthController()),
           ChangeNotifierProvider(
             create: (context) => EditProfileController()..getUserDataById(),

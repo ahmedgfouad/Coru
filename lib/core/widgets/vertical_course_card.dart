@@ -16,14 +16,14 @@ class VerticalCourseCard extends StatelessWidget {
   final bool isCart;
   final CourseDetailsModel course;
   final MyCourseModel? myCourse;
-  final Function()? cartOnPressed;
+  final Function()? deleateOnPressed;
   const VerticalCourseCard({
     super.key,
     required this.course,
     this.isProgress = false,
     this.myCourse,
     this.isCart = false,
-    this.cartOnPressed,
+    this.deleateOnPressed,
   });
 
   @override
@@ -134,10 +134,10 @@ class VerticalCourseCard extends StatelessWidget {
                 top: 10,
                 right: -1,
                 child: IconButton(
-                  onPressed: cartOnPressed,
-                  icon: const Icon(
+                  onPressed: deleateOnPressed,
+                  icon: Icon(
                     Icons.delete,
-                    color: Colors.red,
+                    color: AppColors.primaryColor,
                   ),
                 ),
               )

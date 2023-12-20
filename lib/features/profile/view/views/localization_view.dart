@@ -1,7 +1,7 @@
 import 'package:elearning_app/core/utilities/app_styles.dart';
 import 'package:elearning_app/core/utilities/colors.dart';
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
-import 'package:elearning_app/features/profile/view/view_model/localization_controller.dart';
+import 'package:elearning_app/features/profile/view_model/localization_controller.dart';
 import 'package:elearning_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             children: [
               const DefaultAppBar(
-                isHome: true, /* showBack: false,showBookmarks: false, */
+                isHome: true, 
               ),
               Padding(
                 padding: EdgeInsets.all(8.0.r),
