@@ -47,7 +47,8 @@ class DefaultAppBar extends StatelessWidget {
                     CustomIconButton(
                       iconImage: AppImages.bookmark,
                       onPressed: () => AppRoutes.pushNamedNavigator(
-                          routeName: Routes.bookmarkedCourses),
+                        routeName: Routes.bookmarkedCourses,
+                      ),
                     ),
                     SizedBox(width: MediaQueryHelper.width * 0.02),
                     CustomIconButton(

@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -77,14 +77,17 @@ class EditProfileController extends ChangeNotifier {
 
   uploadingImageToFireStorage() async {
     _userDataById!.imageProfileUrl =
-        await _userInfoServices.uploadingImageToFireStorage();
-    log("image url in controller : ${_userDataById!.imageProfileUrl}");
+        await _userInfoServices.uploadingImageToFireStorage(); 
     notifyListeners();
   }
 
   Future<void> editProfileInfo() async {
+    
     _userDataById!.userId = FirebaseAuth.instance.currentUser!.uid;
     await _userInfoServices.updateUserInfoOnFireStore(
-        userModel: _userDataById!);
+      userModel: _userDataById!,
+    );
   }
+
+
 }

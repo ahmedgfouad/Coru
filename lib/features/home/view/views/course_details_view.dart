@@ -35,7 +35,7 @@ class CourseDetailsView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CoursTitleAndSavedIconWidget(course: course),
+                    CoursTitleAndBookMarkIconWidget(course: course),
                     const SizedBox(height: 10),
                     CoursePriceAndAddToCardButtonWidget(course: course),
                     const SizedBox(height: 5),

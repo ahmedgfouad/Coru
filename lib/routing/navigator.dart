@@ -1,6 +1,7 @@
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:elearning_app/features/Authentication/view/views/login_view.dart';
 import 'package:elearning_app/features/Authentication/view/views/signup_view.dart';
+import 'package:elearning_app/features/book_mark/views/book_mark_view.dart';
 import 'package:elearning_app/features/cart/view/views/cart_view.dart';
 import 'package:elearning_app/features/chat/views/chat_view.dart';
 import 'package:elearning_app/features/chat/views/header_chats_view.dart';
@@ -12,7 +13,7 @@ import 'package:elearning_app/features/my_courses/view/views/my_courses_view.dar
 import 'package:elearning_app/features/nav_bar/view/views/nav_bar_view.dart';
 import 'package:elearning_app/features/notification/view/views/notefication_view.dart';
 import 'package:elearning_app/features/payment/views/payment_view.dart';
-import 'package:elearning_app/features/profile/view/views/edit_profile_view.dart';
+import 'package:elearning_app/features/profile/view/edit_profile_view.dart';
 import 'package:elearning_app/features/profile/view/views/localization_view.dart';
 import 'package:elearning_app/features/profile/view/views/privacy_view.dart';
 import 'package:elearning_app/features/profile/view/views/profile_view.dart';
@@ -71,11 +72,14 @@ class AppRoutes {
       case Routes.search:
         return AppRoutes.aniamtedNavigation(screen: const SearchView());
 
+      case Routes.bookmarkedCourses:
+        return AppRoutes.aniamtedNavigation(screen:  BookMarkView());
+
       case Routes.headerChat:
         return AppRoutes.aniamtedNavigation(screen: const HeaderChatsView());
 
       case Routes.chat:
-        return AppRoutes.aniamtedNavigation(screen:   const ChatView());
+        return AppRoutes.aniamtedNavigation(screen: const ChatView());
 
       case Routes.myCourses:
         return AppRoutes.aniamtedNavigation(screen: const MyCoursesView());
@@ -102,7 +106,7 @@ class AppRoutes {
         return AppRoutes.aniamtedNavigation(
           screen: const CartView(),
         );
-        
+
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(

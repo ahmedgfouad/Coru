@@ -1,6 +1,6 @@
 import 'package:elearning_app/core/widgets/default_app_bar.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
-import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
+import 'package:elearning_app/features/profile/view_model/edit_profile_controller.dart';
 import 'package:elearning_app/features/profile/view/views/widgets/edit_profile_widgets/confirm_button_widget.dart';
 import 'package:elearning_app/features/profile/view/views/widgets/edit_profile_widgets/confirm_password_form_field_widget.dart';
 import 'package:elearning_app/features/profile/view/views/widgets/edit_profile_widgets/email_form_field_widget.dart';

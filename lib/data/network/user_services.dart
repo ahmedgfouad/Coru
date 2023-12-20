@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, avoid_function_literals_in_foreach_calls
 
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elearning_app/core/utilities/constants.dart';
 import 'package:elearning_app/data/model/users_info/user_info_model.dart';
 import 'package:elearning_app/features/chat/data/chat_model.dart';
-import 'package:elearning_app/features/profile/view/view_model/edit_profile_controller.dart';
+import 'package:elearning_app/features/profile/view_model/edit_profile_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -15,6 +15,9 @@ class UserServices {
   var imageUrl;
   CollectionReference allUsersInfo =
       FirebaseFirestore.instance.collection(userInfoCollectionName);
+  String? userDocId;
+
+  List<String> listOfCoursesDocIdsInBookMark = [];
 
   UserInfoModel userModel = UserInfoModel();
 
@@ -32,12 +35,7 @@ class UserServices {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        log('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        log('The account already exists for that email.');
-      }
-    } catch (e) {
-      log("in firebase exeption ${e.toString()}");
+      } else if (e.code == 'email-already-in-use') {}
     }
     return userCredential;
   }
@@ -55,10 +53,7 @@ class UserServices {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        log('لا يوجد مستخدم لهذا الايميل ');
-      } else if (e.code == 'wrong-password') {
-        log('كلمه المرور خاطئه');
-      }
+      } else if (e.code == 'wrong-password') {}
     }
     return userCredential;
   }
@@ -71,11 +66,17 @@ class UserServices {
         .set(userMap);
   }
 
-  Future<void> updateUserInfoOnFireStore(
-      {required UserInfoModel userModel}) async {
+  Future<void> updateUserInfoOnFireStore({
+    required UserInfoModel userModel,
+  }) async {
     String docId = FirebaseAuth.instance.currentUser!.uid;
     Map<String, dynamic> userMap = userModel.toJson();
     await allUsersInfo.doc(docId).update(userMap);
+  }
+
+  Future<void> addCourseToBokMarkOnFirestore(course) async {
+    String docId = FirebaseAuth.instance.currentUser!.uid;
+    await allUsersInfo.doc(docId).set({"book_mark": course});
   }
 
   Future<List<UserInfoModel>> getAllUsersInfo() async {
@@ -106,7 +107,6 @@ class UserServices {
     DocumentSnapshot querySnapshot = await allUsersInfo.doc(userId).get();
     userInfo =
         UserInfoModel.fromJson(querySnapshot.data() as Map<String, dynamic>);
-    log("user info= ${userInfo.myCourses}");
     return userInfo;
   }
 
@@ -117,9 +117,39 @@ class UserServices {
 
     await ref.putFile(EditProfileController.file);
     imageUrl = await ref.getDownloadURL();
-    log('the image url in uploadding is : $imageUrl');
 
     return imageUrl;
+  }
+
+  Future<List<String>> addCourseInBookMark(String courseDocId) async {
+    bool isCourseSaved = false;
+    for (int i = 0; i < listOfCoursesDocIdsInBookMark.length; i++) {
+      if (courseDocId == listOfCoursesDocIdsInBookMark[i]) {
+        isCourseSaved = true;
+      }
+    }
+    if (isCourseSaved == false) {
+      listOfCoursesDocIdsInBookMark.add(courseDocId);
+      userDocId = FirebaseAuth.instance.currentUser!.uid;
+      await allUsersInfo.doc(userDocId).update({
+        "book_mark": listOfCoursesDocIdsInBookMark,
+      });
+    } else {
+      print("this course in list of saved");
+    }
+
+    return listOfCoursesDocIdsInBookMark;
+  }
+
+  Future<List<String>> deleteCourseFromBookMark(
+      List<String> listOfCourses) async {
+    listOfCoursesDocIdsInBookMark = listOfCourses;
+    userDocId = FirebaseAuth.instance.currentUser!.uid;
+    await allUsersInfo.doc(userDocId).update({
+      "book_mark": listOfCourses,
+    });
+
+    return listOfCoursesDocIdsInBookMark;
   }
 
   ChatModel chatModel = ChatModel();
@@ -173,7 +203,3 @@ class UserServices {
     existStat = "";
   }
 }
-  //   await FirebaseFirestore.instance.collection('chat').doc().set({
-    //     'user_id': userId,
-    //     'friend_id': friendId,
-    //   });

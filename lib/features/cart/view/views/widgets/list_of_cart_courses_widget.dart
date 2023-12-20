@@ -21,7 +21,7 @@ class ListOfCartCoursesWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return VerticalCourseCard(
             course: provider.cartCourses[index],
-            cartOnPressed: () {
+            deleateOnPressed: () {
               provider.removeCourse(provider.cartCourses[index].id!);
             },
             isCart: true,

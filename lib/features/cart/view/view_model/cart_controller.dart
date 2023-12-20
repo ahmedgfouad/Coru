@@ -1,6 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
-import 'dart:developer';
+// ignore_for_file: avoid_function_literals_in_foreach_calls 
 
 import 'package:elearning_app/data/model/course_detials_model.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +13,7 @@ class CartController extends ChangeNotifier {
     if (cartCourses.isEmpty) {
       cartCourses.add(course);
     } else {
-      cartCourses.forEach((element) {
-        log('element name: ${element.name}');
-        log('course name: ${course.name}');
+      cartCourses.forEach((element) { 
         if (element.name == course.name) {
           _isDuplicate = true;
         }
