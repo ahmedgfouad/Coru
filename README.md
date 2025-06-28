@@ -39,9 +39,26 @@ Coru is a modern, fully functional mobile e-learning application developed as a 
 
 ## 📷 Screenshots
 
-<img src="screenshots/home.png" width="250"/>
-<img src="screenshots/course_details.png" width="250"/>
-<img src="screenshots/chat.png" width="250"/>
+<div align="center">
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/1.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/2.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/3.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/4.png" width="200"/>
+</div>
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/5.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/6.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/7.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/8.png" width="200"/>
+</div>
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/9.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/10.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/11.png" width="200"/>
+<img src="https://raw.githubusercontent.com/ahmedgfouad/Coru/main/12.png" width="200"/>
+</div>
 
 > 📌 You can add more screenshots inside the `screenshots/` folder and reference them here.
 
@@ -49,9 +66,9 @@ Coru is a modern, fully functional mobile e-learning application developed as a 
 
 ```bash
 lib/
-├── core/           # Common utilities and constants
-├── models/         # Data models
-├── views/          # UI screens
-├── viewmodels/     # Business logic (MVVM)
-├── services/       # Firebase services
-└── main.dart       # App entry point
+├── core/         
+├── models/         
+├── views/         
+├── viewmodels/     
+├── services/       
+└── main.dart       
